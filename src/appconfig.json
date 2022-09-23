@@ -1,0 +1,16 @@
+{
+    "appName": "TetraLogger",
+    "description": "A free, open-source tetracompass logger",
+    "appUrl": "./index.html",
+    "configUrl": "./appconfig.json",
+    "iconUrl": "./images/Archaeology journal.png",
+    "defaultWidth": 530,
+    "defaultHeight": 490,
+	"minWidth": 530,
+	"minHeight": 262,
+	"maxWidth": 1000,
+	"maxHeight": 1000,
+	"requestHandlers": [ ],
+	"activators": [	],
+    "permissions": "pixel,gamestate,overlay"
+}

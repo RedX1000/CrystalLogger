@@ -1,0 +1,1312 @@
+{
+    "Venator dagger (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 1
+    },
+    "Venator light crossbow (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 2
+    },
+    "Legionary gladius (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 3
+    },
+    "Legionary square shield (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 4
+    },
+    "Primis Elementis standard (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 5
+    },
+    "Zaros effigy (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 6
+    },
+    "Zarosian training dummy (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 7
+    },
+    "Legatus Maximus figurine (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 8
+    },
+    "'Solem in Umbra' painting (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 9
+    },
+    "Ancient timepiece (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 10
+    },
+    "Legatus pendant (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 11
+    },
+    "'Incite Fear' spell scroll (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 12
+    },
+    "Pontifex signet ring (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 13
+    },
+    "Ceremonial mace (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 14
+    },
+    "Pontifex Maximus figurine (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 15
+    },
+    "'Consensus ad Idem' painting (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 16
+    },
+    "Pontifex censer (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 17
+    },
+    "Pontifex crozier (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 18
+    },
+    "Pontifex mitre (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 19
+    },
+    "'Exsanguinate' spell scroll (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 20
+    },
+    "Necromantic focus (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 21
+    },
+    "Zarosian ewer (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 22
+    },
+    "Zarosian stein (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 23
+    },
+    "'Smoke Cloud' spell scroll (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 24
+    },
+    "Vigorem vial (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 25
+    },
+    "Ancient magic tablet (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 26
+    },
+    "'Animate Dead' spell scroll (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 27
+    },
+    "Portable phylactery (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 28
+    },
+    "Praetorian hood (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 29
+    },
+    "Praetorian robes (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 30
+    },
+    "Praetorian staff (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 31
+    },
+    "Ancient globe (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 32
+    },
+    "Battle plans (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 33
+    },
+    "'Prima Legio' painting (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 34
+    },
+    "Hookah pipe (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 35
+    },
+    "Opulent wine goblet (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 36
+    },
+    "Crest of Dagon (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 37
+    },
+    "'Disorder' painting (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 38
+    },
+    "Imp mask (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 39
+    },
+    "Lesser demon mask (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 40
+    },
+    "Greater demon mask (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 41
+    },
+    "Order of Dis robes (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 42
+    },
+    "Ritual dagger (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 43
+    },
+    "Branding iron (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 44
+    },
+    "Manacles (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 45
+    },
+    "'The Lake of Fire' painting (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 46
+    },
+    "'Lust' metal sculpture (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 47
+    },
+    "Chaos star (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 48
+    },
+    "Spiked dog collar (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 49
+    },
+    "Larupia trophy (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 50
+    },
+    "Lion trophy (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 51
+    },
+    "She-wolf trophy (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 52
+    },
+    "'Torment' metal sculpture (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 53
+    },
+    "'Pandemonium' tapestry (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 54
+    },
+    "Hellfire haladie (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 55
+    },
+    "Hellfire katar (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 56
+    },
+    "Hellfire zaghnal (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 57
+    },
+    "'Possession' metal sculpture (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 58
+    },
+    "Trishula (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 59
+    },
+    "Tsutsaroth piercing (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 60
+    },
+    "Chaos Elemental trophy (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 61
+    },
+    "Virius trophy (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 62
+    },
+    "Tsutsaroth helm (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 63
+    },
+    "Tsutsaroth pauldron (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 64
+    },
+    "Tsutsaroth urumi (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 65
+    },
+    "'Frying pan' (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 66
+    },
+    "Hallowed lantern (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 67
+    },
+    "Ceremonial unicorn ornament (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 68
+    },
+    "Ceremonial unicorn saddle (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 69
+    },
+    "Everlight harp (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 70
+    },
+    "Everlight trumpet (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 71
+    },
+    "Everlight violin (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 72
+    },
+    "Folded-arm figurine (female)(damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 73
+    },
+    "Folded-arm figurine (male)(damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 74
+    },
+    "Dominion discus (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 75
+    },
+    "Dominion javelin (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 76
+    },
+    "Dominion pelte shield (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 77
+    },
+    "Bronze Dominion medal (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 78
+    },
+    "Silver Dominion medal (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 79
+    },
+    "Dominion torch (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 80
+    },
+    "Decorative vase (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 81
+    },
+    "Kantharos cup (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 82
+    },
+    "Patera bowl (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 83
+    },
+    "Dominarian device (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 84
+    },
+    "Fishing trident (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 85
+    },
+    "Amphora (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 86
+    },
+    "Rod of Asclepius (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 87
+    },
+    "Kopis dagger (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 88
+    },
+    "Xiphos short sword (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 89
+    },
+    "'Hallowed Be the Everlight' painting (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 90
+    },
+    "'The Lord of Light' painting (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 91
+    },
+    "'The Pride of Padosan' painting (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 92
+    },
+    "'The Enlightened Soul' scroll (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 93
+    },
+    "'The Eudoxian Elements' tablet (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 94
+    },
+    "Doru spear (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 95
+    },
+    "Kontos lance (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 96
+    },
+    "Apex cap (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 97
+    },
+    "Curse tablet (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 98
+    },
+    "Funerary urn of shadow (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 99
+    },
+    "Infula robes (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 100
+    },
+    "Funerary urn of smoke (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 101
+    },
+    "Hand of the Ancients (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 102
+    },
+    "Decorative amphora (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 103
+    },
+    "Funerary urn of ice (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 104
+    },
+    "Loarnab rod (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 105
+    },
+    "Inquisitor's ceremonial armour (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 106
+    },
+    "Inquisitor's ceremonial mask (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 107
+    },
+    "Inquisitor's seal (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 108
+    },
+    "Gladiator helmet (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 109
+    },
+    "Gladiator sword (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 110
+    },
+    "Funerary urn of blood (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 111
+    },
+    "Funerary urn of miasma (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 112
+    },
+    "Model chariot (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 113
+    },
+    "'The Serpent's Fall' carving (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 114
+    },
+    "Ikovian gerege (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 115
+    },
+    "Toy glider (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 116
+    },
+    "Toy war golem (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 117
+    },
+    "Avian song-egg player (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 118
+    },
+    "Keshik drum (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 119
+    },
+    "Morin khuur (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 120
+    },
+    "Aviansie dreamcoat (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 121
+    },
+    "Peacocking parasol (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 122
+    },
+    "Ceremonial plume (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 123
+    },
+    "Hawkeye lens multi-vision scope (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 124
+    },
+    "Talon-3 razor wing (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 125
+    },
+    "Prototype gravimeter (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 126
+    },
+    "Songbird recorder (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 127
+    },
+    "Dayguard shield (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 128
+    },
+    "Stormguard gerege (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 129
+    },
+    "Golem heart (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 130
+    },
+    "Golem instruction (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 131
+    },
+    "Blackfire lance (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 132
+    },
+    "Nightguard shield (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 133
+    },
+    "Flat cap (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 134
+    },
+    "Night owl flight goggles (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 135
+    },
+    "Prototype godbow (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 136
+    },
+    "Prototype godstaff (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 137
+    },
+    "Prototype godsword (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 138
+    },
+    "Chuluu stone (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 139
+    },
+    "Quintessence counter (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 140
+    },
+    "Spherical astrolabe (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 141
+    },
+    "Ekeleshuun blinder mask (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 142
+    },
+    "Narogoshuun 'Hob-da-Gob' ball (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 143
+    },
+    "Rekeshuun war tether (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 144
+    },
+    "Ogre Kyzaj axe (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 145
+    },
+    "Ork cleaver sword (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 146
+    },
+    "Thorobshuun battle standard (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 147
+    },
+    "Yurkolgokh stink grenade (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 148
+    },
+    "High priest crozier (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 149
+    },
+    "High priest mitre (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 150
+    },
+    "High priest orb (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 151
+    },
+    "Beastkeeper helm (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 152
+    },
+    "Idithuun horn ring (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 153
+    },
+    "'Nosorog!' sculpture (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 154
+    },
+    "Ourg megahitter (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 155
+    },
+    "Ourg tower/goblin cower shield (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 156
+    },
+    "Garagorshuun anchor (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 157
+    },
+    "'Forged in War' sculpture (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 158
+    },
+    "Dorgeshuun spear (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 159
+    },
+    "Huzamogaarb chaos crown (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 160
+    },
+    "Saragorgak star crown (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 161
+    },
+    "Drogokishuun hook sword (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 162
+    },
+    "Hobgoblin mansticker (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 163
+    },
+    "Kal-i-kra chieftain crown (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 164
+    },
+    "Kal-i-kra mace (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 165
+    },
+    "Kal-i-kra warhorn (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 166
+    },
+    "'Da Boss Man' sculpture (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 167
+    },
+    "Horogothgar cooking pot (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 168
+    },
+    "Pasaha (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 169
+    },
+    "Ritual bell (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 170
+    },
+    "Kilaya (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 171
+    },
+    "Vazara (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 172
+    },
+    "Death mask (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 173
+    },
+    "Dragonkin calendar (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 174
+    },
+    "Dragonkin staff (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 175
+    },
+    "Dragon scalpel (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 176
+    },
+    "Protective goggles (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 177
+    },
+    "Dragon burner (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 178
+    },
+    "Orthenglass flask (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 179
+    },
+    "Meditation pipe (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 180
+    },
+    "Personal totem (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 181
+    },
+    "Singing bowl (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 182
+    },
+    "Lingam stone (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 183
+    },
+    "Master control (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 184
+    },
+    "Xolo hard hat (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 185
+    },
+    "Xolo pickaxe (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 186
+    },
+    "Xolo shield (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 187
+    },
+    "Xolo spear (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 188
+    },
+    "Gold dish (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 189
+    },
+    "'Raksha' idol (damaged)": {
+        "tab": "artifacts",
+        "quantity": 0,
+        "order": 190
+    },
+    "Complete tome": {
+        "tab": "materials",
+        "quantity": 0,
+        "order": 191
+    },
+    "Shadowy key": {
+        "tab": "materials",
+        "quantity": 0,
+        "order": 192
+    },
+    "Distorted key": {
+        "tab": "materials",
+        "quantity": 0,
+        "order": 193
+    },
+    "Dragon mattock": {
+        "tab": "materials",
+        "quantity": 0,
+        "order": 194
+    },
+    "Archaeologist's tea": {
+        "tab": "materials",
+        "quantity": 0,
+        "order": 195
+    },
+    "Hi-spec monocle": {
+        "tab": "materials",
+        "quantity": 0,
+        "order": 196
+    },
+    "Material manual": {
+        "tab": "materials",
+        "quantity": 0,
+        "order": 197
+    },
+    "Tarpaulin sheet": {
+        "tab": "materials",
+        "quantity": 0,
+        "order": 198
+    },
+    "Third Age iron": {
+        "tab": "materials",
+        "quantity": 0,
+        "order": 199
+    },
+    "Samite silk": {
+        "tab": "materials",
+        "quantity": 0,
+        "order": 200
+    },
+    "White oak": {
+        "tab": "materials",
+        "quantity": 0,
+        "order": 201
+    },
+    "Goldrune": {
+        "tab": "materials",
+        "quantity": 0,
+        "order": 202
+    },
+    "Orthenglass": {
+        "tab": "materials",
+        "quantity": 0,
+        "order": 203
+    },
+    "Vellum": {
+        "tab": "materials",
+        "quantity": 0,
+        "order": 204
+    },
+    "Leather scraps": {
+        "tab": "materials",
+        "quantity": 0,
+        "order": 205
+    },
+    "Soapstone": {
+        "tab": "materials",
+        "quantity": 0,
+        "order": 206
+    },
+    "Animal furs": {
+        "tab": "materials",
+        "quantity": 0,
+        "order": 207
+    },
+    "Fossilised bone": {
+        "tab": "materials",
+        "quantity": 0,
+        "order": 208
+    },
+    "Stormguard steel": {
+        "tab": "materials",
+        "quantity": 0,
+        "order": 209
+    },
+    "Wings of War": {
+        "tab": "materials",
+        "quantity": 0,
+        "order": 210
+    },
+    "Armadylean yellow": {
+        "tab": "materials",
+        "quantity": 0,
+        "order": 211
+    },
+    "Aetherium alloy": {
+        "tab": "materials",
+        "quantity": 0,
+        "order": 212
+    },
+    "Quintessence": {
+        "tab": "materials",
+        "quantity": 0,
+        "order": 213
+    },
+    "Malachite green": {
+        "tab": "materials",
+        "quantity": 0,
+        "order": 214
+    },
+    "Mark of the Kyzaj": {
+        "tab": "materials",
+        "quantity": 0,
+        "order": 215
+    },
+    "Vulcanised rubber": {
+        "tab": "materials",
+        "quantity": 0,
+        "order": 216
+    },
+    "Warforged bronze": {
+        "tab": "materials",
+        "quantity": 0,
+        "order": 217
+    },
+    "Yu'biusk clay": {
+        "tab": "materials",
+        "quantity": 0,
+        "order": 218
+    },
+    "Compass rose": {
+        "tab": "materials",
+        "quantity": 0,
+        "order": 219
+    },
+    "Felt": {
+        "tab": "materials",
+        "quantity": 0,
+        "order": 220
+    },
+    "Dragon metal": {
+        "tab": "materials",
+        "quantity": 0,
+        "order": 221
+    },
+    "Orgone": {
+        "tab": "materials",
+        "quantity": 0,
+        "order": 222
+    },
+    "Carbon black": {
+        "tab": "materials",
+        "quantity": 0,
+        "order": 223
+    },
+    "Keramos": {
+        "tab": "materials",
+        "quantity": 0,
+        "order": 224
+    },
+    "White marble": {
+        "tab": "materials",
+        "quantity": 0,
+        "order": 225
+    },
+    "Cobalt blue": {
+        "tab": "materials",
+        "quantity": 0,
+        "order": 226
+    },
+    "Everlight silvthril": {
+        "tab": "materials",
+        "quantity": 0,
+        "order": 227
+    },
+    "Star of Saradomin": {
+        "tab": "materials",
+        "quantity": 0,
+        "order": 228
+    },
+    "Cadmium red": {
+        "tab": "materials",
+        "quantity": 0,
+        "order": 229
+    },
+    "Chaotic brimstone": {
+        "tab": "materials",
+        "quantity": 0,
+        "order": 230
+    },
+    "Demonhide": {
+        "tab": "materials",
+        "quantity": 0,
+        "order": 231
+    },
+    "Eye of Dagon": {
+        "tab": "materials",
+        "quantity": 0,
+        "order": 232
+    },
+    "Hellfire metal": {
+        "tab": "materials",
+        "quantity": 0,
+        "order": 233
+    },
+    "Zarosian insignia": {
+        "tab": "materials",
+        "quantity": 0,
+        "order": 234
+    },
+    "Imperial steel": {
+        "tab": "materials",
+        "quantity": 0,
+        "order": 235
+    },
+    "Ancient vis": {
+        "tab": "materials",
+        "quantity": 0,
+        "order": 236
+    },
+    "Tyrian purple": {
+        "tab": "materials",
+        "quantity": 0,
+        "order": 237
+    },
+    "Blood of Orcus": {
+        "tab": "materials",
+        "quantity": 0,
+        "order": 238
+    },
+    "Coins": {
+        "tab": "miscellaneous",
+        "quantity": 0,
+        "order": 239
+    },
+    "Sealed clue scroll (elite)": {
+        "tab": "miscellaneous",
+        "quantity": 0,
+        "order": 240
+    },
+    "Sealed clue scroll (master)": {
+        "tab": "miscellaneous",
+        "quantity": 0,
+        "order": 241
+    },
+    "Crystal key": {
+        "tab": "miscellaneous",
+        "quantity": 0,
+        "order": 242
+    },
+    "Crystal triskelion": {
+        "tab": "miscellaneous",
+        "quantity": 0,
+        "order": 243
+    },
+    "Crystal triskelion fragment 1": {
+        "tab": "miscellaneous",
+        "quantity": 0,
+        "order": 244
+    },
+    "Crystal triskelion fragment 2": {
+        "tab": "miscellaneous",
+        "quantity": 0,
+        "order": 245
+    },
+    "Crystal triskelion fragment 3": {
+        "tab": "miscellaneous",
+        "quantity": 0,
+        "order": 246
+    },
+    "Saradomin page": {
+        "tab": "miscellaneous",
+        "quantity": 0,
+        "order": 247
+    },
+    "Zamorak page": {
+        "tab": "miscellaneous",
+        "quantity": 0,
+        "order": 248
+    },
+    "Armadyl page": {
+        "tab": "miscellaneous",
+        "quantity": 0,
+        "order": 249
+    },
+    "Bandos page": {
+        "tab": "miscellaneous",
+        "quantity": 0,
+        "order": 250
+    },
+    "Ancient page": {
+        "tab": "miscellaneous",
+        "quantity": 0,
+        "order": 251
+    },
+    "Huge bladed rune salvage": {
+        "tab": "miscellaneous",
+        "quantity": 0,
+        "order": 252
+    },
+    "Huge blunt rune salvage": {
+        "tab": "miscellaneous",
+        "quantity": 0,
+        "order": 253
+    },
+    "Huge plated rune salvage": {
+        "tab": "miscellaneous",
+        "quantity": 0,
+        "order": 254
+    },
+    "Huge spiky rune salvage": {
+        "tab": "miscellaneous",
+        "quantity": 0,
+        "order": 255
+    },
+    "Binding contract": {
+        "tab": "miscellaneous",
+        "quantity": 0,
+        "order": 256
+    },
+    "Blue charm": {
+        "tab": "miscellaneous",
+        "quantity": 0,
+        "order": 257
+    },
+    "Onyx dust": {
+        "tab": "miscellaneous",
+        "quantity": 0,
+        "order": 258
+    },
+    "Hydrix bolt tips": {
+        "tab": "miscellaneous",
+        "quantity": 0,
+        "order": 259
+    },
+    "Money tree seed": {
+        "tab": "miscellaneous",
+        "quantity": 0,
+        "order": 260
+    },
+    "Carambola seed": {
+        "tab": "miscellaneous",
+        "quantity": 0,
+        "order": 261
+    },
+    "Golden dragonfruit seed": {
+        "tab": "miscellaneous",
+        "quantity": 0,
+        "order": 262
+    }
+}
