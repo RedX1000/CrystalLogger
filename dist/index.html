@@ -12,22 +12,28 @@
 	</head>
 	<body class="nis" onload="TEST.initOnLoad()">
 		<header>
-			<h1 class="title">TetraLogger, an open-source tetracompass logger</h1>
+			<h1 class="title">CrystalLogger, an open-source tetracompass logger</h1>
 			<div class="header_box">
 				<div class="button_box">
-					<div class="capture_info" id="top">
-						<div class="capture_box_elements" id="math_box_count">
-							<u>Ancient caskets logged</u>: <span id="number_of_rewards">0</span>
-						</div>
-						<div class="capture_box_elements" id="math_box_total">
-							<u>Total value</u>: <span id="value_of_rewards">0</span>
-						</div>
-						<div class="capture_box_elements" id="math_box_average">
-							<u>Average value</u>: <span id="average_of_rewards">0</span>
-						</div>
-						<div id="bottom_buttons">
-							<div id="history_button" class="nisbutton" data-toggle="modal" data-target="#history">History</div>
-							<div id="insert_button" class="nisbutton" data-toggle="modal" data-target="#insert" onclick="clearVerify()">&nbsp;Insert&nbsp;</div>
+					<div class="rewards_buttons" id="top">
+						<h3 class="rewards_button_header">Select Rewards Chest</h3>
+						<div class="rewards_button_box">
+							<div class="rewards_label_holder" id="clue_easy">
+								<label class="rewards_level_label" id="label_easy" onclick="TEST.changeClueTierSpan('taverley', event);">Taverley</label>
+								<input type="radio" id="easy" name="rewards_level" class="rewards_level" value="taverley" onclick="TEST.changeClueTierSpan('taverley', event);">
+							</div>
+							<div class="rewards_label_holder" id="clue_medium">
+								<label class="rewards_level_label" id="label_medium" onclick="TEST.changeClueTierSpan('prifddinas', event);">Prifddinas</label>
+								<input type="radio" id="medium" name="rewards_level" class="rewards_level" value="prifddinas" onclick="TEST.changeClueTierSpan('prifddinas', event);">
+							</div>
+							<div class="rewards_label_holder" id="clue_hard">
+								<label class="rewards_level_label" id="label_hard" onclick="TEST.changeClueTierSpan('triskelion', event);">Triskelion</label>
+								<input type="radio" id="hard" name="rewards_level" class="rewards_level" value="triskelion" onclick="TEST.changeClueTierSpan('triskelion', event);">
+							</div>
+							<div class="rewards_label_holder" id="clue_elite">
+								<label class="rewards_level_label" id="label_elite" onclick="TEST.changeClueTierSpan('alchemist', event);">Alchemist</label>
+								<input type="radio" id="elite" name="rewards_level" class="rewards_level" value="alchemist" onclick="TEST.changeClueTierSpan('alchemist', event);">
+							</div>
 						</div>
 					</div>
 					<div class="main_buttons" id="top">
@@ -60,15 +66,21 @@
 							<div id="tenth_item" class="rewards"></div>
 							<div id="eleventh_item" class="rewards"></div>
 							<div id="twelfth_item" class="rewards"></div>
-							<div id="thirteenth_item" class="rewards"></div>
-							<div id="fourteenth_item" class="rewards"></div>
-							<div id="fifteenth_item" class="rewards"></div>
-							<div id="sixteenth_item" class="rewards"></div>
-							<div id="seventeenth_item" class="rewards"></div>
-							<div id="eighteenth_item" class="rewards"></div>
-							<div id="nineteenth_item" class="rewards"></div>
-							<div id="twentieth_item" class="rewards"></div>
-							<div id="twentyfirst_item" class="rewards"></div>
+						</div>
+					</div>
+					<div class="capture_info" id="top">
+						<div class="capture_box_elements" id="math_box_count">
+							<u><span class="current_reward_span"></span> rewards logged</u>: <span id="number_of_rewards">0</span>
+						</div>
+						<div class="capture_box_elements" id="math_box_total">
+							<u>Total value</u>: <span id="value_of_rewards">0</span>
+						</div>
+						<div class="capture_box_elements" id="math_box_average">
+							<u>Average value</u>: <span id="average_of_rewards">0</span>
+						</div>
+						<div id="bottom_buttons">
+							<div id="history_button" class="nisbutton" data-toggle="modal" data-target="#history">History</div>
+							<div id="insert_button" class="nisbutton" data-toggle="modal" data-target="#insert" onclick="clearVerify()">&nbsp;Insert&nbsp;</div>
 						</div>
 					</div>
 				</div>

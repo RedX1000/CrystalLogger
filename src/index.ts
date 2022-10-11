@@ -9,9 +9,9 @@ import pixelmatch from "pixelmatch";
 import ClueRewardReader from "./scripts/rewardreader";
 import { ModalUIReader } from "./scripts/modeluireader";
 
-import * as lsdb from './JSONs/LocalStorageTetraInit.json';
-import * as itemsAll from './JSONs/ItemsAndImagesTetra.json';
-import * as itemsAllLegacy from './JSONs/ItemsAndImagesTetraLegacy.json';
+import * as lsdb from './JSONs/LocalStorageCrystalInit.json';
+import * as itemsAll from './JSONs/ItemsAndImagesCrystal.json';
+import * as itemsAllLegacy from './JSONs/ItemsAndImagesCrystalLegacy.json';
 import { SlowBuffer } from "buffer";
 
 /* 
@@ -31,11 +31,14 @@ require("!file-loader?name=[name].[ext]!./appconfig.json");
 // Set this value to true or false to enable console log messages
 var seeConsoleLogs = true;
 
-var settingslist = ["TetraLogger/Checked button", "TetraLogger/Algorithm", "TetraLogger/lagDetect", 
-					"TetraLogger/multiButtonPressDetect",  "TetraLogger/hybridPrecision", 
-					"TetraLogger/noMenu", "TetraLogger/RollbackDisplayLimit"]
+var settingslist = ["CrystalLogger/Checked button", "CrystalLogger/Algorithm", "CrystalLogger/lagDetect", 
+					"CrystalLogger/multiButtonPressDetect",  "CrystalLogger/hybridPrecision", 
+					"CrystalLogger/noMenu", "CrystalLogger/RollbackDisplayLimit"]
 
-var valuesAndCounts = ["TetraLogger/Value", "TetraLogger/Count"]
+var valuesAndCounts = ["CrystalLogger/TValue", "CrystalLogger/TCount", 
+					   "CrystalLogger/PValue", "CrystalLogger/PCount", 
+					   "CrystalLogger/KValue", "CrystalLogger/KCount", 
+					   "CrystalLogger/AValue", "CrystalLogger/ACount"]
 
 var rewardSlots = ["first_item", "second_item", "third_item", "fourth_item", "fifth_item", 
 					"sixth_item", "seventh_item", "eigth_item", "ninth_item", "tenth_item",
@@ -44,10 +47,22 @@ var rewardSlots = ["first_item", "second_item", "third_item", "fourth_item", "fi
 					"nineteenth_item", "twentieth_item", "twentyfirst_item"];
 					
 
-var listOfItemsAll = [];
-var listOfItemsAllArray = [];
-var listOfItemsLegacyAll = [];
-var listOfItemsLegacyAllArray = [];
+var listOfItemsT = [];
+var listOfItemsTArray = [];
+var listOfItemsLegacyT = [];
+var listOfItemsLegacyTArray = [];
+var listOfItemsP = [];
+var listOfItemsPArray = [];
+var listOfItemsLegacyP = [];
+var listOfItemsLegacyPArray = [];
+var listOfItemsK = [];
+var listOfItemsKArray = [];
+var listOfItemsLegacyK = [];
+var listOfItemsLegacyKArray = [];
+var listOfItemsA = [];
+var listOfItemsAArray = [];
+var listOfItemsLegacyA = [];
+var listOfItemsLegacyAArray = [];
 
 
 
@@ -77,9 +92,15 @@ var insertVerif = [];
 // Adjust this for larger windows. I want 21 cause tetras.
 var cap = 21
 
+var rewardslist = ["taverley", "prifddinas", "triskelion", "alchemist"]
+
 var imgs = a1lib.ImageDetect.webpackImages({
-	tetracompassCasket: require("./images/tetracompassCasket.data.png"),
-	tetracompassCasketLegacy: require("./images/tetracompassCasketLegacy.data.png")
+	crystalChest: require("./images/crystalChest.data.png"),
+	crystalChestLegacy: require("./images/crystalChestLegacy.data.png"),
+	triskelionTreasures: require("./images/triskelionTreasures.data.png"),
+	triskelionTreasuresLegacy: require("./images/triskelionTreasuresLegacy.data.png"),
+	alchemistsChest: require("./images/alchemistsChest.data.png"),
+	alchemistsChestLegacy: require("./images/alchemistsChestLegacy.data.png")
 });
 
 // TODO: Consider adding an update price for all clues within history, current tier value
@@ -96,7 +117,7 @@ export async function initOnLoad() {
 		alt1.overLayClearGroup("nomenu");
 		
 		alt1.overLaySetGroup("overlays");
-		alt1.overLayTextEx("Initializing TetraLogger...", a1lib.mixColor(255, 144, 0), 20, Math.round(alt1.rsWidth / 2), 200, 50000, "", true, true);
+		alt1.overLayTextEx("Initializing CrystalLogger...", a1lib.mixColor(255, 144, 0), 20, Math.round(alt1.rsWidth / 2), 200, 50000, "", true, true);
 	}
 
 	if (seeConsoleLogs) console.log("Initializing plugin...");
@@ -120,8 +141,33 @@ export async function init() {
 	// Initializing LocalStorage items
 	if (seeConsoleLogs) console.log("Initializing LocalStorage items...");
 
-	if (localStorage.getItem("TetraLogger/items") == null) {
-		localStorage.setItem("TetraLogger/items", JSON.stringify(lsdb))
+	if (seeConsoleLogs) console.log("Initializing radio buttons...");
+	if (localStorage.getItem("CrystalLogger/Checked button") == null) { // Checked button init check
+		if (seeConsoleLogs) console.log("Defaulting button to taverley...");
+		let ele = document.getElementById("taverley") as HTMLInputElement;
+		ele.checked = true;
+		(document.getElementById('current_reward_span') as HTMLSpanElement).textContent = "Easy";
+		localStorage.setItem("CrystalLogger/Checked button", "taverley");
+	}
+	else { // If it does, set the button and span
+		if (seeConsoleLogs) console.log("Setting previously set radio button: " + localStorage.getItem("OpenLogger/Checked button") + "...");
+		let temp = localStorage.getItem("CrystalLogger/Checked button");
+		let ele = document.getElementById(temp) as HTMLInputElement;
+		ele.checked = true;
+		(document.getElementById('current_reward_span') as HTMLSpanElement).textContent = temp[0].toUpperCase() + temp.slice(1).toLowerCase();
+	}
+
+	if (seeConsoleLogs) console.log("Radio buttons initialized.");
+
+
+	let tierSpans = document.getElementsByClassName("current_tier_button") as HTMLCollectionOf<HTMLSpanElement>;
+	for (let i = 0; i < tierSpans.length; i++) {
+		if (seeConsoleLogs) console.log("Setting tier spans to", currentReward()[0]);
+		tierSpans[i].textContent = currentReward()[0];
+	}
+
+	if (localStorage.getItem("CrystalLogger/items") == null) {
+		localStorage.setItem("CrystalLogger/items", JSON.stringify(lsdb))
 	}
 
 	for (let i = 0; i < valuesAndCounts.length; i++) {
@@ -130,66 +176,66 @@ export async function init() {
 		}
 	}
 
-	items = JSON.parse(localStorage.getItem("TetraLogger/items"));
+	items = JSON.parse(localStorage.getItem("CrystalLogger/items"));
 
 
 	if (seeConsoleLogs) console.log("LocalStorage items initialized.");
 
 
-	if (localStorage.getItem("TetraLogger/Algorithm") == null) { // Algorithim init check
+	if (localStorage.getItem("CrystalLogger/Algorithm") == null) { // Algorithim init check
 		if (seeConsoleLogs) console.log("Defaulting Algorithm button to Hybrid...");
-		localStorage.setItem("TetraLogger/Algorithm", "hybrid");
+		localStorage.setItem("CrystalLogger/Algorithm", "hybrid");
 	}
 
-	if (localStorage.getItem("TetraLogger/ItemList") == null) { // Item Referense list init check
+	if (localStorage.getItem("CrystalLogger/ItemList") == null) { // Item Referense list init check
 		if (seeConsoleLogs) console.log("Defaulting ItemList to Organized List...");
-		localStorage.setItem("TetraLogger/ItemList", "orglist");
+		localStorage.setItem("CrystalLogger/ItemList", "orglist");
 	}
 
-	if (localStorage.getItem("TetraLogger/autoCapture") == null) { // Autocapture check
+	if (localStorage.getItem("CrystalLogger/autoCapture") == null) { // Autocapture check
 		if (seeConsoleLogs) console.log("Defaulting autocapture to off...");
-		localStorage.setItem("TetraLogger/autoCapture", "false");
+		localStorage.setItem("CrystalLogger/autoCapture", "false");
 	}
 
-	if (localStorage.getItem("TetraLogger/lagDetect") == null) { // Lag Detection toggle check
+	if (localStorage.getItem("CrystalLogger/lagDetect") == null) { // Lag Detection toggle check
 		if (seeConsoleLogs) console.log("Defaulting lag detect to true...");
-		localStorage.setItem("TetraLogger/lagDetect", "true");
+		localStorage.setItem("CrystalLogger/lagDetect", "true");
 	}
 
-	if (localStorage.getItem("TetraLogger/multiButtonPressDetect") == null) { // Button double press detection
+	if (localStorage.getItem("CrystalLogger/multiButtonPressDetect") == null) { // Button double press detection
 		if (seeConsoleLogs) console.log("Defaulting multi button press detect to true...");
-		localStorage.setItem("TetraLogger/multiButtonPressDetect", "true");
+		localStorage.setItem("CrystalLogger/multiButtonPressDetect", "true");
 	}
 
-	if (localStorage.getItem("TetraLogger/noMenu") == null) { // No hover display box
+	if (localStorage.getItem("CrystalLogger/noMenu") == null) { // No hover display box
 		if (seeConsoleLogs) console.log("Defaulting no menu box to true");
-		localStorage.setItem("TetraLogger/noMenu","false");
+		localStorage.setItem("CrystalLogger/noMenu","false");
 	}
-	else if (localStorage.getItem("TetraLogger/noMenu") == "true") {
+	else if (localStorage.getItem("CrystalLogger/noMenu") == "true") {
 		if (seeConsoleLogs) console.log("Enabling no menu box");
 		noMenuCheck();
 	}
 
-	if (localStorage.getItem("TetraLogger/hybridPrecision") == null) { // Hybrid precision value
+	if (localStorage.getItem("CrystalLogger/hybridPrecision") == null) { // Hybrid precision value
 		if (seeConsoleLogs) console.log("Defaulting hybridPrecision to 0.7...");
-		localStorage.setItem("TetraLogger/hybridPrecision", "0.7");
+		localStorage.setItem("CrystalLogger/hybridPrecision", "0.7");
 	}
 
-	if (localStorage.getItem("TetraLogger/History") == null) { // History initializer
+	if (localStorage.getItem("CrystalLogger/History") == null) { // History initializer
 		if (seeConsoleLogs) console.log("Creating history");
-		localStorage.setItem("TetraLogger/History",JSON.stringify([]));
+		localStorage.setItem("CrystalLogger/History",JSON.stringify([]));
 	}
 
 	
-	if (localStorage.getItem("TetraLogger/PrimaryKeyHistory") == null) { // Initialize primary key for history
+	if (localStorage.getItem("CrystalLogger/PrimaryKeyHistory") == null) { // Initialize primary key for history
 		if (seeConsoleLogs) console.log("Defaulting PrimaryKeyHistory to 1");
-		localStorage.setItem("TetraLogger/PrimaryKeyHistory", "1");
+		localStorage.setItem("CrystalLogger/PrimaryKeyHistory", "1");
 	}
 
 	
-	if (localStorage.getItem("TetraLogger/HistoryDisplayLimit") == null) { // Initialize history display limit
+	if (localStorage.getItem("CrystalLogger/HistoryDisplayLimit") == null) { // Initialize history display limit
 		if (seeConsoleLogs) console.log("Defaulting history display limit to 25");
-		localStorage.setItem("TetraLogger/HistoryDisplayLimit", "25");
+		localStorage.setItem("CrystalLogger/HistoryDisplayLimit", "25");
 	}
 	updateItems();
 
@@ -213,7 +259,7 @@ export async function init() {
 	if (window.alt1) {
 		alt1.overLayClearGroup("overlays");
 		alt1.overLaySetGroup("overlays");
-		alt1.overLayTextEx("TetraLogger ready!", a1lib.mixColor(100, 255, 100), 20, Math.round(alt1.rsWidth / 2), 200, 2000, "", true, true);
+		alt1.overLayTextEx("CrystalLogger ready!", a1lib.mixColor(100, 255, 100), 20, Math.round(alt1.rsWidth / 2), 200, 2000, "", true, true);
 	}
 	
 	buttonEnabler();
@@ -227,13 +273,13 @@ export async function cleardb(choice: any) {
 		if (window.alt1) {
 			alt1.overLayClearGroup("overlays");
 			alt1.overLaySetGroup("overlays");
-			alt1.overLayTextEx("Resetting TetraLogger...", a1lib.mixColor(255, 144, 0), 20, Math.round(alt1.rsWidth / 2), 200, 4000, "", true, true);
+			alt1.overLayTextEx("Resetting CrystalLogger...", a1lib.mixColor(255, 144, 0), 20, Math.round(alt1.rsWidth / 2), 200, 4000, "", true, true);
 		}
 
 		let ls = Object.keys(localStorage)
 		for(const i of ls){
-			if(i.includes("TetraLogger")){
-				console.log("Removing all TetraLogger stuff...")
+			if(i.includes("CrystalLogger")){
+				console.log("Removing all CrystalLogger stuff...")
 				localStorage.removeItem(i)
 			}
 		}
@@ -242,7 +288,7 @@ export async function cleardb(choice: any) {
 		if (window.alt1) {
 			alt1.overLayClearGroup("overlays");
 			alt1.overLaySetGroup("overlays");
-			alt1.overLayTextEx("TetraLogger successfully reset! Restarting...", a1lib.mixColor(100, 255, 100), 20, Math.round(alt1.rsWidth / 2), 200, 4000, "", true, true);
+			alt1.overLayTextEx("CrystalLogger successfully reset! Restarting...", a1lib.mixColor(100, 255, 100), 20, Math.round(alt1.rsWidth / 2), 200, 4000, "", true, true);
 		}
 		await new Promise(resolve => setTimeout(resolve, 1000));
 		location.reload();
@@ -254,8 +300,8 @@ export async function cleardb(choice: any) {
 			alt1.overLayTextEx("Clearing all items from reward database...", a1lib.mixColor(255, 144, 0), 20, Math.round(alt1.rsWidth / 2), 200, 4000, "", true, true);
 		}
 
-		localStorage.removeItem("TetraLogger/items");
-		localStorage.removeItem("TetraLogger/History");
+		localStorage.removeItem("CrystalLogger/items");
+		localStorage.removeItem("CrystalLogger/History");
 		for (let i = 0; i < valuesAndCounts.length; i++) {
 			localStorage.removeItem(valuesAndCounts[i]);
 		}
@@ -274,8 +320,8 @@ export async function cleardb(choice: any) {
 			alt1.overLayTextEx("Reseting settings to default...", a1lib.mixColor(255, 144, 0), 20, Math.round(alt1.rsWidth / 2), 200, 4000, "", true, true);
 		}
 		
-		if (localStorage.getItem("TetraLogger/noMenu") === "true") {
-			localStorage.setItem("TetraLogger/noMenu", "false");
+		if (localStorage.getItem("CrystalLogger/noMenu") === "true") {
+			localStorage.setItem("CrystalLogger/noMenu", "false");
 			noMenuCheck();
 		}
 		for (let i = 0; i < settingslist.length; i++) {
@@ -324,19 +370,72 @@ export async function cleardb(choice: any) {
 
 
 async function arraySetup() {
-	listOfItemsAll = itemsAll.items;
-	listOfItemsLegacyAll = itemsAllLegacy.items;
-	listOfItemsAllArray = [];
-	listOfItemsLegacyAllArray = [];
+	var listOfItemsT = itemsAll.taverley;
+	var listOfItemsLegacyT = itemsAllLegacy.taverley;
+	var listOfItemsP = itemsAll.prifddinas;
+	var listOfItemsLegacyP = itemsAllLegacy.prifddinas;
+	var listOfItemsK = itemsAll.triskelion;
+	var listOfItemsLegacyK = itemsAllLegacy.triskelion;
+	var listOfItemsA = itemsAll.alchemist;
+	var listOfItemsLegacyA = itemsAllLegacy.alchemist;
+
+	var listOfItemsTArray = [];
+	var listOfItemsLegacyTArray = [];
+	var listOfItemsPArray = [];
+	var listOfItemsLegacyPArray = [];
+	var listOfItemsKArray = [];
+	var listOfItemsLegacyKArray = [];
+	var listOfItemsAArray = [];
+	var listOfItemsLegacyAArray = [];
+	
 	let promises = [];
-	for (let i = 0; i < listOfItemsAll.length; i++) {
-		listOfItemsAllArray.push([listOfItemsAll[i].name, listOfItemsAll[i].base64, 0.0]);
-		listOfItemsLegacyAllArray.push([listOfItemsLegacyAll[i].name, listOfItemsLegacyAll[i].base64, 0.0]);
-		promises.push(await _base64ToImageData(listOfItemsAllArray[i][1], 32, 32).then(data => { 
-			listOfItemsAllArray[i].push(data);
+	for (let i = 0; i < listOfItemsT.length; i++) {
+		listOfItemsTArray.push([listOfItemsT[i].name, listOfItemsT[i].base64, 0.0]);
+		listOfItemsLegacyTArray.push([listOfItemsLegacyT[i].name, listOfItemsLegacyT[i].base64, 0.0]);
+		promises.push(await _base64ToImageData(listOfItemsTArray[i][1], 32, 32).then(data => { 
+			listOfItemsTArray[i].push(data);
 		}));
-		promises.push(await _base64ToImageData(listOfItemsLegacyAllArray[i][1], 32, 32).then(data => { 
-			listOfItemsLegacyAllArray[i].push(data);
+		promises.push(await _base64ToImageData(listOfItemsLegacyTArray[i][1], 32, 32).then(data => { 
+			listOfItemsLegacyTArray[i].push(data);
+		}));
+	}
+	await Promise.all(promises);
+
+	promises = [];
+	for (let i = 0; i < listOfItemsP.length; i++) {
+		listOfItemsPArray.push([listOfItemsP[i].name, listOfItemsP[i].base64, 0.0]);
+		listOfItemsLegacyPArray.push([listOfItemsLegacyP[i].name, listOfItemsLegacyP[i].base64, 0.0]);
+		promises.push(await _base64ToImageData(listOfItemsPArray[i][1], 32, 32).then(data => { 
+			listOfItemsPArray[i].push(data);
+		}));
+		promises.push(await _base64ToImageData(listOfItemsLegacyPArray[i][1], 32, 32).then(data => { 
+			listOfItemsLegacyPArray[i].push(data);
+		}));
+	}
+	await Promise.all(promises);
+
+	promises = [];
+	for (let i = 0; i < listOfItemsK.length; i++) {
+		listOfItemsKArray.push([listOfItemsK[i].name, listOfItemsK[i].base64, 0.0]);
+		listOfItemsLegacyKArray.push([listOfItemsLegacyK[i].name, listOfItemsLegacyK[i].base64, 0.0]);
+		promises.push(await _base64ToImageData(listOfItemsKArray[i][1], 32, 32).then(data => { 
+			listOfItemsKArray[i].push(data);
+		}));
+		promises.push(await _base64ToImageData(listOfItemsLegacyKArray[i][1], 32, 32).then(data => { 
+			listOfItemsLegacyKArray[i].push(data);
+		}));
+	}
+	await Promise.all(promises);
+
+	promises = [];
+	for (let i = 0; i < listOfItemsA.length; i++) {
+		listOfItemsAArray.push([listOfItemsA[i].name, listOfItemsA[i].base64, 0.0]);
+		listOfItemsLegacyAArray.push([listOfItemsLegacyA[i].name, listOfItemsLegacyA[i].base64, 0.0]);
+		promises.push(await _base64ToImageData(listOfItemsAArray[i][1], 32, 32).then(data => { 
+			listOfItemsAArray[i].push(data);
+		}));
+		promises.push(await _base64ToImageData(listOfItemsLegacyAArray[i][1], 32, 32).then(data => { 
+			listOfItemsLegacyAArray[i].push(data);
 		}));
 	}
 	await Promise.all(promises);
@@ -368,7 +467,7 @@ export async function capture(autobool: boolean) {
 		return;
 	}
 
-	if (localStorage.getItem("TetraLogger/multiButtonPressDetect") === "true") {
+	if (localStorage.getItem("CrystalLogger/multiButtonPressDetect") === "true") {
 		if (!autobool) {
 			(document.getElementById("docapturebutton") as HTMLDivElement).setAttribute("onclick", "");
 			(document.getElementById("docapturebutton") as HTMLDivElement).setAttribute("title", "Disabled while scanning. Please wait...");
@@ -384,7 +483,7 @@ export async function capture(autobool: boolean) {
 	await Promise.all(promises);
 	if (seeConsoleLogs) console.log("Finished checking clue scroll");
 
-	if (localStorage.getItem("TetraLogger/multiButtonPressDetect") === "true") {
+	if (localStorage.getItem("CrystalLogger/multiButtonPressDetect") === "true") {
 		if (!autobool) {
 			await new Promise(resolve => setTimeout(function () {
 				(document.getElementById("docapturebutton") as HTMLDivElement).setAttribute("onclick", "TEST.capture(false)");
@@ -415,18 +514,58 @@ async function findtrailComplete(img: ImgRef, autobool: boolean) {
 
 	try {
 		let loc;
-		const imgCaptures = [img.findSubimage(imgs.tetracompassCasket),
-							 img.findSubimage(imgs.tetracompassCasketLegacy)	
+		const imgCaptures = [img.findSubimage(imgs.crystalChest),
+							 img.findSubimage(imgs.crystalChestLegacy),
+							 img.findSubimage(imgs.triskelionTreasures),
+							 img.findSubimage(imgs.triskelionTreasuresLegacy),
+							 img.findSubimage(imgs.alchemistsChest),
+							 img.findSubimage(imgs.alchemistsChestLegacy)	
 							];
-		if (imgCaptures[0][0] !== undefined) {
-			loc = imgCaptures[0];
-			if (seeConsoleLogs) console.log("Non-legacy window");
-			legacy = false;
+
+		if (currentReward()[0] == "taverley" || currentReward()[0] == "prifddinas"){
+			if (imgCaptures[0][0] !== undefined) {
+				loc = imgCaptures[0];
+				if (seeConsoleLogs) console.log("Non-legacy crystal chest window");
+				legacy = false;
+			}
+			else if (imgCaptures[1][0] !== undefined) {
+				loc = imgCaptures[1];
+				if (seeConsoleLogs) console.log("legacy crystal chest window");
+				legacy = true;
+			}
+			else {
+				return;
+			}
 		}
-		else if (imgCaptures[1][0] !== undefined) {
-			loc = imgCaptures[1];
-			if (seeConsoleLogs) console.log("legacy window");
-			legacy = true;
+		else if (currentReward()[0] == "triskelion"){
+			if (imgCaptures[2][0] !== undefined) {
+				loc = imgCaptures[2];
+				if (seeConsoleLogs) console.log("Non-legacy triskelion window");
+				legacy = false;
+			}
+			else if (imgCaptures[3][0] !== undefined) {
+				loc = imgCaptures[3];
+				if (seeConsoleLogs) console.log("legacy triskelion window");
+				legacy = true;
+			}
+			else {
+				return;
+			}
+		}
+		else if (currentReward()[0] == "alchemist"){
+			if (imgCaptures[4][0] !== undefined) {
+				loc = imgCaptures[4];
+				if (seeConsoleLogs) console.log("Non-legacy alchemist window");
+				legacy = false;
+			}
+			else if (imgCaptures[5][0] !== undefined) {
+				loc = imgCaptures[5];
+				if (seeConsoleLogs) console.log("legacy alchemist window");
+				legacy = true;
+			}
+			else {
+				return;
+			}
 		}
 		else {
 			return;
@@ -519,7 +658,9 @@ async function findtrailComplete(img: ImgRef, autobool: boolean) {
 
 		alt1.overLayClearGroup("overlays");
 		alt1.overLaySetGroup("rect");
-		alt1.overLayRect(a1lib.mixColor(255, 144, 0), xRect, yRect, imgs.tetracompassCasket.width + 293, imgs.tetracompassCasket.height + 291, 60000, 2);
+
+		//TODO: Investigate this for changing tiers
+		alt1.overLayRect(a1lib.mixColor(255, 144, 0), xRect, yRect, imgs.crystalChest.width + 293, imgs.crystalChest.height + 291, 60000, 2);
 
 		let prevValue = lastValue;
 		lastValue = value;
@@ -558,7 +699,7 @@ async function findtrailComplete(img: ImgRef, autobool: boolean) {
 				x1 += 32 + 23
 				promises.push(itemtemp.push(await compareItems(crops[i][j])));
 				console.log(itemtemp[j])
-				if (localStorage.getItem("TetraLogger/lagDetect") == "true") {
+				if (localStorage.getItem("CrystalLogger/lagDetect") == "true") {
 					if (itemtemp[j] == "Blank") {
 						notBlank = true;
 					}
@@ -577,13 +718,19 @@ async function findtrailComplete(img: ImgRef, autobool: boolean) {
 						return;
 					}
 				}
+
+				// FIXME: Add code here to set sinister key or alchemists key due to similarity.
+				// Change it to either based on tuned item set.
+
+				// Actually sc ratch above. Create a function for this after quanitity checking
+				// Herb seeds and maybe grimy herbs might fall under here.
 			}
 			itemResults.push(itemtemp)
 			x1 = xdefault
 			y1 += 32 + 14
 		}
 
-		if (localStorage.getItem("TetraLogger/lagDetect") == "true") {
+		if (localStorage.getItem("CrystalLogger/lagDetect") == "true") {
 			for (let i = 0; i < itemResults.length; i++) {
 				if (itemResults[itemResults.length - 1] !== "Blank") {
 					break;
@@ -598,12 +745,13 @@ async function findtrailComplete(img: ImgRef, autobool: boolean) {
 					let loc2: any;
 					let x = 0
 					let y = 0
-
+					
+					// TODO: Investigate this for changing tiers
 					if (!legacy) {
-						loc2 = newImg.findSubimage(imgs.tetracompassCasket);
+						loc2 = newImg.findSubimage(imgs.crystalChest);
 					}
 					else {
-						loc2 = newImg.findSubimage(imgs.tetracompassCasket);
+						loc2 = newImg.findSubimage(imgs.crystalChest);
 					}
 
 					x = xdefault
@@ -647,8 +795,8 @@ async function findtrailComplete(img: ImgRef, autobool: boolean) {
 									break;
 								}
 							}
-							let lsHistory = JSON.parse(localStorage.getItem("TetraLogger/History"))[JSON.parse(localStorage.getItem("TetraLogger/History")).length-1][0];
-							if (seeConsoleLogs) console.log("Checking arrays for equivalence:",JSON.parse(localStorage.getItem("TetraLogger/History"))[JSON.parse(localStorage.getItem("TetraLogger/History")).length-1][0], itemResultsNoBlanks);
+							let lsHistory = JSON.parse(localStorage.getItem("CrystalLogger/History"))[JSON.parse(localStorage.getItem("CrystalLogger/History")).length-1][0];
+							if (seeConsoleLogs) console.log("Checking arrays for equivalence:",JSON.parse(localStorage.getItem("CrystalLogger/History"))[JSON.parse(localStorage.getItem("CrystalLogger/History")).length-1][0], itemResultsNoBlanks);
 							if (lsHistory.join(',') === itemResultsNoBlanks.join(',')) { // https://stackoverflow.com/a/6230314
 								if (seeConsoleLogs) console.log(lsHistory.join(','),"and",itemResultsNoBlanks.join(','),"are the same...");
 								if (seeConsoleLogs) console.log("They're the same. make it false.");
@@ -797,7 +945,8 @@ async function findtrailComplete(img: ImgRef, autobool: boolean) {
 			alt1.overLaySetGroup("overlays");
 			alt1.overLayTextEx("Tetracompass rewards captured successfully!",
 				a1lib.mixColor(100, 255, 100), 20, Math.round(alt1.rsWidth / 2), 200, 4000, "", true, true);
-			alt1.overLayRect(a1lib.mixColor(0, 255, 0), xRect, yRect, imgs.tetracompassCasket.width + 293, imgs.tetracompassCasket.height + 291, 1000, 2);
+			//TODO: Investigate this for changing tiers
+			alt1.overLayRect(a1lib.mixColor(0, 255, 0), xRect, yRect, imgs.crystalChest.width + 293, imgs.crystalChest.height + 291, 1000, 2);
 		}
 		lagDetected = false;
 	} catch (e) {
@@ -839,10 +988,10 @@ async function compareItems(item: ImageData) {
 
 	let matches = [];
 	if (!legacy) {
-		matches = listOfItemsAllArray.slice();
+		matches = listOfItemsTArray.slice();
 	}
 	else { // Legacy works. But I don't test with it often. I think its okay...
-		matches = listOfItemsLegacyAllArray.slice();
+		matches = listOfItemsLegacyTArray.slice();
 	}
 
 	//Check if the item is blank first
@@ -854,7 +1003,7 @@ async function compareItems(item: ImageData) {
 	matches.shift(); // Remove blank from the list
 
 	let found = [];
-	if (localStorage.getItem("TetraLogger/Algorithm") == "resemblejs") {
+	if (localStorage.getItem("CrystalLogger/Algorithm") == "resemblejs") {
 		found = matches[0];
 		const promises = [];
 
@@ -869,7 +1018,7 @@ async function compareItems(item: ImageData) {
 		await Promise.all(promises);
 	}
 
-	else if (localStorage.getItem("TetraLogger/Algorithm") == "pixelmatch") {
+	else if (localStorage.getItem("CrystalLogger/Algorithm") == "pixelmatch") {
 		/* List of items that do not identify in pure PixelMatch
 			- Huge Plated Adamant Salvage identifies as Huge Plated Rune Salvage when using TwoPlus or All
 		*/
@@ -885,7 +1034,7 @@ async function compareItems(item: ImageData) {
 		await Promise.all(promises);
 	}
 
-	else if (localStorage.getItem("TetraLogger/Algorithm") == "hybrid") {
+	else if (localStorage.getItem("CrystalLogger/Algorithm") == "hybrid") {
 		// First we check with Pixelmatch and get the comparison of everything to the item
 		let promises = [];
 		let total = 0;
@@ -896,7 +1045,7 @@ async function compareItems(item: ImageData) {
 
 		// Then we get the average so we can remove half of the items that don't match
 		let average = total / matches.length;
-		let precision = parseFloat(localStorage.getItem("TetraLogger/hybridPrecision")); //1 does nothing
+		let precision = parseFloat(localStorage.getItem("CrystalLogger/hybridPrecision")); //1 does nothing
 		await Promise.all(promises);
 
 		for (let i = matches.length-1; i >= 0; i--) {
@@ -1075,8 +1224,8 @@ async function submitToLS(item: any[], quant: any[], value: any) {
 	}
 
 	// Increase value and count
-	localStorage.setItem("TetraLogger/Value", JSON.stringify((JSON.parse(localStorage.getItem("TetraLogger/Value")) + value)));
-	localStorage.setItem("TetraLogger/Count", JSON.stringify((JSON.parse(localStorage.getItem("TetraLogger/Count")) + 1)));
+	localStorage.setItem("CrystalLogger/Value", JSON.stringify((JSON.parse(localStorage.getItem("CrystalLogger/Value")) + value)));
+	localStorage.setItem("CrystalLogger/Count", JSON.stringify((JSON.parse(localStorage.getItem("CrystalLogger/Count")) + 1)));
 
 	return true;
 }
@@ -1107,12 +1256,12 @@ async function addHistoryToLs(value: number, items: any, quants: any, reward: an
 		}
 	}
 	
-	let previous = [itemsArr, quants, value, reward, localStorage.getItem("TetraLogger/Count"), localStorage.getItem("TetraLogger/PrimaryKeyHistory")];
-	let temp = JSON.parse(localStorage.getItem("TetraLogger/History"))
+	let previous = [itemsArr, quants, value, reward, localStorage.getItem("CrystalLogger/Count"), localStorage.getItem("CrystalLogger/PrimaryKeyHistory")];
+	let temp = JSON.parse(localStorage.getItem("CrystalLogger/History"))
 	temp.push(previous);
 
-	localStorage.setItem("TetraLogger/History", JSON.stringify(temp));
-	localStorage.setItem("TetraLogger/PrimaryKeyHistory", JSON.stringify(parseInt(localStorage.getItem("TetraLogger/PrimaryKeyHistory")) + 1));
+	localStorage.setItem("CrystalLogger/History", JSON.stringify(temp));
+	localStorage.setItem("CrystalLogger/PrimaryKeyHistory", JSON.stringify(parseInt(localStorage.getItem("CrystalLogger/PrimaryKeyHistory")) + 1));
 
 	await historyClear();
 	historyInit();
@@ -1121,10 +1270,10 @@ async function addHistoryToLs(value: number, items: any, quants: any, reward: an
 
 function lootDisplay() {
 	//Set Number of clues and Current and Average values
-	(document.getElementById("number_of_rewards") as HTMLSpanElement).textContent = parseInt(JSON.parse(localStorage.getItem("TetraLogger/Count"))).toLocaleString("en-US");
-	(document.getElementById("value_of_rewards") as HTMLSpanElement).textContent = parseInt(JSON.parse(localStorage.getItem("TetraLogger/Value"))).toLocaleString("en-US");
-	if (parseInt(JSON.parse(localStorage.getItem("TetraLogger/Value"))) != 0) {
-		(document.getElementById("average_of_rewards") as HTMLSpanElement).textContent = Math.round(parseInt(JSON.parse(localStorage.getItem("TetraLogger/Value"))) / parseInt(JSON.parse(localStorage.getItem("TetraLogger/Count")))).toLocaleString("en-US");
+	(document.getElementById("number_of_rewards") as HTMLSpanElement).textContent = parseInt(JSON.parse(localStorage.getItem("CrystalLogger/Count"))).toLocaleString("en-US");
+	(document.getElementById("value_of_rewards") as HTMLSpanElement).textContent = parseInt(JSON.parse(localStorage.getItem("CrystalLogger/Value"))).toLocaleString("en-US");
+	if (parseInt(JSON.parse(localStorage.getItem("CrystalLogger/Value"))) != 0) {
+		(document.getElementById("average_of_rewards") as HTMLSpanElement).textContent = Math.round(parseInt(JSON.parse(localStorage.getItem("CrystalLogger/Value"))) / parseInt(JSON.parse(localStorage.getItem("CrystalLogger/Count")))).toLocaleString("en-US");
 	}
 	else {
 		(document.getElementById("average_of_rewards") as HTMLSpanElement).textContent = "0";
@@ -1180,10 +1329,10 @@ async function historyClear() {
 
 
 function historyInit() {
-	let lsHistory = JSON.parse(localStorage.getItem("TetraLogger/History"))
+	let lsHistory = JSON.parse(localStorage.getItem("CrystalLogger/History"))
 
 	let quantity = document.getElementById("history_quantity") as HTMLDivElement;
-	quantity.textContent = localStorage.getItem("TetraLogger/HistoryDisplayLimit");
+	quantity.textContent = localStorage.getItem("CrystalLogger/HistoryDisplayLimit");
 
 	if (lsHistory.length == 0) {
 		let ele = document.getElementById("history_body");
@@ -1193,10 +1342,10 @@ function historyInit() {
 		ele.append(container);
 	}
 	else {
-		let index = parseInt(localStorage.getItem("TetraLogger/Count"));
+		let index = parseInt(localStorage.getItem("CrystalLogger/Count"));
 		let limit = 0;
 		for (let i = lsHistory.length - 1; i >= 0 ; i--) { //Navigating lsHistory
-			if (limit < parseInt(localStorage.getItem("TetraLogger/HistoryDisplayLimit"))) {
+			if (limit < parseInt(localStorage.getItem("CrystalLogger/HistoryDisplayLimit"))) {
 				let temp = lsHistory[i];
 
 				let ele = document.getElementById("history_body") as HTMLDivElement;
@@ -1298,7 +1447,7 @@ function historyInit() {
 			}
 		}
 
-		if (index == parseInt(localStorage.getItem("TetraLogger/Count"))) {
+		if (index == parseInt(localStorage.getItem("CrystalLogger/Count"))) {
 			let ele = document.getElementById("history_body") as HTMLDivElement;
 			let container = document.createElement("div") as HTMLDivElement;
 			container.textContent = "There's nothing to display. Start scanning!";
@@ -1344,13 +1493,13 @@ export function rollbackYes(id: any) {
 
 	let pKey = parseInt(id.replace('container','').replace('button',''));
 
-	let lsHistory = JSON.parse(localStorage.getItem("TetraLogger/History"));
+	let lsHistory = JSON.parse(localStorage.getItem("CrystalLogger/History"));
 	let temp = [];
 	for (let i = 0; i < lsHistory.length; i++) {
 		if (lsHistory[i][5] == pKey) {
 			temp = lsHistory[i];
 			lsHistory.splice(i, 1);
-			localStorage.setItem("TetraLogger/History",JSON.stringify(lsHistory));
+			localStorage.setItem("CrystalLogger/History",JSON.stringify(lsHistory));
 			break;
 		}
 	}
@@ -1365,11 +1514,11 @@ export function rollbackYes(id: any) {
 	}
 
 	// Decrease value and count
-	localStorage.setItem("TetraLogger/Value", JSON.stringify(JSON.parse(localStorage.getItem("TetraLogger/Value")) - temp[2]));
-	localStorage.setItem("TetraLogger/Count", JSON.stringify(JSON.parse(localStorage.getItem("TetraLogger/Count")) - 1));
+	localStorage.setItem("CrystalLogger/Value", JSON.stringify(JSON.parse(localStorage.getItem("CrystalLogger/Value")) - temp[2]));
+	localStorage.setItem("CrystalLogger/Count", JSON.stringify(JSON.parse(localStorage.getItem("CrystalLogger/Count")) - 1));
 
 	if (seeConsoleLogs) console.log("Removed",temp,":",pKey,"from LS");
-	if (pKey == ((parseInt(localStorage.getItem("TetraLogger/PrimaryKeyHistory"))) - 1)) {
+	if (pKey == ((parseInt(localStorage.getItem("CrystalLogger/PrimaryKeyHistory"))) - 1)) {
 		(document.getElementById("rewards_value") as HTMLDivElement).textContent = "0";
 		for (let i = 0; i < 4; i++) {
 			for(let j = 0; j < 8; j++){
@@ -1382,9 +1531,9 @@ export function rollbackYes(id: any) {
 	}
 
 	let historyCount = document.getElementsByClassName('historyCount') as HTMLCollectionOf<HTMLDivElement>;
-	let index = parseInt(localStorage.getItem("TetraLogger/Count"));
-	for (let i = 0; i < parseInt(localStorage.getItem("TetraLogger/Count")); i++) {
-		if (i >= parseInt(localStorage.getItem("TetraLogger/RollbackDisplayLimit"))) {
+	let index = parseInt(localStorage.getItem("CrystalLogger/Count"));
+	for (let i = 0; i < parseInt(localStorage.getItem("CrystalLogger/Count")); i++) {
+		if (i >= parseInt(localStorage.getItem("CrystalLogger/RollbackDisplayLimit"))) {
 			break;
 		}
 		if (historyCount[i] == undefined) {
@@ -1579,7 +1728,7 @@ export function verifyInsert(event: Event) {
 		return;
 	}
 
-	let curr = (parseInt(localStorage.getItem("TetraLogger/Count")) + 1).toString();
+	let curr = (parseInt(localStorage.getItem("CrystalLogger/Count")) + 1).toString();
 	let ele = document.getElementById("insertVerif_body") as HTMLDivElement;
 	let container = document.createElement("div") as HTMLDivElement;
 	container.setAttribute("class", 'historyDisplayContainer');
@@ -1713,48 +1862,48 @@ export function insertToDB() {
 export function settingsInit() {
 	if (seeConsoleLogs) console.log("Initializing settings...");
 
-	if (seeConsoleLogs) console.log("Setting previously set radio button for Algorithm: " + localStorage.getItem("TetraLogger/Algorithm") + "...");
-	let temp = localStorage.getItem("TetraLogger/Algorithm");
+	if (seeConsoleLogs) console.log("Setting previously set radio button for Algorithm: " + localStorage.getItem("CrystalLogger/Algorithm") + "...");
+	let temp = localStorage.getItem("CrystalLogger/Algorithm");
 	let ele = document.getElementById(temp) as HTMLInputElement;
 	ele.checked = true;
 
-	if (seeConsoleLogs) console.log("Setting previously set radio button for lagDetect: " + localStorage.getItem("TetraLogger/lagDetect") + "...");
-	if (localStorage.getItem("TetraLogger/lagDetect") == "true") {
+	if (seeConsoleLogs) console.log("Setting previously set radio button for lagDetect: " + localStorage.getItem("CrystalLogger/lagDetect") + "...");
+	if (localStorage.getItem("CrystalLogger/lagDetect") == "true") {
 		ele = document.getElementById("lagon") as HTMLInputElement;
 		ele.checked = true;
 	}
-	else if (localStorage.getItem("TetraLogger/lagDetect") == "false") {
+	else if (localStorage.getItem("CrystalLogger/lagDetect") == "false") {
 		ele = document.getElementById("lagoff") as HTMLInputElement;
 		ele.checked = true;
 	}
 
-	if (seeConsoleLogs) console.log("Setting previously set radio button for MultiButtonPressDetect: " + localStorage.getItem("TetraLogger/multiButtonPressDetect") + "...");
-	if (localStorage.getItem("TetraLogger/multiButtonPressDetect") == "true") {
+	if (seeConsoleLogs) console.log("Setting previously set radio button for MultiButtonPressDetect: " + localStorage.getItem("CrystalLogger/multiButtonPressDetect") + "...");
+	if (localStorage.getItem("CrystalLogger/multiButtonPressDetect") == "true") {
 		ele = document.getElementById("multion") as HTMLInputElement;
 		ele.checked = true;
 	}
-	else if (localStorage.getItem("TetraLogger/multiButtonPressDetect") == "false") {
+	else if (localStorage.getItem("CrystalLogger/multiButtonPressDetect") == "false") {
 		ele = document.getElementById("multioff") as HTMLInputElement;
 		ele.checked = true;
 	}
 
-	if (seeConsoleLogs) console.log("Setting previously set radio button for noMenu: " + localStorage.getItem("TetraLogger/noMenu") + "...");
-	if (localStorage.getItem("TetraLogger/noMenu") == "true") {
+	if (seeConsoleLogs) console.log("Setting previously set radio button for noMenu: " + localStorage.getItem("CrystalLogger/noMenu") + "...");
+	if (localStorage.getItem("CrystalLogger/noMenu") == "true") {
 		ele = document.getElementById("menuon") as HTMLInputElement;
 		ele.checked = true;
 	}
-	else if (localStorage.getItem("TetraLogger/noMenu") == "false") {
+	else if (localStorage.getItem("CrystalLogger/noMenu") == "false") {
 		ele = document.getElementById("menuoff") as HTMLInputElement;
 		ele.checked = true;
 	}
 	
-	if (seeConsoleLogs) console.log("Setting previously set radio button for hybridPrecision: " + localStorage.getItem("TetraLogger/hybridPrecision") + "...");
+	if (seeConsoleLogs) console.log("Setting previously set radio button for hybridPrecision: " + localStorage.getItem("CrystalLogger/hybridPrecision") + "...");
 	ele = document.getElementById("hybrid_precision") as HTMLInputElement;
-	ele.value = localStorage.getItem("TetraLogger/hybridPrecision");
+	ele.value = localStorage.getItem("CrystalLogger/hybridPrecision");
 	
-	if (seeConsoleLogs) console.log("Setting previously set radio button for HistoryDisplayLimit: " + localStorage.getItem("TetraLogger/HistoryDisplayLimit") + "...");
+	if (seeConsoleLogs) console.log("Setting previously set radio button for HistoryDisplayLimit: " + localStorage.getItem("CrystalLogger/HistoryDisplayLimit") + "...");
 	ele = document.getElementById("history_display_limit") as HTMLInputElement;
-	ele.value = localStorage.getItem("TetraLogger/HistoryDisplayLimit");
+	ele.value = localStorage.getItem("CrystalLogger/HistoryDisplayLimit");
 
 	if (seeConsoleLogs) console.log("Settings initialized!");
 }
@@ -1768,23 +1917,23 @@ export async function saveSettings(alg: string, lag: string, multi: string, menu
 		alt1.overLaySetGroup("overlays");
 		alt1.overLayTextEx("Saving settings...", a1lib.mixColor(255, 144, 0), 20, Math.round(alt1.rsWidth / 2), 200, 50000, "", true, true);
 	}
-	localStorage.setItem("TetraLogger/Algorithm", alg);
-	localStorage.setItem("TetraLogger/lagDetect", lag);
-	localStorage.setItem("TetraLogger/hybridPrecision", precision);
-	localStorage.setItem("TetraLogger/HistoryDisplayLimit", limit);
+	localStorage.setItem("CrystalLogger/Algorithm", alg);
+	localStorage.setItem("CrystalLogger/lagDetect", lag);
+	localStorage.setItem("CrystalLogger/hybridPrecision", precision);
+	localStorage.setItem("CrystalLogger/HistoryDisplayLimit", limit);
 
-	if (localStorage.getItem("TetraLogger/multiButtonPressDetect") !== multi) {
-		localStorage.setItem("TetraLogger/multiButtonPressDetect", multi);
+	if (localStorage.getItem("CrystalLogger/multiButtonPressDetect") !== multi) {
+		localStorage.setItem("CrystalLogger/multiButtonPressDetect", multi);
 		if (seeConsoleLogs) console.log("Adjusting saved values")
 		if (multi === "true") {
-			if (localStorage.getItem("TetraLogger/autoCapture") === "true") {
+			if (localStorage.getItem("CrystalLogger/autoCapture") === "true") {
 				(document.getElementById("docapturebutton") as HTMLDivElement).setAttribute("onclick", "");
 				(document.getElementById("docapturebutton") as HTMLDivElement).setAttribute("title", "Disable autocapture to use this button");
 				(document.getElementById("docapturebuttonwords") as HTMLDivElement).style.setProperty("text-decoration", "line-through");
 			}
 		}
 		else if (multi === "false") {
-			if (localStorage.getItem("TetraLogger/autoCapture") === "true") {
+			if (localStorage.getItem("CrystalLogger/autoCapture") === "true") {
 				(document.getElementById("docapturebutton") as HTMLDivElement).setAttribute("onclick", "TEST.capture(false)");
 				(document.getElementById("docapturebutton") as HTMLDivElement).setAttribute("title", "");
 				(document.getElementById("docapturebuttonwords") as HTMLDivElement).style.removeProperty("text-decoration");
@@ -1797,8 +1946,8 @@ export async function saveSettings(alg: string, lag: string, multi: string, menu
 		}
 	}
 
-	if (localStorage.getItem("TetraLogger/noMenu") !== menu) {
-		localStorage.setItem("TetraLogger/noMenu", menu);
+	if (localStorage.getItem("CrystalLogger/noMenu") !== menu) {
+		localStorage.setItem("CrystalLogger/noMenu", menu);
 		noMenuCheck();
 	}
 
@@ -1827,7 +1976,7 @@ export function autoDisableCheckAuto(event: Event) {
 export function toggleCapture(event: Event) {
 	if ((document.getElementById("toggleunlocktrack") as HTMLDivElement).classList.contains("enabled")) {
 		(document.getElementById("toggleunlocktrack") as HTMLDivElement).classList.remove("enabled");
-		localStorage.setItem("TetraLogger/autoCapture", "false");
+		localStorage.setItem("CrystalLogger/autoCapture", "false");
 		if (window.alt1) {
 			alt1.overLayClearGroup("overlays");
 			alt1.overLaySetGroup("overlays");
@@ -1836,7 +1985,7 @@ export function toggleCapture(event: Event) {
 	}
 	else {
 		(document.getElementById("toggleunlocktrack") as HTMLDivElement).classList.add("enabled");
-		localStorage.setItem("TetraLogger/autoCapture", "true");
+		localStorage.setItem("CrystalLogger/autoCapture", "true");
 		if (window.alt1) {
 			alt1.overLayClearGroup("overlays");
 			alt1.overLaySetGroup("overlays");
@@ -1852,8 +2001,8 @@ export function toggleCapture(event: Event) {
 
 
 function autoCheck() {
-	if (localStorage.getItem("TetraLogger/autoCapture") === "true") {
-		if (localStorage.getItem("TetraLogger/multiButtonPressDetect") === "true") {
+	if (localStorage.getItem("CrystalLogger/autoCapture") === "true") {
+		if (localStorage.getItem("CrystalLogger/multiButtonPressDetect") === "true") {
 			(document.getElementById("docapturebutton") as HTMLDivElement).setAttribute("onclick", "");
 			(document.getElementById("docapturebutton") as HTMLDivElement).setAttribute("title", "Disable autocapture to use this button");
 			(document.getElementById("docapturebuttonwords") as HTMLDivElement).style.setProperty("text-decoration", "line-through");
@@ -1865,7 +2014,7 @@ function autoCheck() {
 		}, 1000);
 	}
 	else {
-		if (localStorage.getItem("TetraLogger/multiButtonPressDetect") === "true") {
+		if (localStorage.getItem("CrystalLogger/multiButtonPressDetect") === "true") {
 			(document.getElementById("docapturebutton") as HTMLDivElement).setAttribute("onclick", "TEST.capture(false)");
 			(document.getElementById("docapturebutton") as HTMLDivElement).setAttribute("title", "");
 			(document.getElementById("docapturebuttonwords") as HTMLDivElement).style.removeProperty("text-decoration");
@@ -1882,10 +2031,11 @@ function autoCallCapture() {
 
 
 function noMenuCheck() {
-	if (localStorage.getItem("TetraLogger/noMenu") === "true") {
+	if (localStorage.getItem("CrystalLogger/noMenu") === "true") {
 		noMenuInterval = window.setInterval(async function () {
 			let img = a1lib.captureHoldFullRs();
-			let loc = img.findSubimage(imgs.tetracompassCasket);
+			//TODO: Investigate this for changing tiers
+			let loc = img.findSubimage(imgs.crystalChest);
 
 			let rewardreader = new ClueRewardReader();
 			rewardreader.pos = ModalUIReader.find()[0];
@@ -1897,8 +2047,9 @@ function noMenuCheck() {
 			if (window.alt1) {
 				alt1.overLayClearGroup("nomenu");
 				alt1.overLaySetGroup("nomenu");
-				alt1.overLayRect(a1lib.mixColor(255, 50, 50), loc[0].x + 301 - (5 * length) + (1 * comma), loc[0].y + 218, 2 + (8 * length) + (4 * comma), imgs.tetracompassCasket.height + 6, 60000, 2);
-				alt1.overLayTextEx("NO MENUS HERE", a1lib.mixColor(255, 50, 50), 10, loc[0].x + 301, loc[0].y + 242, 50000, "", true, true);
+				//TODO: Investigate this for changing tiers, the image used in width and height
+				alt1.overLayRect(a1lib.mixColor(255, 50, 50), loc[0].x + 301 - (5 * length) + (1 * comma), loc[0].y + 218, 2 + (8 * length) + (4 * comma), imgs.crystalChest.height + 6, 60000, 2);
+				alt1.overLayTextEx("NO MENUS HERE", a1lib.mixColor(255, 50, 50), 10, loc[0].x + 301, loc[0].y + 242, 3000, "", true, true);
 			}
 			
 		}, 1000);
@@ -1923,14 +2074,14 @@ export function exporttocsv() {
 	let csvinfo = [];
 	csvinfo.push(["Item", "Quantities"]);
 	
-	let lsHistory = JSON.parse(localStorage.getItem("TetraLogger/History"))
+	let lsHistory = JSON.parse(localStorage.getItem("CrystalLogger/History"))
 	let keys = Object.keys(items);
 	let currOrder = 1;
 	if (seeConsoleLogs) console.log("Generating CSV...");
 	if (seeConsoleLogs) console.log("Getting values and counts...");
 
-	let count = localStorage.getItem("TetraLogger/Count")
-	let value = localStorage.getItem("TetraLogger/Value")
+	let count = localStorage.getItem("CrystalLogger/Count")
+	let value = localStorage.getItem("CrystalLogger/Value")
 	csvinfo.push(["Total Count", "\"" + count + "\""]);
 	csvinfo.push(["Total Value", "\"" + value + "\""]);
 
@@ -1980,7 +2131,7 @@ export function exporttocsv() {
 		csvContent += row + "\r\n";
 	});
 
-	let filename = "TetraLogger CSV " + d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate() + "_" + d.getHours() + "-" + d.getMinutes() + "-" +d.getSeconds()+ ".csv";
+	let filename = "CrystalLogger CSV " + d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate() + "_" + d.getHours() + "-" + d.getMinutes() + "-" +d.getSeconds()+ ".csv";
 	let encodedUri = "data:text/csv;charset=utf-8,%EF%BB%BF" + encodeURI(csvContent);
 	let link = document.createElement("a") as HTMLAnchorElement;
 	link.setAttribute("href", encodedUri);
@@ -2134,7 +2285,7 @@ export function toggleLootDisplay(id: string) {
 
 
 function updateItems() {
-	localStorage.setItem("TetraLogger/items", JSON.stringify(items))
+	localStorage.setItem("CrystalLogger/items", JSON.stringify(items))
 }
 
 
@@ -2148,7 +2299,7 @@ function orderChecker(order: number, item: string) {
 
 
 function buttonDisabler() {
-		if (localStorage.getItem("TetraLogger/autoCapture") !== "true") {
+		if (localStorage.getItem("CrystalLogger/autoCapture") !== "true") {
 			(document.getElementById("docapturebutton") as HTMLDivElement).setAttribute("title", "Currently disabled to due initialization, settings being saved, or autocapture");
 			(document.getElementById("docapturebuttonwords") as HTMLDivElement).style.setProperty("text-decoration", "line-through");
 			(document.getElementById("docapturebutton") as HTMLDivElement).setAttribute("onclick", "");
@@ -2159,13 +2310,40 @@ function buttonDisabler() {
 
 
 function buttonEnabler() {
-	if (localStorage.getItem("TetraLogger/autoCapture") !== "true") {
+	if (localStorage.getItem("CrystalLogger/autoCapture") !== "true") {
 		(document.getElementById("docapturebutton") as HTMLDivElement).setAttribute("title", "");
 		(document.getElementById("docapturebuttonwords") as HTMLDivElement).style.removeProperty("text-decoration");
 		(document.getElementById("docapturebutton") as HTMLDivElement).setAttribute("onclick", "TEST.capture(false)");
 	}
 	(document.getElementById("toggleunlocktrack") as HTMLDivElement).setAttribute("onclick", "TEST.toggleCapture(event)");
 	buttonDisabletoggle = true
+}
+
+
+function currentReward() {
+	let currButton = "";
+	for (let i = 0; i < rewardslist.length; i++) {
+		if ((document.getElementById(rewardslist[i]) as HTMLInputElement).checked) {
+			currButton = rewardslist[i];
+			if (currButton == 'taverley') {
+				return [currButton, "CrystalLogger/TValue", "CrystalLogger/TCount"];
+			}
+			else if (currButton == 'prifddinas') {
+				return [currButton, "CrystalLogger/PValue", "CrystalLogger/PCount"];
+			}
+			else if (currButton == 'triskelion') {
+				return [currButton, "CrystalLogger/KValue", "CrystalLogger/KCount"];
+			}
+			else if (currButton == 'alchemist') {
+				return [currButton, "CrystalLogger/AValue", "CrystalLogger/ACount"];
+			}
+		}
+	}
+}
+
+
+function currentRewardUpper() {
+	return (currentReward()[0][0].toUpperCase() + currentReward()[0].slice(1).toLowerCase())
 }
 
 //print text world
