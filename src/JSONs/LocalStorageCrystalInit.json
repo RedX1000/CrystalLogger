@@ -2,998 +2,998 @@
     "Sealed clue scroll (elite)": {
         "tab": "first",
         "tier": [
-            "Triskelion"
+            "triskelion"
         ],
         "quantity": {
-            "Triskelion": 0
+            "triskelion": 0
         },
         "order": 1
     },
     "Sealed clue scroll (master)": {
         "tab": "first",
         "tier": [
-            "Triskelion"
+            "triskelion"
         ],
         "quantity": {
-            "Triskelion": 0
+            "triskelion": 0
         },
         "order": 2
+    },
+    "Coins": {
+        "tab": "first",
+        "tier": [
+            "taverley"
+        ],
+        "quantity": {
+            "taverley": 0
+        },
+        "order": 3
     },
     "Uncut dragonstone": {
         "tab": "first",
         "tier": [
-            "Taverley",
-            "Prifddinas",
-            "Triskelion"
+            "taverley",
+            "prifddinas",
+            "triskelion"
         ],
         "quantity": {
-            "Taverley": 0,
-            "Prifddinas": 0,
-            "Triskelion": 0
+            "taverley": 0,
+            "prifddinas": 0,
+            "triskelion": 0
         },
-        "order": 3
+        "order": 4
     },
     "Uncut diamond": {
         "tab": "first",
         "tier": [
-            "Taverley",
-            "Prifddinas",
-            "Triskelion"
+            "taverley",
+            "prifddinas",
+            "triskelion"
         ],
         "quantity": {
-            "Taverley": 0,
-            "Prifddinas": 0,
-            "Triskelion": 0
+            "taverley": 0,
+            "prifddinas": 0,
+            "triskelion": 0
         },
-        "order": 4
+        "order": 5
     },
     "Uncut ruby": {
         "tab": "first",
         "tier": [
-            "Taverley",
-            "Prifddinas",
-            "Triskelion"
+            "taverley",
+            "prifddinas",
+            "triskelion"
         ],
         "quantity": {
-            "Taverley": 0,
-            "Prifddinas": 0,
-            "Triskelion": 0
+            "taverley": 0,
+            "prifddinas": 0,
+            "triskelion": 0
         },
-        "order": 5
+        "order": 6
     },
     "Uncut onyx": {
         "tab": "first",
         "tier": [
-            "Triskelion"
+            "triskelion"
         ],
         "quantity": {
-            "Triskelion": 0
+            "triskelion": 0
         },
-        "order": 6
+        "order": 7
     },
     "Onyx dust": {
         "tab": "first",
         "tier": [
-            "Alchemist"
+            "alchemist"
         ],
         "quantity": {
-            "Alchemist": 0
+            "alchemist": 0
         },
-        "order": 7
+        "order": 8
+    },
+    "Onyx bolt tips": {
+        "tab": "first",
+        "tier": [
+            "alchemist"
+        ],
+        "quantity": {
+            "alchemist": 0
+        },
+        "order": 9
+    },
+    "Hydrix bolt tips": {
+        "tab": "first",
+        "tier": [
+            "alchemist"
+        ],
+        "quantity": {
+            "alchemist": 0
+        },
+        "order": 10
+    },
+    "Starved ancient effigy": {
+        "tab": "first",
+        "tier": [
+            "triskelion"
+        ],
+        "quantity": {
+            "triskelion": 0
+        },
+        "order": 11
     },
     "Loop half of a key": {
         "tab": "first",
         "tier": [
-            "Taverley",
-            "Prifddinas",
-            "Triskelion"
+            "taverley",
+            "prifddinas",
+            "triskelion"
         ],
         "quantity": {
-            "Taverley": 0,
-            "Prifddinas": 0,
-            "Triskelion": 0
+            "taverley": 0,
+            "prifddinas": 0,
+            "triskelion": 0
         },
-        "order": 8
+        "order": 12
     },
     "Tooth half of a key": {
         "tab": "first",
         "tier": [
-            "Taverley",
-            "Prifddinas",
-            "Triskelion"
+            "taverley",
+            "prifddinas",
+            "triskelion"
         ],
         "quantity": {
-            "Taverley": 0,
-            "Prifddinas": 0,
-            "Triskelion": 0
+            "taverley": 0,
+            "prifddinas": 0,
+            "triskelion": 0
         },
-        "order": 9
+        "order": 13
     },
     "Crystal key": {
         "tab": "first",
         "tier": [
-            "Triskelion"
+            "triskelion"
         ],
         "quantity": {
-            "Triskelion": 0
+            "triskelion": 0
         },
-        "order": 10
+        "order": 14
     },
     "Sinister key": {
         "tab": "first",
         "tier": [
-            "Triskelion"
+            "triskelion"
         ],
         "quantity": {
-            "Triskelion": 0
+            "triskelion": 0
         },
-        "order": 11
+        "order": 15
     },
     "Alchemist's key": {
         "tab": "first",
         "tier": [
-            "Alchemist"
+            "alchemist"
         ],
         "quantity": {
-            "Alchemist": 0
+            "alchemist": 0
         },
-        "order": 12
+        "order": 16
     },
     "Crystal triskelion fragment 1": {
         "tab": "first",
         "tier": [
-            "Triskelion"
+            "triskelion"
         ],
         "quantity": {
-            "Triskelion": 0
+            "triskelion": 0
         },
-        "order": 13
+        "order": 17
     },
     "Crystal triskelion fragment 2": {
         "tab": "first",
         "tier": [
-            "Triskelion"
+            "triskelion"
         ],
         "quantity": {
-            "Triskelion": 0
+            "triskelion": 0
         },
-        "order": 14
+        "order": 18
     },
     "Crystal triskelion fragment 3": {
         "tab": "first",
         "tier": [
-            "Triskelion"
+            "triskelion"
         ],
         "quantity": {
-            "Triskelion": 0
+            "triskelion": 0
         },
-        "order": 15
+        "order": 19
     },
     "Dragon pickaxe": {
         "tab": "first",
         "tier": [
-            "Triskelion"
+            "triskelion"
         ],
         "quantity": {
-            "Triskelion": 0
+            "triskelion": 0
         },
-        "order": 16
+        "order": 20
     },
     "Dragon hatchet": {
         "tab": "first",
         "tier": [
-            "Triskelion"
+            "triskelion"
         ],
         "quantity": {
-            "Triskelion": 0
+            "triskelion": 0
         },
-        "order": 17
+        "order": 21
     },
     "Dragonstone helm": {
         "tab": "first",
         "tier": [
-            "Taverley",
-            "Prifddinas",
-            "Triskelion"
+            "taverley",
+            "prifddinas",
+            "triskelion"
         ],
         "quantity": {
-            "Taverley": 0,
-            "Prifddinas": 0,
-            "Triskelion": 0
+            "taverley": 0,
+            "prifddinas": 0,
+            "triskelion": 0
         },
-        "order": 18
+        "order": 22
     },
     "Dragonstone hauberk": {
         "tab": "first",
         "tier": [
-            "Taverley",
-            "Prifddinas",
-            "Triskelion"
+            "taverley",
+            "prifddinas",
+            "triskelion"
         ],
         "quantity": {
-            "Taverley": 0,
-            "Prifddinas": 0,
-            "Triskelion": 0
+            "taverley": 0,
+            "prifddinas": 0,
+            "triskelion": 0
         },
-        "order": 19
+        "order": 23
     },
     "Dragonstone greaves": {
         "tab": "first",
         "tier": [
-            "Taverley",
-            "Prifddinas",
-            "Triskelion"
+            "taverley",
+            "prifddinas",
+            "triskelion"
         ],
         "quantity": {
-            "Taverley": 0,
-            "Prifddinas": 0,
-            "Triskelion": 0
+            "taverley": 0,
+            "prifddinas": 0,
+            "triskelion": 0
         },
-        "order": 20
+        "order": 24
     },
     "Dragonstone gauntlets": {
         "tab": "first",
         "tier": [
-            "Taverley",
-            "Prifddinas",
-            "Triskelion"
+            "taverley",
+            "prifddinas",
+            "triskelion"
         ],
         "quantity": {
-            "Taverley": 0,
-            "Prifddinas": 0,
-            "Triskelion": 0
+            "taverley": 0,
+            "prifddinas": 0,
+            "triskelion": 0
         },
-        "order": 21
+        "order": 25
     },
     "Dragonstone boots": {
         "tab": "first",
         "tier": [
-            "Taverley",
-            "Prifddinas",
-            "Triskelion"
+            "taverley",
+            "prifddinas",
+            "triskelion"
         ],
         "quantity": {
-            "Taverley": 0,
-            "Prifddinas": 0,
-            "Triskelion": 0
+            "taverley": 0,
+            "prifddinas": 0,
+            "triskelion": 0
         },
-        "order": 22
+        "order": 26
     },
     "Marrentill seed": {
         "tab": "second",
         "tier": [
-            "Alchemist"
+            "alchemist"
         ],
         "quantity": {
-            "Alchemist": 0
+            "alchemist": 0
         },
-        "order": 23
+        "order": 27
     },
     "Kwuarm seed": {
         "tab": "second",
         "tier": [
-            "Alchemist"
+            "alchemist"
         ],
         "quantity": {
-            "Alchemist": 0
+            "alchemist": 0
         },
-        "order": 24
+        "order": 28
     },
     "Cadantine seed": {
         "tab": "second",
         "tier": [
-            "Alchemist"
+            "alchemist"
         ],
         "quantity": {
-            "Alchemist": 0
+            "alchemist": 0
         },
-        "order": 25
+        "order": 29
     },
     "Lantadyme seed": {
         "tab": "second",
         "tier": [
-            "Taverley",
-            "Triskelion"
+            "taverley",
+            "triskelion"
         ],
         "quantity": {
-            "Taverley": 0,
-            "Triskelion": 0
+            "taverley": 0,
+            "triskelion": 0
         },
-        "order": 26
+        "order": 30
     },
     "Dwarf weed seed": {
         "tab": "second",
         "tier": [
-            "Prifddinas",
-            "Triskelion"
+            "prifddinas",
+            "triskelion"
         ],
         "quantity": {
-            "Prifddinas": 0,
-            "Triskelion": 0
+            "prifddinas": 0,
+            "triskelion": 0
         },
-        "order": 27
+        "order": 31
     },
     "Torstol seed": {
         "tab": "second",
         "tier": [
-            "Prifddinas",
-            "Triskelion"
+            "prifddinas",
+            "triskelion"
         ],
         "quantity": {
-            "Prifddinas": 0,
-            "Triskelion": 0
+            "prifddinas": 0,
+            "triskelion": 0
         },
-        "order": 28
+        "order": 32
     },
     "Yew seed": {
         "tab": "second",
         "tier": [
-            "Prifddinas",
-            "Triskelion"
+            "prifddinas",
+            "triskelion"
         ],
         "quantity": {
-            "Prifddinas": 0,
-            "Triskelion": 0
+            "prifddinas": 0,
+            "triskelion": 0
         },
-        "order": 29
+        "order": 33
     },
     "Magic seed": {
         "tab": "second",
         "tier": [
-            "Triskelion"
+            "triskelion"
         ],
         "quantity": {
-            "Triskelion": 0
+            "triskelion": 0
         },
-        "order": 30
+        "order": 34
     },
     "Elder seed": {
         "tab": "second",
         "tier": [
-            "Prifddinas"
+            "prifddinas"
         ],
         "quantity": {
-            "Prifddinas": 0
+            "prifddinas": 0
         },
-        "order": 31
+        "order": 35
     },
     "Calquat tree seed": {
         "tab": "second",
         "tier": [
-            "Taverley",
-            "Triskelion"
+            "taverley",
+            "triskelion"
         ],
         "quantity": {
-            "Taverley": 0,
-            "Triskelion": 0
+            "taverley": 0,
+            "triskelion": 0
         },
-        "order": 32
+        "order": 36
     },
     "Papaya tree seed": {
         "tab": "second",
         "tier": [
-            "Taverley",
-            "Prifddinas",
-            "Triskelion"
+            "taverley",
+            "prifddinas",
+            "triskelion"
         ],
         "quantity": {
-            "Taverley": 0,
-            "Prifddinas": 0,
-            "Triskelion": 0
+            "taverley": 0,
+            "prifddinas": 0,
+            "triskelion": 0
         },
-        "order": 33
+        "order": 37
     },
     "Palm tree seed": {
         "tab": "second",
         "tier": [
-            "Taverley",
-            "Triskelion"
+            "taverley",
+            "triskelion"
         ],
         "quantity": {
-            "Taverley": 0,
-            "Triskelion": 0
+            "taverley": 0,
+            "triskelion": 0
         },
-        "order": 34
+        "order": 38
     },
     "Money tree seed": {
         "tab": "second",
         "tier": [
-            "Taverley",
-            "Prifddinas",
-            "Triskelion"
+            "taverley",
+            "prifddinas",
+            "triskelion"
         ],
         "quantity": {
-            "Taverley": 0,
-            "Prifddinas": 0,
-            "Triskelion": 0
+            "taverley": 0,
+            "prifddinas": 0,
+            "triskelion": 0
         },
-        "order": 35
+        "order": 39
     },
     "Carambola seed": {
         "tab": "second",
         "tier": [
-            "Triskelion"
+            "triskelion"
         ],
         "quantity": {
-            "Triskelion": 0
+            "triskelion": 0
         },
-        "order": 36
+        "order": 40
     },
     "Golden dragonfruit seed": {
         "tab": "second",
         "tier": [
-            "Triskelion"
+            "triskelion"
         ],
         "quantity": {
-            "Triskelion": 0
+            "triskelion": 0
         },
-        "order": 37
+        "order": 41
     },
     "Grimy harralander": {
         "tab": "second",
         "tier": [
-            "Alchemist"
+            "alchemist"
         ],
         "quantity": {
-            "Alchemist": 0
+            "alchemist": 0
         },
-        "order": 38
+        "order": 42
     },
     "Grimy toadflax": {
         "tab": "second",
         "tier": [
-            "Alchemist"
+            "alchemist"
         ],
         "quantity": {
-            "Alchemist": 0
+            "alchemist": 0
         },
-        "order": 39
+        "order": 43
     },
     "Grimy irit": {
         "tab": "second",
         "tier": [
-            "Alchemist"
+            "alchemist"
         ],
         "quantity": {
-            "Alchemist": 0
+            "alchemist": 0
         },
-        "order": 40
+        "order": 44
     },
     "Grimy avantoe": {
         "tab": "second",
         "tier": [
-            "Triskelion"
+            "triskelion"
         ],
         "quantity": {
-            "Triskelion": 0
+            "triskelion": 0
         },
-        "order": 41
+        "order": 45
     },
     "Grimy snapdragon": {
         "tab": "second",
         "tier": [
-            "Triskelion"
+            "triskelion"
         ],
         "quantity": {
-            "Triskelion": 0
+            "triskelion": 0
         },
-        "order": 42
+        "order": 46
     },
     "Grimy cadantine": {
         "tab": "second",
         "tier": [
-            "Alchemist"
+            "alchemist"
         ],
         "quantity": {
-            "Alchemist": 0
+            "alchemist": 0
         },
-        "order": 43
+        "order": 47
     },
     "Grimy lantadyme": {
         "tab": "second",
         "tier": [
-            "Prifddinas",
-            "Triskelion"
+            "prifddinas",
+            "triskelion"
         ],
         "quantity": {
-            "Prifddinas": 0,
-            "Triskelion": 0
+            "prifddinas": 0,
+            "triskelion": 0
         },
-        "order": 44
+        "order": 48
     },
     "Grimy dwarf weed": {
         "tab": "second",
         "tier": [
-            "Triskelion"
+            "triskelion"
         ],
         "quantity": {
-            "Triskelion": 0
+            "triskelion": 0
         },
-        "order": 45
+        "order": 49
     },
     "Grimy torstol": {
         "tab": "second",
         "tier": [
-            "Taverley",
-            "Triskelion"
+            "taverley",
+            "triskelion"
         ],
         "quantity": {
-            "Taverley": 0,
-            "Triskelion": 0
+            "taverley": 0,
+            "triskelion": 0
         },
-        "order": 46
+        "order": 50
+    },
+    "Magic logs": {
+        "tab": "second",
+        "tier": [
+            "triskelion"
+        ],
+        "quantity": {
+            "triskelion": 0
+        },
+        "order": 51
+    },
+    "Cave nightshade": {
+        "tab": "second",
+        "tier": [
+            "alchemist"
+        ],
+        "quantity": {
+            "alchemist": 0
+        },
+        "order": 52
+    },
+    "Poison ivy berries": {
+        "tab": "second",
+        "tier": [
+            "alchemist"
+        ],
+        "quantity": {
+            "alchemist": 0
+        },
+        "order": 53
+    },
+    "Crystal tree blossom": {
+        "tab": "second",
+        "tier": [
+            "prifddinas"
+        ],
+        "quantity": {
+            "prifddinas": 0
+        },
+        "order": 54
+    },
+    "Crystal motherlode shard": {
+        "tab": "second",
+        "tier": [
+            "prifddinas"
+        ],
+        "quantity": {
+            "prifddinas": 0
+        },
+        "order": 55
     },
     "Corrupted ore": {
         "tab": "second",
         "tier": [
-            "Prifddinas"
+            "prifddinas"
         ],
         "quantity": {
-            "Prifddinas": 0
+            "prifddinas": 0
         },
-        "order": 47
+        "order": 56
     },
     "Iron stone spirit": {
         "tab": "second",
         "tier": [
-            "Taverley"
+            "taverley"
         ],
         "quantity": {
-            "Taverley": 0
+            "taverley": 0
         },
-        "order": 48
+        "order": 57
     },
     "Coal stone spirit": {
         "tab": "second",
         "tier": [
-            "Taverley"
+            "taverley"
         ],
         "quantity": {
-            "Taverley": 0
+            "taverley": 0
         },
-        "order": 49
+        "order": 58
     },
     "Runite stone spirit": {
         "tab": "second",
         "tier": [
-            "Taverley",
-            "Prifddinas"
+            "taverley",
+            "prifddinas"
         ],
         "quantity": {
-            "Taverley": 0,
-            "Prifddinas": 0
+            "taverley": 0,
+            "prifddinas": 0
         },
-        "order": 50
+        "order": 59
     },
     "Orichalcite stone spirit": {
         "tab": "second",
         "tier": [
-            "Prifddinas"
+            "prifddinas"
         ],
         "quantity": {
-            "Prifddinas": 0
+            "prifddinas": 0
         },
-        "order": 51
+        "order": 60
     },
     "Drakolith stone spirit": {
         "tab": "second",
         "tier": [
-            "Prifddinas"
+            "prifddinas"
         ],
         "quantity": {
-            "Prifddinas": 0
+            "prifddinas": 0
         },
-        "order": 52
+        "order": 61
     },
     "Banite stone spirit": {
         "tab": "second",
         "tier": [
-            "Triskelion"
+            "triskelion"
         ],
         "quantity": {
-            "Triskelion": 0
+            "triskelion": 0
         },
-        "order": 53
+        "order": 62
     },
     "Light animica stone spirit": {
         "tab": "second",
         "tier": [
-            "Triskelion"
+            "triskelion"
         ],
         "quantity": {
-            "Triskelion": 0
+            "triskelion": 0
         },
-        "order": 54
+        "order": 63
     },
     "Dark animica stone spirit": {
         "tab": "second",
         "tier": [
-            "Triskelion"
+            "triskelion"
         ],
         "quantity": {
-            "Triskelion": 0
+            "triskelion": 0
         },
-        "order": 55
+        "order": 64
     },
     "Air rune": {
         "tab": "third",
         "tier": [
-            "Taverley"
+            "taverley"
         ],
         "quantity": {
-            "Taverley": 0
+            "taverley": 0
         },
-        "order": 56
+        "order": 65
     },
     "Water rune": {
         "tab": "third",
         "tier": [
-            "Taverley"
+            "taverley"
         ],
         "quantity": {
-            "Taverley": 0
+            "taverley": 0
         },
-        "order": 57
+        "order": 66
     },
     "Earth rune": {
         "tab": "third",
         "tier": [
-            "Taverley"
+            "taverley"
         ],
         "quantity": {
-            "Taverley": 0
+            "taverley": 0
         },
-        "order": 58
+        "order": 67
     },
     "Fire rune": {
         "tab": "third",
         "tier": [
-            "Taverley"
+            "taverley"
         ],
         "quantity": {
-            "Taverley": 0
+            "taverley": 0
         },
-        "order": 59
+        "order": 68
     },
     "Body rune": {
         "tab": "third",
         "tier": [
-            "Taverley"
+            "taverley"
         ],
         "quantity": {
-            "Taverley": 0
+            "taverley": 0
         },
-        "order": 60
+        "order": 69
     },
     "Mind rune": {
         "tab": "third",
         "tier": [
-            "Taverley"
+            "taverley"
         ],
         "quantity": {
-            "Taverley": 0
+            "taverley": 0
         },
-        "order": 61
+        "order": 70
     },
     "Chaos rune": {
         "tab": "third",
         "tier": [
-            "Taverley"
+            "taverley"
         ],
         "quantity": {
-            "Taverley": 0
+            "taverley": 0
         },
-        "order": 62
+        "order": 71
     },
     "Death rune": {
         "tab": "third",
         "tier": [
-            "Taverley"
+            "taverley"
         ],
         "quantity": {
-            "Taverley": 0
+            "taverley": 0
         },
-        "order": 63
+        "order": 72
     },
     "Cosmic rune": {
         "tab": "third",
         "tier": [
-            "Taverley"
+            "taverley"
         ],
         "quantity": {
-            "Taverley": 0
+            "taverley": 0
         },
-        "order": 64
+        "order": 73
     },
     "Law rune": {
         "tab": "third",
         "tier": [
-            "Taverley"
+            "taverley"
         ],
         "quantity": {
-            "Taverley": 0
+            "taverley": 0
         },
-        "order": 65
+        "order": 74
     },
     "Nature rune": {
         "tab": "third",
         "tier": [
-            "Taverley"
+            "taverley"
         ],
         "quantity": {
-            "Taverley": 0
+            "taverley": 0
         },
-        "order": 66
+        "order": 75
     },
     "Mud rune": {
         "tab": "third",
         "tier": [
-            "Alchemist"
+            "alchemist"
         ],
         "quantity": {
-            "Alchemist": 0
+            "alchemist": 0
         },
-        "order": 67
+        "order": 76
     },
     "Medium plated rune salvage": {
         "tab": "third",
         "tier": [
-            "Prifddinas"
+            "prifddinas"
         ],
         "quantity": {
-            "Prifddinas": 0
+            "prifddinas": 0
         },
-        "order": 68
+        "order": 77
     },
     "Large plated rune salvage": {
         "tab": "third",
         "tier": [
-            "Taverley",
-            "Prifddinas"
+            "taverley",
+            "prifddinas"
         ],
         "quantity": {
-            "Taverley": 0,
-            "Prifddinas": 0
+            "taverley": 0,
+            "prifddinas": 0
         },
-        "order": 69
+        "order": 78
     },
     "Huge plated rune salvage": {
         "tab": "third",
         "tier": [
-            "Taverley"
+            "taverley"
         ],
         "quantity": {
-            "Taverley": 0
+            "taverley": 0
         },
-        "order": 70
+        "order": 79
     },
     "Huge bladed rune salvage": {
         "tab": "third",
         "tier": [
-            "Prifddinas"
+            "prifddinas"
         ],
         "quantity": {
-            "Prifddinas": 0
-        },
-        "order": 71
-    },
-    "Coins": {
-        "tab": "fourth",
-        "tier": [
-            "Taverley"
-        ],
-        "quantity": {
-            "Taverley": 0
-        },
-        "order": 72
-    },
-    "Starved ancient effigy": {
-        "tab": "fourth",
-        "tier": [
-            "Triskelion"
-        ],
-        "quantity": {
-            "Triskelion": 0
-        },
-        "order": 73
-    },
-    "Crystal tree blossom": {
-        "tab": "fourth",
-        "tier": [
-            "Prifddinas"
-        ],
-        "quantity": {
-            "Prifddinas": 0
-        },
-        "order": 74
-    },
-    "Crystal motherlode shard": {
-        "tab": "fourth",
-        "tier": [
-            "Prifddinas"
-        ],
-        "quantity": {
-            "Prifddinas": 0
-        },
-        "order": 75
-    },
-    "Onyx bolt tips": {
-        "tab": "fourth",
-        "tier": [
-            "Alchemist"
-        ],
-        "quantity": {
-            "Alchemist": 0
-        },
-        "order": 76
-    },
-    "Hydrix bolt tips": {
-        "tab": "fourth",
-        "tier": [
-            "Alchemist"
-        ],
-        "quantity": {
-            "Alchemist": 0
-        },
-        "order": 77
-    },
-    "Fire talisman": {
-        "tab": "fourth",
-        "tier": [
-            "Prifddinas"
-        ],
-        "quantity": {
-            "Prifddinas": 0
-        },
-        "order": 78
-    },
-    "Water talisman": {
-        "tab": "fourth",
-        "tier": [
-            "Prifddinas"
-        ],
-        "quantity": {
-            "Prifddinas": 0
-        },
-        "order": 79
-    },
-    "Magic logs": {
-        "tab": "fourth",
-        "tier": [
-            "Triskelion"
-        ],
-        "quantity": {
-            "Triskelion": 0
+            "prifddinas": 0
         },
         "order": 80
     },
-    "Crimson charm": {
-        "tab": "fourth",
+    "Fire talisman": {
+        "tab": "third",
         "tier": [
-            "Triskelion"
+            "prifddinas"
         ],
         "quantity": {
-            "Triskelion": 0
+            "prifddinas": 0
         },
         "order": 81
     },
-    "Blue charm": {
-        "tab": "fourth",
+    "Water talisman": {
+        "tab": "third",
         "tier": [
-            "Triskelion"
+            "prifddinas"
         ],
         "quantity": {
-            "Triskelion": 0
+            "prifddinas": 0
         },
         "order": 82
     },
-    "Impious ashes": {
-        "tab": "fourth",
+    "Crimson charm": {
+        "tab": "third",
         "tier": [
-            "Alchemist"
+            "triskelion"
         ],
         "quantity": {
-            "Alchemist": 0
+            "triskelion": 0
         },
         "order": 83
     },
-    "Accursed ashes": {
-        "tab": "fourth",
+    "Blue charm": {
+        "tab": "third",
         "tier": [
-            "Alchemist"
+            "triskelion"
         ],
         "quantity": {
-            "Alchemist": 0
+            "triskelion": 0
         },
         "order": 84
     },
-    "Infernal ashes": {
-        "tab": "fourth",
+    "Impious ashes": {
+        "tab": "third",
         "tier": [
-            "Alchemist"
+            "alchemist"
         ],
         "quantity": {
-            "Alchemist": 0
+            "alchemist": 0
         },
         "order": 85
     },
-    "Unicorn horn dust": {
-        "tab": "fourth",
+    "Accursed ashes": {
+        "tab": "third",
         "tier": [
-            "Alchemist"
+            "alchemist"
         ],
         "quantity": {
-            "Alchemist": 0
+            "alchemist": 0
         },
         "order": 86
     },
-    "Dragon scale dust": {
-        "tab": "fourth",
+    "Infernal ashes": {
+        "tab": "third",
         "tier": [
-            "Alchemist"
+            "alchemist"
         ],
         "quantity": {
-            "Alchemist": 0
+            "alchemist": 0
         },
         "order": 87
     },
-    "Cave nightshade": {
-        "tab": "fourth",
+    "Unicorn horn dust": {
+        "tab": "third",
         "tier": [
-            "Alchemist"
+            "alchemist"
         ],
         "quantity": {
-            "Alchemist": 0
+            "alchemist": 0
         },
         "order": 88
     },
-    "Poison ivy berries": {
-        "tab": "fourth",
+    "Dragon scale dust": {
+        "tab": "third",
         "tier": [
-            "Alchemist"
+            "alchemist"
         ],
         "quantity": {
-            "Alchemist": 0
+            "alchemist": 0
         },
         "order": 89
     },
     "Raw rat meat": {
-        "tab": "fourth",
+        "tab": "third",
         "tier": [
-            "Alchemist"
+            "alchemist"
         ],
         "quantity": {
-            "Alchemist": 0
+            "alchemist": 0
         },
         "order": 90
     },
     "Snake hide": {
-        "tab": "fourth",
+        "tab": "third",
         "tier": [
-            "Alchemist"
+            "alchemist"
         ],
         "quantity": {
-            "Alchemist": 0
+            "alchemist": 0
         },
         "order": 91
     },
     "Wine of Saradomin": {
-        "tab": "fourth",
+        "tab": "third",
         "tier": [
-            "Alchemist"
+            "alchemist"
         ],
         "quantity": {
-            "Alchemist": 0
+            "alchemist": 0
         },
         "order": 92
     },
     "Wine of Zamorak": {
-        "tab": "fourth",
+        "tab": "third",
         "tier": [
-            "Alchemist"
+            "alchemist"
         ],
         "quantity": {
-            "Alchemist": 0
+            "alchemist": 0
         },
         "order": 93
     }
