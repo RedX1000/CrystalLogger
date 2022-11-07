@@ -488,6 +488,66 @@ header {
   grid-template-columns: repeat(2, auto);
 }
 
+.rewards_buttons {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  height:auto;
+  /* padding: 5px 0px 0px 0px; */
+  line-height: 35px;
+}
+
+.rewards_level_label {
+  font-size: 14px;
+  position:center;
+  text-align: center;
+  font-weight: 600;
+}
+
+.rewards_button_box {
+  position: center;
+  display: grid;
+  align-items: center;
+  padding: 0px 12px;
+  grid-template-columns: repeat(2, auto);
+}
+
+.rewards_label_holder {
+  position: center;
+  width: 100%;
+  user-select: none;
+  margin: auto;
+}
+
+.rewards_button_header {
+  position: center;
+  grid-row: 1;
+  grid-column: span 2;
+  font-size: 15px;
+  line-height: 1px;
+  text-align: center;
+}
+
+#taverley_button {
+  grid-row: 2;
+  grid-column: 1;
+}
+
+#prifddinas_button {
+  grid-row: 2;
+  grid-column: 2;
+}
+
+#triskelion_button {
+  grid-row: 3;
+  grid-column: 1;
+}
+
+#alchemist_button {
+  grid-row: 3;
+  grid-column: 2;
+}
+
 #csv_button,
 #settings_button,
 #clear_button,
@@ -533,6 +593,7 @@ header {
   text-align: center;
   position: center;
   display: grid;
+  grid-gap: 1em;
   grid-template-columns: repeat(2, auto);
   padding: 3px 7px;
 }
@@ -546,6 +607,7 @@ header {
   padding: 3px 3px 0px 3px;
 }
 
+.rewards_buttons,
 .main_buttons,
 .capture_info,
 .captured_rewards{
@@ -557,7 +619,7 @@ header {
   display: grid;
   position: relative;
   text-align: center;
-  padding: 5px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
   line-height: 32px;
   font-weight: 600;
 }
@@ -574,6 +636,7 @@ header {
   line-height: 32px;
   user-select: none;
   -webkit-user-select: none;
+  margin-top: 8px;
 }
 
 #toggleunlocktrack.enabled {
@@ -643,7 +706,6 @@ header {
   display: grid;
   position: center;
   margin: auto;
-  width: 300px;
 }
 
 #captured_rewards_title {
@@ -663,9 +725,9 @@ header {
 }
 
 #captured_rewards_grid{
-  width: 100%;
+  width: 90%;
   display:grid;
-  grid-template-columns: repeat(7, auto);
+  grid-template-columns: repeat(4, auto);
   text-align: center;
   border: 2px ridge #f0b216;
   background: url(../../images/items/Blank.png) repeat;
@@ -686,43 +748,47 @@ mainsection {
   user-select: none;
 }
 
-.artifacts,
-.materials,
-.miscellaneous{
+.first,
+.second,
+.third{
   display: block;
   min-height: 33%;
   padding: 5px 0px 0px 0px;
   background: url(alt1-currentskin/background.png)
 }
 
-.artifacts_title{
-  background: url(alt1-currentskin/tabbackV234.png) no-repeat;
+.first_title,
+.second_title,
+.third_title{
   font-size: 15px;
   padding: 2px;
   font-weight: 600;
 }
 
-
-.materials_title,
-.miscellaneous_title {
-  background: url(alt1-currentskin/tabbackV234.png) no-repeat;
-  font-size: 15px;
-  padding: 2px;
-  font-weight: 600;
-}
-
-.artifacts_title :hover,
-.materials_title :hover,
-.miscellaneous_title :hover {
+.first_title :hover,
+.second_title :hover,
+.third_title :hover{
   color:#f0b216;
   cursor: pointer;
 }
 
-.artifacts_title :active,
-.materials_title :active,
-.miscellaneous_title :active {
+.first_title :active,
+.second_title :active,
+.third_title :active{
   color: rgb(238, 211, 142);
   cursor: pointer;
+}
+
+.first_title{
+  background: url(alt1-currentskin/tabbackVLong.png) no-repeat;
+}
+
+.second_title{
+  background: url(alt1-currentskin/tabbackVLongShort.png) no-repeat;
+}
+
+.third_title{
+  background: url(alt1-currentskin/tabbackVVeryLong.png) no-repeat;
 }
 
 .bottom_border {
@@ -731,21 +797,21 @@ mainsection {
   border-image: url(alt1-currentskin/borderB.png) 5 0 20 0 repeat;
 }
 
-#artifacts_rewards {
+#first_rewards {
   user-select: none;
-  padding-left: 26px;
+  padding-left: 30px;
   text-decoration: none;
 }
 
-#materials_rewards {
+#second_rewards {
   user-select: none;
-  padding-left: 32px;
+  padding-left: 29px;
   text-decoration: none;
 }
 
-#miscellaneous_rewards {
+#third_rewards {
   user-select: none;
-  padding-left: 21px;
+  padding-left: 31px;
   text-decoration: none;
 }
 
@@ -753,7 +819,7 @@ mainsection {
   display: flex;
   flex-flow: wrap;
   justify-content: left;
-  padding: 5px 10px 0 10px;
+  padding: 5px 0px 0 10px;
   word-wrap: normal;
 }
 
@@ -1132,7 +1198,7 @@ label{
   margin: 10px 0px;
   padding: 5px 5px;
   display: grid;
-  grid-template-columns: repeat(7, auto);
+  grid-template-columns: repeat(6, auto);
   align-items: center;
   border: 5px solid #f0b216;
   border-style: ridge;
@@ -1180,8 +1246,8 @@ label{
 .buttonboxHistory{
   width: 130px; 
   display: flex; 
-  grid-row: 1 / span 4;
-  grid-column: 7 / span 3;
+  grid-row: 1 / span 3;
+  grid-column: 7 / span 2;
   margin: auto;
   align-items:center; 
   position:relative;
@@ -1204,8 +1270,8 @@ label{
   grid-template-columns: repeat(2, auto);
   width: 130px;
   margin: auto;
-  grid-row: 1 / span 4;
-  grid-column: 7 / span 3;
+  grid-row: 1 / span 3;
+  grid-column: 7 / span 2;
 }
 
 .buttonVerif{
