@@ -1,9 +1,9 @@
 {
-    "appName": "TetraLogger",
-    "description": "A free, open-source tetracompass logger",
+    "appName": "CrystalLogger",
+    "description": "A free, open-source Crystal chest, Triskelion, and Alchemist's chest logger",
     "appUrl": "./index.html",
     "configUrl": "./appconfig.json",
-    "iconUrl": "./images/Archaeology journal.png",
+    "iconUrl": "./images/The_Lost_Elders.png",
     "defaultWidth": 530,
     "defaultHeight": 490,
 	"minWidth": 530,
