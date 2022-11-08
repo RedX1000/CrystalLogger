@@ -4912,6 +4912,7 @@ var imgs = _alt1_base__WEBPACK_IMPORTED_MODULE_0__.ImageDetect.webpackImages({
 // TODO: Consider putting some functions in its own TS files for organization.
 async function initOnLoad() {
     if (window.alt1) {
+        alt1.overLayClearGroup("disclaimer");
         alt1.overLayClearGroup("overlays");
         alt1.overLayClearGroup("icon");
         alt1.overLayClearGroup("lag");
@@ -4925,6 +4926,10 @@ async function initOnLoad() {
     toggleLootDisplay("second_rewards");
     toggleLootDisplay("third_rewards");
     await init();
+    if (window.alt1) {
+        alt1.overLaySetGroup("disclaimer");
+        alt1.overLayTextEx("Disclaimer: When using Autocapture,\nduplicate/back-to-back rewards WILL\n     need to be manually captured. ", _alt1_base__WEBPACK_IMPORTED_MODULE_0__.mixColor(255, 80, 80), 19, Math.round(alt1.rsWidth / 2), 270, 10000, "", true, true);
+    }
     if (seeConsoleLogs)
         console.log("\nInitialization complete!");
 }
@@ -5511,6 +5516,7 @@ async function findtrailComplete(img, autobool) {
         if (!lagDetected) {
             alt1.overLayClearGroup("overlays");
             alt1.overLayClearGroup("lag");
+            alt1.overLayClearGroup("disclaimer");
             alt1.overLaySetGroup("lag");
             alt1.overLayTextEx("Capturing rewards...", _alt1_base__WEBPACK_IMPORTED_MODULE_0__.mixColor(255, 144, 0), 20, Math.round(alt1.rsWidth / 2), 200, 60000, "", true, true);
         }
@@ -5722,7 +5728,6 @@ async function findtrailComplete(img, autobool) {
         await Promise.all(promises);
         if (seeConsoleLogs)
             (quantResults);
-        // FIXME: For some reason 15k gold was reading as NaN. Fix it.
         itemResults = await itemChecker(itemResults, quantResults, value);
         // Send it to the LS!
         promises = [];
@@ -6683,8 +6688,6 @@ function verifyInsert(event) {
     if (seeConsoleLogs)
         console.log("Insert collected");
 }
-// FIXME: Crops for legacy (trisk) is over by a pixel
-// Fix this and check other tiers for this
 function insertToDB() {
     if (window.alt1) {
         alt1.overLayClearGroup("overlays");
@@ -6924,7 +6927,6 @@ function exporttocsv() {
         console.log("Generating CSV...");
     if (seeConsoleLogs)
         console.log("Getting values and counts...");
-    // FIXME: fix this for the four tiers.
     let tCount = localStorage.getItem("CrystalLogger/TCount");
     let tValue = localStorage.getItem("CrystalLogger/TValue");
     let pCount = localStorage.getItem("CrystalLogger/PCount");
