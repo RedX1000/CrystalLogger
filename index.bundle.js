@@ -4928,12 +4928,11 @@ async function initOnLoad() {
     await init();
     if (window.alt1) {
         alt1.overLaySetGroup("disclaimer");
-        alt1.overLayTextEx("Disclaimer: When using Autocapture,\nduplicate/back-to-back rewards WILL\n     need to be manually captured. ", _alt1_base__WEBPACK_IMPORTED_MODULE_0__.mixColor(255, 80, 80), 19, Math.round(alt1.rsWidth / 2), 270, 10000, "", true, true);
+        alt1.overLayTextEx("Disclaimer: When using Autocapture,\nduplicate/back-to-back rewards WILL\n     need to be manually captured. ", _alt1_base__WEBPACK_IMPORTED_MODULE_0__.mixColor(255, 80, 80), 19, Math.round(alt1.rsWidth / 2), 270, 8000, "", true, true);
     }
     if (seeConsoleLogs)
         console.log("\nInitialization complete!");
 }
-//FIXME: Put disclaimer about pressing capture button as text display on start up
 async function init() {
     buttonDisabler();
     // TODO: This is a fix for when the buttons are clicked once.
