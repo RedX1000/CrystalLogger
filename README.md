@@ -21,7 +21,7 @@
     * [Image Searching Algorithm](#image-searching-algorithm)
     * [Miscellaneous Toggles](#miscellaneous-toggles)
 * [Additional Information](#additional-information)
-    * [Move to bank/inventory popup is annoying](#move-crystallogger-out-of-the-way-of-the-items-moved-to-bankinventory-popup-when-opening-rewards)
+    * [Move to bank/inventory popup is annoying](#move-the-rewards-window-out-of-the-way-of-the-items-moved-to-bankinventory-popup-when-opening-rewards)
     * [Things to avoid accidentally covering when scanning](#when-scanning-rewards-do-not-cover-these-spots-on-a-reward-screen)
     * [Avoiding menus causing multi-capturing](#avoiding-menus-causing-multi-capturing-a-few-tips-on-where-to-avoid-having-menus-appearing-over-the-value)
     * [Accessing `localStorage`](#this-plugin-stores-data-using-localstorage-within-alt1-therefore-it-can-remember-all-of-the-loot-you-have-gotten-between-sessions-unless-it-is-cleared-to-access-it)
@@ -143,7 +143,7 @@ To install with the direct link
 6. History Display Limit: Limits the number of latest captured rewards displayed within the History menu. Default value is 25, minimum value is 0. <br><br>
 
 # Additional information
-* ### Move CrystalLogger out of the way of the "Items Moved To Bank/Inventory" popup when opening rewards.
+* ### Move the rewards window out of the way of the "Items Moved To Bank/Inventory" popup when opening rewards.
     &emsp; ![Items moved to bank popup](/Readme%20Images/ItemsMovedToBank.png "Items moved to bank popup")
     &emsp; ![Items moved to inventory popup](/Readme%20Images/ItemsMovedToInventory.png "Items moved to inventory popup")
     * The above images pop up in the middle of the screen every time "Bank All" or "Take All" is pressed. This can cause incorrect readings and can prevent CrystalLogger from functioning when on the screen 
