@@ -528,22 +528,22 @@ header {
   text-align: center;
 }
 
-#clue_easy {
+#taverley_button {
   grid-row: 2;
   grid-column: 1;
 }
 
-#clue_medium {
+#prifddinas_button {
   grid-row: 2;
   grid-column: 2;
 }
 
-#clue_hard {
+#triskelion_button {
   grid-row: 3;
   grid-column: 1;
 }
 
-#clue_elite {
+#alchemist_button {
   grid-row: 3;
   grid-column: 2;
 }
@@ -748,43 +748,47 @@ mainsection {
   user-select: none;
 }
 
-.artifacts,
-.materials,
-.miscellaneous{
+.first,
+.second,
+.third{
   display: block;
   min-height: 33%;
   padding: 5px 0px 0px 0px;
   background: url(alt1-currentskin/background.png)
 }
 
-.artifacts_title{
-  background: url(alt1-currentskin/tabbackV234.png) no-repeat;
+.first_title,
+.second_title,
+.third_title{
   font-size: 15px;
   padding: 2px;
   font-weight: 600;
 }
 
-
-.materials_title,
-.miscellaneous_title {
-  background: url(alt1-currentskin/tabbackV234.png) no-repeat;
-  font-size: 15px;
-  padding: 2px;
-  font-weight: 600;
-}
-
-.artifacts_title :hover,
-.materials_title :hover,
-.miscellaneous_title :hover {
+.first_title :hover,
+.second_title :hover,
+.third_title :hover{
   color:#f0b216;
   cursor: pointer;
 }
 
-.artifacts_title :active,
-.materials_title :active,
-.miscellaneous_title :active {
+.first_title :active,
+.second_title :active,
+.third_title :active{
   color: rgb(238, 211, 142);
   cursor: pointer;
+}
+
+.first_title{
+  background: url(alt1-currentskin/tabbackVLong.png) no-repeat;
+}
+
+.second_title{
+  background: url(alt1-currentskin/tabbackVLongShort.png) no-repeat;
+}
+
+.third_title{
+  background: url(alt1-currentskin/tabbackVVeryLong.png) no-repeat;
 }
 
 .bottom_border {
@@ -793,21 +797,21 @@ mainsection {
   border-image: url(alt1-currentskin/borderB.png) 5 0 20 0 repeat;
 }
 
-#artifacts_rewards {
+#first_rewards {
   user-select: none;
-  padding-left: 26px;
+  padding-left: 30px;
   text-decoration: none;
 }
 
-#materials_rewards {
+#second_rewards {
   user-select: none;
-  padding-left: 32px;
+  padding-left: 29px;
   text-decoration: none;
 }
 
-#miscellaneous_rewards {
+#third_rewards {
   user-select: none;
-  padding-left: 21px;
+  padding-left: 31px;
   text-decoration: none;
 }
 
@@ -815,7 +819,7 @@ mainsection {
   display: flex;
   flex-flow: wrap;
   justify-content: left;
-  padding: 5px 10px 0 10px;
+  padding: 5px 0px 0 10px;
   word-wrap: normal;
 }
 
@@ -1266,8 +1270,8 @@ label{
   grid-template-columns: repeat(2, auto);
   width: 130px;
   margin: auto;
-  grid-row: 1 / span 4;
-  grid-column: 7 / span 3;
+  grid-row: 1 / span 3;
+  grid-column: 7 / span 2;
 }
 
 .buttonVerif{

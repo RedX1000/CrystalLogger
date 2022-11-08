@@ -12,27 +12,27 @@
 	</head>
 	<body class="nis" onload="TEST.initOnLoad()">
 		<header>
-			<h1 class="title">CrystalLogger, an open-source tetracompass logger</h1>
+			<h1 class="title">CrystalLogger: an open-source Crystal chest,<br> Triskelion, and Alchemist's chest logger</h1>
 			<div class="header_box">
 				<div class="button_box">
 					<div class="rewards_buttons" id="top">
 						<h3 class="rewards_button_header">Select Rewards Chest</h3>
 						<div class="rewards_button_box">
-							<div class="rewards_label_holder" id="clue_easy">
-								<label class="rewards_level_label" id="label_easy" onclick="TEST.changeClueTierSpan('taverley', event);">Taverley</label>
-								<input type="radio" id="easy" name="rewards_level" class="rewards_level" value="taverley" onclick="TEST.changeClueTierSpan('taverley', event);">
+							<div class="rewards_label_holder" id="taverley_button">
+								<label class="rewards_level_label" id="label_taverley" onclick="TEST.changeClueTierSpan('taverley', event);">Taverley</label>
+								<input type="radio" id="taverley" name="rewards_level" class="rewards_level" value="taverley" onclick="TEST.changeClueTierSpan('taverley', event);">
 							</div>
-							<div class="rewards_label_holder" id="clue_medium">
-								<label class="rewards_level_label" id="label_medium" onclick="TEST.changeClueTierSpan('prifddinas', event);">Prifddinas</label>
-								<input type="radio" id="medium" name="rewards_level" class="rewards_level" value="prifddinas" onclick="TEST.changeClueTierSpan('prifddinas', event);">
+							<div class="rewards_label_holder" id="prifddinas_button">
+								<label class="rewards_level_label" id="label_prifddinas" onclick="TEST.changeClueTierSpan('prifddinas', event);">Prifddinas</label>
+								<input type="radio" id="prifddinas" name="rewards_level" class="rewards_level" value="prifddinas" onclick="TEST.changeClueTierSpan('prifddinas', event);">
 							</div>
-							<div class="rewards_label_holder" id="clue_hard">
-								<label class="rewards_level_label" id="label_hard" onclick="TEST.changeClueTierSpan('triskelion', event);">Triskelion</label>
-								<input type="radio" id="hard" name="rewards_level" class="rewards_level" value="triskelion" onclick="TEST.changeClueTierSpan('triskelion', event);">
+							<div class="rewards_label_holder" id="triskelion_button">
+								<label class="rewards_level_label" id="label_triskelion" onclick="TEST.changeClueTierSpan('triskelion', event);">Triskelion</label>
+								<input type="radio" id="triskelion" name="rewards_level" class="rewards_level" value="triskelion" onclick="TEST.changeClueTierSpan('triskelion', event);">
 							</div>
-							<div class="rewards_label_holder" id="clue_elite">
-								<label class="rewards_level_label" id="label_elite" onclick="TEST.changeClueTierSpan('alchemist', event);">Alchemist</label>
-								<input type="radio" id="elite" name="rewards_level" class="rewards_level" value="alchemist" onclick="TEST.changeClueTierSpan('alchemist', event);">
+							<div class="rewards_label_holder" id="alchemist_button">
+								<label class="rewards_level_label" id="label_alchemist" onclick="TEST.changeClueTierSpan('alchemist', event);">Alchemist</label>
+								<input type="radio" id="alchemist" name="rewards_level" class="rewards_level" value="alchemist" onclick="TEST.changeClueTierSpan('alchemist', event);">
 							</div>
 						</div>
 					</div>
@@ -70,7 +70,7 @@
 					</div>
 					<div class="capture_info" id="top">
 						<div class="capture_box_elements" id="math_box_count">
-							<u><span class="current_reward_span"></span> rewards logged</u>: <span id="number_of_rewards">0</span>
+							<u><span id="current_reward_span"></span> rewards logged</u>: <br><span id="number_of_rewards">0</span>
 						</div>
 						<div class="capture_box_elements" id="math_box_total">
 							<u>Total value</u>: <span id="value_of_rewards">0</span>
@@ -87,20 +87,20 @@
 			</div>
 		</header>
 		<mainsection>
-			<div class="artifacts">
-				<div class="artifacts_title"><span id="artifacts_rewards" onclick="TEST.toggleLootDisplay(this.id)" title="Click here to hide broadcast rewards">&nbsp;Archaeology Artifacts&nbsp;</span></div>
+			<div class="first">
+				<div class="first_title"><span id="first_rewards" onclick="TEST.toggleLootDisplay(this.id)" title="Click here to hide broadcast rewards">&nbsp;Valuables, Keys, and Equipment&nbsp;</span></div>
 				<div class="bottom_border"></div>
-				<div class="loot_display" id="artifacts_loot"></div>
+				<div class="loot_display" id="first_loot"></div>
 			</div>
-			<div class="materials">
-				<div class="materials_title"><span id="materials_rewards" onclick="TEST.toggleLootDisplay(this.id)" title="Click here to hide general rewards">&nbsp;Materials & Uniques&nbsp;</span></div>
+			<div class="second">
+				<div class="second_title"><span id="second_rewards" onclick="TEST.toggleLootDisplay(this.id)" title="Click here to hide general rewards">&nbsp;Seeds, Herbs, and Spirits&nbsp;</span></div>
 				<div class="bottom_border"></div>
-				<div class="loot_display" id="materials_loot"></div>
+				<div class="loot_display" id="second_loot"></div>
 			</div>
-			<div class="miscellaneous">
-				<div class="miscellaneous_title"><span id="miscellaneous_rewards" onclick="TEST.toggleLootDisplay(this.id)" title="Click here to hide general rewards">&nbsp;Miscellaneous Rewards&nbsp;</span></div>
+			<div class="third">
+				<div class="third_title"><span id="third_rewards" onclick="TEST.toggleLootDisplay(this.id)" title="Click here to hide general rewards">&nbsp;Runes, Salvage, Materials, and Other&nbsp;</span></div>
 				<div class="bottom_border"></div>
-				<div class="loot_display" id="miscellaneous_loot"></div>
+				<div class="loot_display" id="third_loot"></div>
 			</div>
 		</mainsection>
 		<footer>
@@ -173,10 +173,10 @@
 		                            <input type="radio" id="menuoff" name="menu" class="maintoggles_buttons" value="menuoff" title="Shows the area to keep any menus away from to prevent a double-capture.">
 		                        </div>
 		                    </div>
-		                    <label class="title_labels" title="Determines the level of precision for the Hybrid Algorithm.&#013;&#013;Lower: More precise & faster, Higher: Less precise & slower.&#013;&#013;Default is 0.7, lowest value is 0.1 and highest value is 1.0&#013;&#013;HEADS UP!!!! Bringing this value below 0.4 may break TetraLogger or miscapture when capturing coins or a few other items.">Hybrid Alg Precision:<br></label>
+		                    <label class="title_labels" title="Determines the level of precision for the Hybrid Algorithm.&#013;&#013;Lower: More precise & faster, Higher: Less precise & slower.&#013;&#013;Default is 0.7, lowest value is 0.1 and highest value is 1.0">Hybrid Alg Precision:<br></label>
 		                    <div id="hybrid_precision_field">
 		                        <div class="main_divs">
-		                            <input type="number" min="0" max="2" step="0.1" value="0.7" id="hybrid_precision" name="precision" class="hybrid_precision_text" title="Determines the level of precision for the Hybrid Algorithm.&#013;&#013;Lower: More precise & faster, Higher: Less precise & slower.&#013;&#013;Default is 0.7, lowest value is 0.1 and highest value is 1.0&#013;&#013;HEADS UP!!!! Bringing this value below 0.4 may break TetraLogger or miscapture when capturing coins or a few other items.">
+		                            <input type="number" min="0" max="2" step="0.1" value="0.7" id="hybrid_precision" name="precision" class="hybrid_precision_text" title="Determines the level of precision for the Hybrid Algorithm.&#013;&#013;Lower: More precise & faster, Higher: Less precise & slower.&#013;&#013;Default is 0.7, lowest value is 0.1 and highest value is 1.0">
 		                        </div>
 		                    </div>
 							<label class="title_labels" title="Determines how many previous chests will display in the History menu at one time.&#013;&#013;Default value is 25.">History Display Limit:<br></label>
@@ -216,9 +216,9 @@
 					</div>
 					<div class="modal-body">
 						<div id="clear_db_buttons">
-							<div id="db_confirm_button" class="nisbutton" data-toggle="modal" data-target="#resetOpenVerif" title="Nuclear option, completely resets plugin, but can be used to troubleshoot">Completely reset TetraLogger</div>
+							<div id="db_confirm_button" class="nisbutton" data-toggle="modal" data-target="#resetOpenVerif" title="Nuclear option, completely resets plugin, but can be used to troubleshoot">Completely reset CrystalLogger</div>
 							<div id="db_confirm_button" class="nisbutton" data-toggle="modal" data-target="#resetAllVerif" title="Clear all of the items in the database only.">Clear all items from database</div>
-							<div id="db_confirm_button" class="nisbutton" data-toggle="modal" data-target="#resetTierVerif" title="Clear the currently selected tier of items only.">Clear currently selected tier</div>
+							<div id="db_confirm_button" class="nisbutton" data-toggle="modal" data-target="#resetTierVerif" title="Clear the currently selected reward only.">Clear <span class="current_tier_button_caps"></span> rewards</div>
 							<div id="db_confirm_button" class="nisbutton" data-toggle="modal" data-target="#resetSettingsVerif" title="Reset settings back to default.">Reset settings</div>
 							<div id="db_confirm_button" class="nisbutton" onclick="javascript:window.location.reload()" title="Refreshes the page. Does not clear the DB, but may help push an update.">Refresh page</div>
 							<div id="db_confirm_button" class="nisbuttonblue" data-dismiss="modal" onclick="" title="Do nothing. Go. Get out of here. Leave.">Cancel</div>
@@ -230,13 +230,13 @@
 		</div>
 		<!-- END CLEAR OPTIONS MENU MODAL -->
 
-		<!-- RESET TETRALOGGER VERIFICATION MODAL -->
+		<!-- RESET CRYSTALLOGGER VERIFICATION MODAL -->
 		<div class="modal fade " id="resetOpenVerif" tabindex="-1" role="dialog" aria-labelledby="important-msg-label" aria-hidden="true">
 			<div class="modal-dialog">
 			  	<div class="modal-content">
 					<div class="modal-header">
 				  		<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" class="close_x">&times;</span><span class="sr-only">Close</span></button>
-				  		<h1 class="modal-title" id="important-msg-label">Completely Reset TetraLogger?<span id="hovertip" title="Hover over the options to learn more!&#013;&#013;Explore the Github link in the footer for more details.">&hairsp;&hairsp;&nbsp;?&nbsp;&hairsp;&hairsp;</span></h1>
+				  		<h1 class="modal-title" id="important-msg-label">Completely Reset CrystalLogger?<span id="hovertip" title="Hover over the options to learn more!&#013;&#013;Explore the Github link in the footer for more details.">&hairsp;&hairsp;&nbsp;?&nbsp;&hairsp;&hairsp;</span></h1>
 					</div>
 					<div class="modal-body">
 						<div id="clear_db_buttons">
@@ -248,7 +248,7 @@
 			  	</div>
 			</div>
 		</div>
-		<!-- END RESET TETRALOGGER VERIFICATION MODAL -->
+		<!-- END RESET CRYTSTALLOGGER VERIFICATION MODAL -->
 
 		<!-- RESET ALL ITEMS VERIFICATION MODAL -->
 		<div class="modal fade " id="resetAllVerif" tabindex="-1" role="dialog" aria-labelledby="important-msg-label" aria-hidden="true">
@@ -296,7 +296,7 @@
 			  	<div class="modal-content">
 					<div class="modal-header">
 				  		<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" class="close_x">&times;</span><span class="sr-only">Close</span></button>
-				  		<h1 class="modal-title" id="important-msg-label">Clear rewards from <span class="current_tier_button"></span> tier?<span id="hovertip" title="Hover over the options to learn more!&#013;&#013;Explore the Github link in the footer for more details.">&hairsp;&hairsp;&nbsp;?&nbsp;&hairsp;&hairsp;</span></h1>
+				  		<h1 class="modal-title" id="important-msg-label">Clear <span class="current_tier_button_caps"></span> rewards?<span id="hovertip" title="Hover over the options to learn more!&#013;&#013;Explore the Github link in the footer for more details.">&hairsp;&hairsp;&nbsp;?&nbsp;&hairsp;&hairsp;</span></h1>
 					</div>
 					<div class="modal-body">
 						<div id="clear_db_buttons">
@@ -316,7 +316,7 @@
 			  	<div class="modal-content">
 					<div class="modal-header">
 				  		<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" class="close_x">&times;</span><span class="sr-only">Close</span></button>
-				  		<h1 class="modal-title" id="important-msg-label">History of Tetracompass Rewards<span id="hovertip" title="Hover over the options to learn more!&#013;&#013;Explore the Github link in the footer for more details.">&hairsp;&hairsp;&nbsp;?&nbsp;&hairsp;&hairsp;</span></h1>
+				  		<h1 class="modal-title" id="important-msg-label">History of <span class="current_tier_button" id="history_tier_caps"></span> Rewards<span id="hovertip" title="Hover over the options to learn more!&#013;&#013;Explore the Github link in the footer for more details.">&hairsp;&hairsp;&nbsp;?&nbsp;&hairsp;&hairsp;</span></h1>
 						<h2 id="history_quantity_title">Displaying the last <span id="history_quantity"></span> captured chests</h2>
 					</div>
 					<div class="modal-body" id="history_body">
@@ -335,8 +335,8 @@
 			  	<div class="modal-content">
 					<div class="modal-header">
 				  		<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" class="close_x">&times;</span><span class="sr-only">Close</span></button>
-				  		<h1 class="modal-title" id="important-msg-label"><span>Insert custom <span class="current_tier_button" id="insert_tier_title_caps"></span> Tetracompass reward</span><span id="hovertip" title="Hover over the options to learn more!&#013;&#013;Explore the Github link in the footer for more details.">&hairsp;&hairsp;&nbsp;?&nbsp;&hairsp;&hairsp;</span></h1>
-						<h3 id="insert_remove_title">To remove items and value from <span style="font-family: Consolas;">localStorage</span>, make numbers negative. Custom chests are also logged in History.</h3>
+				  		<h1 class="modal-title" id="important-msg-label"><span>Insert custom <span class="current_tier_button" id="insert_tier_title_caps"></span> reward</span><span id="hovertip" title="Hover over the options to learn more!&#013;&#013;Explore the Github link in the footer for more details.">&hairsp;&hairsp;&nbsp;?&nbsp;&hairsp;&hairsp;</span></h1>
+						<h3 id="insert_remove_title">To remove items and value from <span style="font-family: Consolas;">localStorage</span>, make numbers negative. Custom rewards are also logged in History.</h3>
 					</div>
 					<div class="modal-body">
 						<div id="insert_value">
@@ -413,84 +413,21 @@
 								<select name="item_10" class="items insert_options" id="items_tenth">
 									<option value="Blank">~Nothing~</option>
 								</select>
-								<input type="number" step="1" value="0" class= "item_quants insert_text" id="item_input_7" name="item_input_7" title="Seventh item to be inserted and quantity">
+								<input type="number" step="1" value="0" class= "item_quants insert_text" id="item_input_10" name="item_input_10" title="Tenth item to be inserted and quantity">
 							</div>
 							<div class="insert_items_divs">
 								<label class="insert_items_labels" title="Eleventh item to be inserted and quantity">Eleventh Item<br></label>
 								<select name="item_11" class="items insert_options" id="items_eleventh">
 									<option value="Blank">~Nothing~</option>
 								</select>
-								<input type="number" step="1" value="0" class= "item_quants insert_text" id="item_input_8" name="item_input_8" title="Eigth item to be inserted and quantity">
+								<input type="number" step="1" value="0" class= "item_quants insert_text" id="item_input_11" name="item_input_11" title="Eleventh item to be inserted and quantity">
 							</div>
 							<div class="insert_items_divs">
 								<label class="insert_items_labels" title="Twelfth item to be inserted and quantity">Twelfth Item<br></label>
 								<select name="item_12" class="items insert_options" id="items_twelfth">
 									<option value="Blank">~Nothing~</option>
 								</select>
-								<input type="number" step="1" value="0" class= "item_quants insert_text" id="item_input_9" name="item_input_9" title="Ninth item to be inserted and quantity">
-							</div>
-							<div class="insert_items_divs">
-								<label class="insert_items_labels" title="Thirteenth item to be inserted and quantity">Thirteenth Item<br></label>
-								<select name="item_13" class="items insert_options" id="items_thirteenth">
-									<option value="Blank">~Nothing~</option>
-								</select>
-								<input type="number" step="1" value="0" class= "item_quants insert_text" id="item_input_2" name="item_input_2" title="Second item to be inserted and quantity">
-							</div>
-							<div class="insert_items_divs">
-								<label class="insert_items_labels" title="Fourteenth item to be inserted and quantity">Fourteenth Item<br></label>
-								<select name="item_14" class="items insert_options" id="items_fourteenth">
-									<option value="Blank">~Nothing~</option>
-								</select>
-								<input type="number" step="1" value="0" class= "item_quants insert_text" id="item_input_3" name="item_input_3" title="Third item to be inserted and quantity">
-							</div>
-							<div class="insert_items_divs">
-								<label class="insert_items_labels" title="Fifteenth item to be inserted and quantity">Fifteenth Item<br></label>
-								<select name="item_15" class="items insert_options" id="items_fifteenth">
-									<option value="Blank">~Nothing~</option>
-								</select>
-								<input type="number" step="1" value="0" class= "item_quants insert_text" id="item_input_4" name="item_input_4" title="Fourth item to be inserted and quantity">
-							</div>
-							<div class="insert_items_divs">
-								<label class="insert_items_labels" title="Sixteenth item to be inserted and quantity">Sixteenth Item<br></label>
-								<select name="item_16" class="items insert_options" id="items_sixteenth">
-									<option value="Blank">~Nothing~</option>
-								</select>
-								<input type="number" step="1" value="0" class= "item_quants insert_text" id="item_input_5" name="item_input_5" title="Fifth item to be inserted and quantity">
-							</div>
-							<div class="insert_items_divs">
-								<label class="insert_items_labels" title="Seventeenth item to be inserted and quantity">Seventeenth Item<br></label>
-								<select name="item_17" class="items insert_options" id="items_seventeenth">
-									<option value="Blank">~Nothing~</option>
-								</select>
-								<input type="number" step="1" value="0" class= "item_quants insert_text" id="item_input_6" name="item_input_6" title="Sixth item to be inserted and quantity">
-							</div>
-							<div class="insert_items_divs">
-								<label class="insert_items_labels" title="Eighteenth item to be inserted and quantity">Eighteenth Item<br></label>
-								<select name="item_18" class="items insert_options" id="items_eighteenth">
-									<option value="Blank">~Nothing~</option>
-								</select>
-								<input type="number" step="1" value="0" class= "item_quants insert_text" id="item_input_7" name="item_input_7" title="Seventh item to be inserted and quantity">
-							</div>
-							<div class="insert_items_divs">
-								<label class="insert_items_labels" title="Nineteenth item to be inserted and quantity">Nineteenth Item<br></label>
-								<select name="item_19" class="items insert_options" id="items_nineteenth">
-									<option value="Blank">~Nothing~</option>
-								</select>
-								<input type="number" step="1" value="0" class= "item_quants insert_text" id="item_input_8" name="item_input_8" title="Eigth item to be inserted and quantity">
-							</div>
-							<div class="insert_items_divs">
-								<label class="insert_items_labels" title="Twentieth item to be inserted and quantity">Twentieth Item<br></label>
-								<select name="item_20" class="items insert_options" id="items_twentieth">
-									<option value="Blank">~Nothing~</option>
-								</select>
-								<input type="number" step="1" value="0" class= "item_quants insert_text" id="item_input_9" name="item_input_9" title="Ninth item to be inserted and quantity">
-							</div>
-							<div class="insert_items_divs">
-								<label class="insert_items_labels" title="Twenty-first item to be inserted and quantity">Twenty-first Item<br></label>
-								<select name="item_21" class="items insert_options" id="items_twentyfirst">
-									<option value="Blank">~Nothing~</option>
-								</select>
-								<input type="number" step="1" value="0" class= "item_quants insert_text" id="item_input_7" name="item_input_7" title="Seventh item to be inserted and quantity">
+								<input type="number" step="1" value="0" class= "item_quants insert_text" id="item_input_12" name="item_input_12" title="Twelfth item to be inserted and quantity">
 							</div>
 						</div>
 					</div>
@@ -544,15 +481,15 @@
 						
 						<h2><u>Github & Discord</u></h2>
 						<h3>
-							This is TetraLogger Github page!<br>
+							This is CrystalLogger Github page!<br>
 							<a id="githublink" style="cursor: pointer" onclick="openGithub()">
-								Click here for the TetraLogger Github page
+								Click here for the CrystalLogger Github page
 							</a><br>
 							The Github page contains:
 							<ul>
-								<li>Detailed instructions for how to use TetraLogger.</li>
-								<li>Troubleshooting tips for TetraLogger.</li>
-								<li>The host page that allows acces to TetraLogger.</li>
+								<li>Detailed instructions for how to use CrystalLogger.</li>
+								<li>Troubleshooting tips for CrystalLogger.</li>
+								<li>The host page that allows acces to CrystalLogger.</li>
 								<li>All of the source code.</li>
 								<li>Special thanks.</li>
 								<li>Other projects I may be working on.</li>
@@ -562,8 +499,8 @@
 							This is my Discord profile! @ <span style="user-select: all;">RedX1000#3655</span><br>
 							Feel free to reach out to me for any of the following reasons:<br>
 							<ul>
-								<li>Bug reports with TetraLogger.</li>
-								<li>Runescape updates breaking TetraLogger.</li>
+								<li>Bug reports with CrystalLogger.</li>
+								<li>Runescape updates breaking CrystalLogger.</li>
 								<li>Suggestions & Compliments.</li>
 								<li>Literally anything else within reason.</li>
 							</ul>
@@ -571,7 +508,7 @@
 
 						<h2><u>Donation link</u></h2>
 						<h3>
-							TetraLogger is a passion project and I have future plans to use this plugin as a base for other loggers.<br>
+							CrystalLogger is a passion project and I have future plans to use this plugin as a base for other loggers.<br>
 							Consider sending a small donation in this direction 🙂.<br>
 							<br style='line-height: 1px; content: " "; display: block; margin: 10px 0;'>
 							<script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Support Me on Ko-fi', '#e0a62a', 'L4L7EERT9');kofiwidget2.draw();</script> 
@@ -673,7 +610,7 @@
 			}
   		
 			function openGithub(){
-				window.open("https://github.com/RedX1000/TetraLogger")
+				window.open("https://github.com/RedX1000/CrystalLogger")
 			}
 		</script>
 	</body>
