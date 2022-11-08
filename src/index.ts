@@ -112,6 +112,7 @@ var imgs = a1lib.ImageDetect.webpackImages({
 
 export async function initOnLoad() {
 	if (window.alt1) {
+		alt1.overLayClearGroup("disclaimer");
 		alt1.overLayClearGroup("overlays");
 		alt1.overLayClearGroup("icon");
 		alt1.overLayClearGroup("lag");
@@ -126,6 +127,12 @@ export async function initOnLoad() {
 	toggleLootDisplay("second_rewards")
 	toggleLootDisplay("third_rewards")
 	await init();
+
+	if (window.alt1) {
+		alt1.overLaySetGroup("disclaimer");
+		alt1.overLayTextEx("Disclaimer: When using Autocapture,\nduplicate/back-to-back rewards WILL\n     need to be manually captured. ", a1lib.mixColor(255, 80, 80), 19, Math.round(alt1.rsWidth / 2), 270, 10000, "", true, true);
+	}
+
 	if (seeConsoleLogs) console.log("\nInitialization complete!");
 }
 
@@ -785,6 +792,7 @@ async function findtrailComplete(img: ImgRef, autobool: boolean) {
 		if (!lagDetected) {
 			alt1.overLayClearGroup("overlays");
 			alt1.overLayClearGroup("lag");
+			alt1.overLayClearGroup("disclaimer");
 			alt1.overLaySetGroup("lag");
 			alt1.overLayTextEx("Capturing rewards...", a1lib.mixColor(255, 144, 0), 20, Math.round(alt1.rsWidth / 2), 200, 60000, "", true, true);
 		}
@@ -1002,9 +1010,6 @@ async function findtrailComplete(img: ImgRef, autobool: boolean) {
 		}
 		await Promise.all(promises);
 		if (seeConsoleLogs) (quantResults);
-
-		
-		// FIXME: For some reason 15k gold was reading as NaN. Fix it.
 
 		itemResults = await itemChecker(itemResults, quantResults, value)
 
@@ -2092,8 +2097,6 @@ export function verifyInsert(event: Event) {
 
 	if (seeConsoleLogs) console.log("Insert collected");
 }
-// FIXME: Crops for legacy (trisk) is over by a pixel
-// Fix this and check other tiers for this
 
 export function insertToDB() {
 	if (window.alt1) {
@@ -2363,8 +2366,6 @@ export function exporttocsv() {
 	if (seeConsoleLogs) console.log("Generating CSV...");
 	if (seeConsoleLogs) console.log("Getting values and counts...");
 
-
-	// FIXME: fix this for the four tiers.
 	let tCount = localStorage.getItem("CrystalLogger/TCount")
 	let tValue = localStorage.getItem("CrystalLogger/TValue")
 	let pCount = localStorage.getItem("CrystalLogger/PCount")
