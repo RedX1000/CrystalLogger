@@ -1,7 +1,7 @@
 # CrystalLogger
 ### An open-source Alt1 Plugin designed for tracking Crystal key, Crystal Triskelion, and Alchemists chest rewards.
 #### Report bugs or questions, message me 🙂 -> Discord: RedX1000#3655
-#### RuneApps forum page: https://runeapps.org/forums/viewtopic.php?id= (DOESNT EXIST YET)
+#### RuneApps forum page: https://runeapps.org/forums/viewtopic.php?id=1493
 
 * *NOTE: When reporting a crash, please take a screenshot of the reward window and reward capture history send it to me. Use Windows Key + Shift + S, Lightshot, or Gyazo to take the screenshot to avoid distortion.*
 <br><br>
