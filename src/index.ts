@@ -129,6 +129,7 @@ export async function initOnLoad() {
 	if (seeConsoleLogs) console.log("\nInitialization complete!");
 }
 
+//FIXME: Put disclaimer about pressing capture button as text display on start up
 
 export async function init() {
 	buttonDisabler();
@@ -160,12 +161,15 @@ export async function init() {
 
 	if (seeConsoleLogs) console.log("Radio buttons initialized.");
 
-
 	let tierSpans = document.getElementsByClassName("current_tier_button") as HTMLCollectionOf<HTMLSpanElement>;
+	let tierSpansCaps = document.getElementsByClassName("current_tier_button_caps") as HTMLCollectionOf<HTMLSpanElement>;
 	for (let i = 0; i < tierSpans.length; i++) {
-		if (seeConsoleLogs) console.log("Setting tier spans to", currentReward()[0]);
 		tierSpans[i].textContent = currentReward()[0];
 	}
+	for (let i = 0; i < tierSpansCaps.length; i++) {
+		tierSpansCaps[i].textContent = currentRewardUpper();
+	}
+
 
 	if (localStorage.getItem("CrystalLogger/items") == null) {
 		localStorage.setItem("CrystalLogger/items", JSON.stringify(lsdb))
@@ -336,6 +340,36 @@ export async function cleardb(choice: any) {
 			alt1.overLayTextEx("Settings reset successfully!", a1lib.mixColor(100, 255, 100), 20, Math.round(alt1.rsWidth / 2), 200, 4000, "", true, true);
 		}
 	}
+	else if (choice == 4) { // Current reward clear
+		if (window.alt1) {
+			alt1.overLayClearGroup("overlays");
+			alt1.overLaySetGroup("overlays");
+			alt1.overLayTextEx("Clearing " + currentRewardUpper() + " reward  from database...",
+				a1lib.mixColor(255, 144, 0), 20, Math.round(alt1.rsWidth / 2), 200, 4000, "", true, true);
+		}
+
+		localStorage.setItem(currentReward()[1], "0");
+		localStorage.setItem(currentReward()[2], "0");
+		for (let i = 0; i < keys.length; i++) {
+			items[keys[i]].quantity[currentReward()[0]] = 0;
+		}
+		updateItems()
+
+		let lsHistory = JSON.parse(localStorage.getItem("CrystalLogger/History"));
+		for (let i = lsHistory.length - 1; i >= 0; i--) {
+			if (lsHistory[i][3][0] == currentReward()[0] || lsHistory[i][3][0] == currentReward()[0] + " [C] ") {
+				lsHistory.splice(i, 1);
+			}
+		}
+		localStorage.setItem("CrystalLogger/History",JSON.stringify(lsHistory));
+
+		if (window.alt1) {
+			alt1.overLayClearGroup("overlays");
+			alt1.overLaySetGroup("overlays");
+			alt1.overLayTextEx(currentRewardUpper() + " cleared successfully!",
+				a1lib.mixColor(100, 255, 100), 20, Math.round(alt1.rsWidth / 2), 200, 4000, "", true, true);
+		}
+	}
 	
 	let ele = document.getElementById("history_body") as HTMLDivElement;
 	let container = document.createElement("div") as HTMLDivElement;
@@ -391,8 +425,12 @@ export async function changeClueTierSpan(id: string, event: Event) {
 	localStorage.setItem("CrystalLogger/Checked button", id);
 
 	let tierSpans = document.getElementsByClassName("current_tier_button") as HTMLCollectionOf<HTMLSpanElement>;
+	let tierSpansCaps = document.getElementsByClassName("current_tier_button_caps") as HTMLCollectionOf<HTMLSpanElement>;
 	for (let i = 0; i < tierSpans.length; i++) {
 		tierSpans[i].textContent = currentReward()[0];
+	}
+	for (let i = 0; i < tierSpansCaps.length; i++) {
+		tierSpansCaps[i].textContent = currentRewardUpper();
 	}
 
 	// Clear reward slots and value
@@ -941,7 +979,7 @@ async function findtrailComplete(img: ImgRef, autobool: boolean) {
 					if (window.alt1) {
 						alt1.overLayClearGroup("overlays");
 						alt1.overLaySetGroup("overlays");
-						alt1.overLayTextEx("                 Casket misread.\nPause Autocapture (if on) and restart\n  plugin or rollback, and try again.",
+						alt1.overLayTextEx("                 Reward misread.\nPause Autocapture (if on) and restart\n  plugin or rollback, and try again.",
 							a1lib.mixColor(255, 80, 80), 20, Math.round(alt1.rsWidth / 2), 200, 5000, "", true, true);
 					}
 					lastValue = prevValue;
@@ -976,7 +1014,7 @@ async function findtrailComplete(img: ImgRef, autobool: boolean) {
 		promises.push(await submitToLS(itemResults, quantResults, value));
 		await Promise.all(promises);
 
-		// Record data for last casket
+		// Record data for last reward
 		lastItems = itemResults.slice();
 		lastQuants = quantResults.slice();
 		// console.log("Adding to history",lastValue, lastItems, lastQuants, currentReward())
@@ -1034,7 +1072,7 @@ async function findtrailComplete(img: ImgRef, autobool: boolean) {
 			alt1.overLayClearGroup("lag");
 			alt1.overLayClearGroup("rect");
 			alt1.overLaySetGroup("overlays");
-			alt1.overLayTextEx("        A crash occured.\n\n     Remove any obstructions, \n check tier, open a reward casket, \nreload plugin or clear database and try again",
+			alt1.overLayTextEx("        A crash occured.\n\n     Remove any obstructions, \n check tier, open a reward, \nreload plugin or clear database and try again",
 				a1lib.mixColor(255, 80, 80), 20, Math.round(alt1.rsWidth / 2), 200, 5000, "", true, true);
 		}
 		buttonEnabler();
@@ -2098,7 +2136,7 @@ export function insertToDB() {
 	if (window.alt1) {
 		alt1.overLayClearGroup("overlays");
 		alt1.overLaySetGroup("overlays");
-		alt1.overLayTextEx("Custom " + currentReward()[0] + " reward submitted successfully!",
+		alt1.overLayTextEx("Custom " + currentReward()[0] + " rewards submitted successfully!",
 			a1lib.mixColor(100, 255, 100), 20, Math.round(alt1.rsWidth / 2), 200, 4000, "", true, true);
 	}
 }

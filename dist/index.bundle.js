@@ -4928,6 +4928,7 @@ async function initOnLoad() {
     if (seeConsoleLogs)
         console.log("\nInitialization complete!");
 }
+//FIXME: Put disclaimer about pressing capture button as text display on start up
 async function init() {
     buttonDisabler();
     // TODO: This is a fix for when the buttons are clicked once.
@@ -4959,10 +4960,12 @@ async function init() {
     if (seeConsoleLogs)
         console.log("Radio buttons initialized.");
     let tierSpans = document.getElementsByClassName("current_tier_button");
+    let tierSpansCaps = document.getElementsByClassName("current_tier_button_caps");
     for (let i = 0; i < tierSpans.length; i++) {
-        if (seeConsoleLogs)
-            console.log("Setting tier spans to", currentReward()[0]);
         tierSpans[i].textContent = currentReward()[0];
+    }
+    for (let i = 0; i < tierSpansCaps.length; i++) {
+        tierSpansCaps[i].textContent = currentRewardUpper();
     }
     if (localStorage.getItem("CrystalLogger/items") == null) {
         localStorage.setItem("CrystalLogger/items", JSON.stringify(_JSONs_LocalStorageCrystalInit_json__WEBPACK_IMPORTED_MODULE_5__));
@@ -5111,6 +5114,31 @@ async function cleardb(choice) {
             alt1.overLayTextEx("Settings reset successfully!", _alt1_base__WEBPACK_IMPORTED_MODULE_0__.mixColor(100, 255, 100), 20, Math.round(alt1.rsWidth / 2), 200, 4000, "", true, true);
         }
     }
+    else if (choice == 4) { // Current reward clear
+        if (window.alt1) {
+            alt1.overLayClearGroup("overlays");
+            alt1.overLaySetGroup("overlays");
+            alt1.overLayTextEx("Clearing " + currentRewardUpper() + " reward  from database...", _alt1_base__WEBPACK_IMPORTED_MODULE_0__.mixColor(255, 144, 0), 20, Math.round(alt1.rsWidth / 2), 200, 4000, "", true, true);
+        }
+        localStorage.setItem(currentReward()[1], "0");
+        localStorage.setItem(currentReward()[2], "0");
+        for (let i = 0; i < keys.length; i++) {
+            items[keys[i]].quantity[currentReward()[0]] = 0;
+        }
+        updateItems();
+        let lsHistory = JSON.parse(localStorage.getItem("CrystalLogger/History"));
+        for (let i = lsHistory.length - 1; i >= 0; i--) {
+            if (lsHistory[i][3][0] == currentReward()[0] || lsHistory[i][3][0] == currentReward()[0] + " [C] ") {
+                lsHistory.splice(i, 1);
+            }
+        }
+        localStorage.setItem("CrystalLogger/History", JSON.stringify(lsHistory));
+        if (window.alt1) {
+            alt1.overLayClearGroup("overlays");
+            alt1.overLaySetGroup("overlays");
+            alt1.overLayTextEx(currentRewardUpper() + " cleared successfully!", _alt1_base__WEBPACK_IMPORTED_MODULE_0__.mixColor(100, 255, 100), 20, Math.round(alt1.rsWidth / 2), 200, 4000, "", true, true);
+        }
+    }
     let ele = document.getElementById("history_body");
     let container = document.createElement("div");
     container.textContent = "There's nothing here to display. Start scanning!";
@@ -5155,8 +5183,12 @@ async function changeClueTierSpan(id, event) {
     document.getElementById(id).checked = true;
     localStorage.setItem("CrystalLogger/Checked button", id);
     let tierSpans = document.getElementsByClassName("current_tier_button");
+    let tierSpansCaps = document.getElementsByClassName("current_tier_button_caps");
     for (let i = 0; i < tierSpans.length; i++) {
         tierSpans[i].textContent = currentReward()[0];
+    }
+    for (let i = 0; i < tierSpansCaps.length; i++) {
+        tierSpansCaps[i].textContent = currentRewardUpper();
     }
     // Clear reward slots and value
     document.getElementById("rewards_value").textContent = "0";
@@ -5667,7 +5699,7 @@ async function findtrailComplete(img, autobool) {
                     if (window.alt1) {
                         alt1.overLayClearGroup("overlays");
                         alt1.overLaySetGroup("overlays");
-                        alt1.overLayTextEx("                 Casket misread.\nPause Autocapture (if on) and restart\n  plugin or rollback, and try again.", _alt1_base__WEBPACK_IMPORTED_MODULE_0__.mixColor(255, 80, 80), 20, Math.round(alt1.rsWidth / 2), 200, 5000, "", true, true);
+                        alt1.overLayTextEx("                 Reward misread.\nPause Autocapture (if on) and restart\n  plugin or rollback, and try again.", _alt1_base__WEBPACK_IMPORTED_MODULE_0__.mixColor(255, 80, 80), 20, Math.round(alt1.rsWidth / 2), 200, 5000, "", true, true);
                     }
                     lastValue = prevValue;
                     if (seeConsoleLogs)
@@ -5697,7 +5729,7 @@ async function findtrailComplete(img, autobool) {
         // console.log("Adding to LS",itemResults, quantResults, value)
         promises.push(await submitToLS(itemResults, quantResults, value));
         await Promise.all(promises);
-        // Record data for last casket
+        // Record data for last reward
         lastItems = itemResults.slice();
         lastQuants = quantResults.slice();
         // console.log("Adding to history",lastValue, lastItems, lastQuants, currentReward())
@@ -5749,7 +5781,7 @@ async function findtrailComplete(img, autobool) {
             alt1.overLayClearGroup("lag");
             alt1.overLayClearGroup("rect");
             alt1.overLaySetGroup("overlays");
-            alt1.overLayTextEx("        A crash occured.\n\n     Remove any obstructions, \n check tier, open a reward casket, \nreload plugin or clear database and try again", _alt1_base__WEBPACK_IMPORTED_MODULE_0__.mixColor(255, 80, 80), 20, Math.round(alt1.rsWidth / 2), 200, 5000, "", true, true);
+            alt1.overLayTextEx("        A crash occured.\n\n     Remove any obstructions, \n check tier, open a reward, \nreload plugin or clear database and try again", _alt1_base__WEBPACK_IMPORTED_MODULE_0__.mixColor(255, 80, 80), 20, Math.round(alt1.rsWidth / 2), 200, 5000, "", true, true);
         }
         buttonEnabler();
         console.log(e);
@@ -6686,7 +6718,7 @@ function insertToDB() {
     if (window.alt1) {
         alt1.overLayClearGroup("overlays");
         alt1.overLaySetGroup("overlays");
-        alt1.overLayTextEx("Custom " + currentReward()[0] + " reward submitted successfully!", _alt1_base__WEBPACK_IMPORTED_MODULE_0__.mixColor(100, 255, 100), 20, Math.round(alt1.rsWidth / 2), 200, 4000, "", true, true);
+        alt1.overLayTextEx("Custom " + currentReward()[0] + " rewards submitted successfully!", _alt1_base__WEBPACK_IMPORTED_MODULE_0__.mixColor(100, 255, 100), 20, Math.round(alt1.rsWidth / 2), 200, 4000, "", true, true);
     }
 }
 function settingsInit() {

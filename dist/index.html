@@ -218,7 +218,7 @@
 						<div id="clear_db_buttons">
 							<div id="db_confirm_button" class="nisbutton" data-toggle="modal" data-target="#resetOpenVerif" title="Nuclear option, completely resets plugin, but can be used to troubleshoot">Completely reset CrystalLogger</div>
 							<div id="db_confirm_button" class="nisbutton" data-toggle="modal" data-target="#resetAllVerif" title="Clear all of the items in the database only.">Clear all items from database</div>
-							<div id="db_confirm_button" class="nisbutton" data-toggle="modal" data-target="#resetTierVerif" title="Clear the currently selected tier of items only.">Clear currently selected tier</div>
+							<div id="db_confirm_button" class="nisbutton" data-toggle="modal" data-target="#resetTierVerif" title="Clear the currently selected reward only.">Clear <span class="current_tier_button_caps"></span> rewards</div>
 							<div id="db_confirm_button" class="nisbutton" data-toggle="modal" data-target="#resetSettingsVerif" title="Reset settings back to default.">Reset settings</div>
 							<div id="db_confirm_button" class="nisbutton" onclick="javascript:window.location.reload()" title="Refreshes the page. Does not clear the DB, but may help push an update.">Refresh page</div>
 							<div id="db_confirm_button" class="nisbuttonblue" data-dismiss="modal" onclick="" title="Do nothing. Go. Get out of here. Leave.">Cancel</div>
@@ -296,7 +296,7 @@
 			  	<div class="modal-content">
 					<div class="modal-header">
 				  		<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" class="close_x">&times;</span><span class="sr-only">Close</span></button>
-				  		<h1 class="modal-title" id="important-msg-label">Clear rewards from <span class="current_tier_button"></span> tier?<span id="hovertip" title="Hover over the options to learn more!&#013;&#013;Explore the Github link in the footer for more details.">&hairsp;&hairsp;&nbsp;?&nbsp;&hairsp;&hairsp;</span></h1>
+				  		<h1 class="modal-title" id="important-msg-label">Clear <span class="current_tier_button_caps"></span> rewards?<span id="hovertip" title="Hover over the options to learn more!&#013;&#013;Explore the Github link in the footer for more details.">&hairsp;&hairsp;&nbsp;?&nbsp;&hairsp;&hairsp;</span></h1>
 					</div>
 					<div class="modal-body">
 						<div id="clear_db_buttons">
@@ -336,7 +336,7 @@
 					<div class="modal-header">
 				  		<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" class="close_x">&times;</span><span class="sr-only">Close</span></button>
 				  		<h1 class="modal-title" id="important-msg-label"><span>Insert custom <span class="current_tier_button" id="insert_tier_title_caps"></span> reward</span><span id="hovertip" title="Hover over the options to learn more!&#013;&#013;Explore the Github link in the footer for more details.">&hairsp;&hairsp;&nbsp;?&nbsp;&hairsp;&hairsp;</span></h1>
-						<h3 id="insert_remove_title">To remove items and value from <span style="font-family: Consolas;">localStorage</span>, make numbers negative. Custom chests are also logged in History.</h3>
+						<h3 id="insert_remove_title">To remove items and value from <span style="font-family: Consolas;">localStorage</span>, make numbers negative. Custom rewards are also logged in History.</h3>
 					</div>
 					<div class="modal-body">
 						<div id="insert_value">
