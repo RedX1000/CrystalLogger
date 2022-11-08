@@ -1,5 +1,5 @@
 {
-    "appName": "TetraLogger",
+    "appName": "CrystalLogger",
     "description": "A free, open-source Crystal chest, Triskelion, and Alchemist's chest logger",
     "appUrl": "./index.html",
     "configUrl": "./appconfig.json",
