@@ -43,8 +43,6 @@ var valuesAndCounts = ["CrystalLogger/TValue", "CrystalLogger/TCount",
 var rewardSlots = ["first_item", "second_item", "third_item", "fourth_item", "fifth_item", 
 					"sixth_item", "seventh_item", "eigth_item", "ninth_item", "tenth_item",
 					"eleventh_item", "twelfth_item"];
-					
-// FIXME: move Blossoms and Shards to the second tab
 
 var listOfItemsT = [];
 var listOfItemsTArray = [];
@@ -62,8 +60,6 @@ var listOfItemsA = [];
 var listOfItemsAArray = [];
 var listOfItemsLegacyA = [];
 var listOfItemsLegacyAArray = [];
-
-
 
 var items = JSON;
 
@@ -541,6 +537,41 @@ async function arraySetup() {
 		}));
 	}
 	await Promise.all(promises);
+
+	// TODO: This is a test to see if things exist in the ItemsAndImages
+	// Just run this based on the array and you can check.
+	// Blank should appear red in the console.
+	/*
+	let keys = Object.keys(items)
+	console.log("TAVERLEY")
+	for(let i = 0; i < listOfItemsT.length; i++){
+		if(keys.includes(listOfItemsT[i].name))
+			console.log(listOfItemsT[i].name, "in the list")
+		else
+			console.error(listOfItemsT[i].name, "not in the list")
+	}
+	console.log("PRIFF")
+	for(let i = 0; i < listOfItemsP.length; i++){
+		if(keys.includes(listOfItemsP[i].name))
+			console.log(listOfItemsP[i].name, "in the list")
+		else
+			console.error(listOfItemsP[i].name, "not in the list")
+	}
+	console.log("TRISK")
+	for(let i = 0; i < listOfItemsK.length; i++){
+		if(keys.includes(listOfItemsK[i].name))
+			console.log(listOfItemsK[i].name, "in the list")
+		else
+			console.error(listOfItemsK[i].name, "not in the list")
+	}
+	console.log("ALCH")
+	for(let i = 0; i < listOfItemsA.length; i++){
+		if(keys.includes(listOfItemsA[i].name))
+			console.log(listOfItemsA[i].name, "in the list")
+		else
+			console.error(listOfItemsA[i].name, "not in the list")
+	}
+	*/
 }
 
 
@@ -1131,30 +1162,30 @@ async function itemChecker(itemResults:any[], quantResults:any[], value:number){
 		//}
 	}
 	else if (currentReward()[0] == "triskelion"){
-		if((quantResults[2] == 3 && quantResults[3] == 3 && quantResults[4] == 3) && itemResults[0][2] == "Lantadyme seed" || itemResults[0][2] == "Torstol seed" || itemResults[0][2] == "Lantadyme seed"){
-			newItemResults[0][2] = "Lantadyme seed"
-			newItemResults[0][3] = "Torstol seed"
-			newItemResults[0][4] = "Dwarf weed seed"
-		}
-		else if((quantResults[3] == 3 && quantResults[4] == 3 && quantResults[5] == 3) && itemResults[0][3] == "Lantadyme seed" || itemResults[0][3] == "Torstol seed" || itemResults[0][3] == "Lantadyme seed"){
-			newItemResults[0][3] = "Lantadyme seed"
-			newItemResults[0][4] = "Torstol seed"
-			newItemResults[0][5] = "Dwarf weed seed"
-		}
-		else if((quantResults[2] == 10 && quantResults[3] == 15) && itemResults[0][2] == "Grimy torstol" || itemResults[0][2] == "Grimy snapdragon" || itemResults[0][2] == "Grimy lantadyme" || itemResults[0][2] == "Grimy dwarf weed" || itemResults[0][2] == "Grimy avantoe"){
-			newItemResults[0][2] = "Grimy torstol"
-			newItemResults[0][3] = "Grimy snapdragon"
-			newItemResults[0][4] = "Grimy lantadyme"
-			newItemResults[0][5] = "Grimy dwarf weed"
-			newItemResults[0][6] = "Grimy avantoe"
-		}
-		else if((quantResults[3] == 10 && quantResults[4] == 15) && itemResults[0][3] == "Grimy torstol" || itemResults[0][3] == "Grimy snapdragon" || itemResults[0][3] == "Grimy lantadyme" || itemResults[0][3] == "Grimy dwarf weed" || itemResults[0][3] == "Grimy avantoe"){
-			newItemResults[0][3] = "Grimy torstol"
-			newItemResults[0][4] = "Grimy snapdragon"
-			newItemResults[0][5] = "Grimy lantadyme"
-			newItemResults[0][6] = "Grimy dwarf weed"
-			newItemResults[0][7] = "Grimy avantoe"
-		}
+		// if((quantResults[2] == 3 && quantResults[3] == 3 && quantResults[4] == 3) && itemResults[0][2] == "Lantadyme seed" || itemResults[0][2] == "Torstol seed" || itemResults[0][2] == "Lantadyme seed"){
+		// 	newItemResults[0][2] = "Lantadyme seed"
+		// 	newItemResults[0][3] = "Torstol seed"
+		// 	newItemResults[0][4] = "Dwarf weed seed"
+		// }
+		// else if((quantResults[3] == 3 && quantResults[4] == 3 && quantResults[5] == 3) && itemResults[0][3] == "Lantadyme seed" || itemResults[0][3] == "Torstol seed" || itemResults[0][3] == "Lantadyme seed"){
+		// 	newItemResults[0][3] = "Lantadyme seed"
+		// 	newItemResults[0][4] = "Torstol seed"
+		// 	newItemResults[0][5] = "Dwarf weed seed"
+		// }
+		// else if((quantResults[2] == 10 && quantResults[3] == 15) && itemResults[0][2] == "Grimy torstol" || itemResults[0][2] == "Grimy snapdragon" || itemResults[0][2] == "Grimy lantadyme" || itemResults[0][2] == "Grimy dwarf weed" || itemResults[0][2] == "Grimy avantoe"){
+		// 	newItemResults[0][2] = "Grimy torstol"
+		// 	newItemResults[0][3] = "Grimy snapdragon"
+		// 	newItemResults[0][4] = "Grimy lantadyme"
+		// 	newItemResults[0][5] = "Grimy dwarf weed"
+		// 	newItemResults[0][6] = "Grimy avantoe"
+		// }
+		// else if((quantResults[3] == 10 && quantResults[4] == 15) && itemResults[0][3] == "Grimy torstol" || itemResults[0][3] == "Grimy snapdragon" || itemResults[0][3] == "Grimy lantadyme" || itemResults[0][3] == "Grimy dwarf weed" || itemResults[0][3] == "Grimy avantoe"){
+		// 	newItemResults[0][3] = "Grimy torstol"
+		// 	newItemResults[0][4] = "Grimy snapdragon"
+		// 	newItemResults[0][5] = "Grimy lantadyme"
+		// 	newItemResults[0][6] = "Grimy dwarf weed"
+		// 	newItemResults[0][7] = "Grimy avantoe"
+		// }
 	}
 	else if (currentReward()[0] == "alchemist"){
 		if(itemResults[0][0] == "Cadantine seed" || itemResults[0][0] == "Kwuarm seed" || itemResults[0][0] == "Marrentill seed"){
@@ -1570,7 +1601,7 @@ function tabDisplay() {
 		divs[i].textContent = "";
 	}
 	for (let i = 0; i < keys.length; i++) {
-		// NOTE: Interesting tidbit: Comment out this if block to display every item, 
+		// TODO: Interesting tidbit: Comment out this if block to display every item, 
 		// but quantities will be undefined for the given tier if it doesn't exist in it.
 		if (items[keys[i]].quantity[currentReward()[0]] == undefined || items[keys[i]].quantity[currentReward()[0]] == 0) {
 			continue;
@@ -2420,7 +2451,28 @@ export function exporttocsv() {
 	csvinfo.push(["Rewards Tier & Count", "Reward Value", "Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6", "Item 7", "Item 8", "Item 9", "Item 10", "Item 11", "Item 12"])
 	console.log(lsHistory)
 	if (seeConsoleLogs) console.log("Setting history in csv...")
+
+	let taverley = 1
+	let prifddinas = 1
+	let triskelion = 1
+	let alchemist = 1
 	for (let i = 0; i < lsHistory.length; i++) {
+		if(lsHistory[i][3][0].replace(" [C] ", "") == ("taverley")){
+			lsHistory[i][4] = taverley;
+			taverley++;
+		}
+		else if(lsHistory[i][3][0].replace(" [C] ", "") == ("prifddinas")){
+			lsHistory[i][4] = prifddinas;
+			prifddinas++;
+		}
+		else if(lsHistory[i][3][0].replace(" [C] ", "") == ("triskelion")){
+			lsHistory[i][4] = triskelion;
+			triskelion++;
+		}
+		else if(lsHistory[i][3][0].replace(" [C] ", "") == ("alchemist")){
+			lsHistory[i][4] = alchemist;
+			alchemist++;
+		}
 		let temp = [lsHistory[i][3][0] + " : " + lsHistory[i][4], lsHistory[i][2]]
 		for (let j = 0; j < 4; j++) {
 			for(let k = 0; k < 8; k++){
