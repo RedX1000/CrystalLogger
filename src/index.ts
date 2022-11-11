@@ -2327,7 +2327,7 @@ function autoCheck() {
 			let promises = [];
 			promises.push(await autoCallCapture());
 			await Promise.all(promises);
-		}, 1000);
+		}, 600);
 	}
 	else {
 		if (localStorage.getItem("CrystalLogger/multiButtonPressDetect") === "true") {
