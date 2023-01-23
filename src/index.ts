@@ -233,6 +233,20 @@ export async function init() {
 		localStorage.setItem("CrystalLogger/History",JSON.stringify([]));
 	}
 
+
+	// This code should add the current date to your history log if it does not exist.
+	// This snippet can be removed a few months in the future or for future projects with this code.
+	// ~ 11/21/2022
+	let history = JSON.parse(localStorage.getItem("TetraLogger/History"))
+	if(history != null){
+		for(let i = 0; i < history.length; i++){
+			if(history[i][6] == undefined){
+				history[i].push(await dateGetter())
+			}
+		}
+		localStorage.setItem("TetraLogger/History",JSON.stringify(history))
+	}
+
 	
 	if (localStorage.getItem("CrystalLogger/PrimaryKeyHistory") == null) { // Initialize primary key for history
 		if (seeConsoleLogs) console.log("Defaulting PrimaryKeyHistory to 1");
@@ -1077,7 +1091,7 @@ async function findtrailComplete(img: ImgRef, autobool: boolean) {
 				let quantvar = document.createElement("span") as HTMLSpanElement;
 
 				nodevar = nodeMaker(parseInt(quantResults[(i * 8) + j]), itemResults[i][j], "recent")
-				imgvar = imgMaker(itemResults[i][j])
+				imgvar = imgMaker(itemResults[i][j], parseInt(quantResults[(i * 8) + j]))
 				quantvar = quantMaker(parseInt(quantResults[(i * 8) + j]))
 
 				nodevar.append(quantvar);
@@ -1199,7 +1213,7 @@ async function itemChecker(itemResults:any[], quantResults:any[], value:number){
   					  return response.json();
   					})
   					.then(function(data) {
-  					  cadantinePrice = data["Cadantine seed"].price * 4;
+  					  cadantinePrice = data["Cadantine seed"].price * quantResults[0];
   					});
 			} catch (e) {
 				if (seeConsoleLogs) console.log("It failed... setting to 0...");
@@ -1212,7 +1226,7 @@ async function itemChecker(itemResults:any[], quantResults:any[], value:number){
   					  return response.json();
   					})
   					.then(function(data) {
-  					  kwuarmPrice = data["Kwuarm seed"].price * 4;
+  					  kwuarmPrice = data["Kwuarm seed"].price * quantResults[0];
   					});
 			} catch (e) {
 				if (seeConsoleLogs) console.log("It failed... setting to 0...");
@@ -1225,7 +1239,7 @@ async function itemChecker(itemResults:any[], quantResults:any[], value:number){
   					  return response.json();
   					})
   					.then(function(data) {
-  					  marrentillPrice = data["Marrentill seed"].price * 4;
+  					  marrentillPrice = data["Marrentill seed"].price * quantResults[0];
   					});
 			} catch (e) {
 				if (seeConsoleLogs) console.log("It failed... setting to 0...");
@@ -1542,12 +1556,13 @@ async function submitToLS(item: any[], quant: any[], value: any) {
 
 async function addHistoryToLs(value: number, item: any, quants: any, reward: any) {
 	// The order of how History items are logged
-	// Index 1: Items (Array)
-	// Index 2: Quantities (Array)
-	// Index 3: Value
-	// Index 4: "Reward" or "Reward [C] "
-	// Index 5: reward count
-	// Index 6: History Primary Key
+	// Index 0: Items (Array)
+	// Index 1: Quantities (Array)
+	// Index 2: Value
+	// Index 3: "Reward" or "Reward [C] "
+	// Index 4: reward count
+	// Index 5: History Primary Key
+	// Index 6: Date and time captured
 	let itemsArr = []
 	for (let i = 0; i < item.length; i++) {
 		for (let j = 0; j < item[i].length; j++) {
@@ -1564,8 +1579,10 @@ async function addHistoryToLs(value: number, item: any, quants: any, reward: any
 			quants[i] += "000";
 		}
 	}
+
+	let currentDateTime = await dateGetter()
 	
-	let previous = [itemsArr, quants, value, reward, localStorage.getItem(currentReward()[2]), localStorage.getItem("CrystalLogger/PrimaryKeyHistory")];
+	let previous = [itemsArr, quants, value, reward, localStorage.getItem(currentReward()[2]), localStorage.getItem("CrystalLogger/PrimaryKeyHistory"), currentDateTime];
 	let temp = JSON.parse(localStorage.getItem("CrystalLogger/History"))
 	temp.push(previous);
 
@@ -1615,15 +1632,16 @@ function tabDisplay() {
 
 		nodevar = nodeMaker(parseInt(items[keys[i]].quantity[currentReward()[0]]), keys[i], "tab");
 		nodevar.style.order = orderChecker(parseInt(items[keys[i]].order), keys[i]).toString();
-		imgvar = imgMaker(keys[i]);
 		
 		// This if else only exists for when I comment out the above if block.
 		// Nice for viewing all of the loot.
 		if (items[keys[i]].quantity[currentReward()[0]] == undefined) {
 			quantvar = quantMaker(0);
+			imgvar = imgMaker(keys[i], 0);
 		}
 		else {
 			quantvar = quantMaker(items[keys[i]].quantity[currentReward()[0]]);
+			imgvar = imgMaker(keys[i], items[keys[i]].quantity[currentReward()[0]]);
 		}
 
 		nodevar.append(quantvar);
@@ -1666,6 +1684,16 @@ function historyInit() {
 					container.setAttribute("class", "historyDisplayContainer");
 					container.setAttribute('id','container' + temp[5]);
 
+					let dateBox = document.createElement("div") as HTMLDivElement;
+					let dateImg = document.createElement("div") as HTMLDivElement;
+					
+					dateBox.setAttribute('class', 'dateBox')
+					dateImg.setAttribute('class', 'dateImage')
+					dateImg.setAttribute('title', 'Date Captured: ' + temp[6])
+				
+					dateBox.append(dateImg)
+					container.append(dateBox)
+
 					if (temp[3][0].includes(" [C] ")) {
 						let customSpan = document.createElement("span") as HTMLSpanElement;
 						customSpan.setAttribute("class", "customSpan");
@@ -1687,7 +1715,7 @@ function historyInit() {
 					}
 
 					let value = document.createElement("div") as HTMLDivElement;
-					value.textContent = "Reward Value: "+temp[2].toLocaleString("en-US");
+					value.textContent = "Reward Value: " + temp[2].toLocaleString("en-US");
 					value.setAttribute('class','historyValue');
 					container.append(value);
 
@@ -1703,7 +1731,7 @@ function historyInit() {
 									let imgvar = document.createElement("img") as HTMLImageElement;
 									let quantvar = document.createElement("span") as HTMLSpanElement;
 
-									imgvar = imgMaker("Transparent");
+									imgvar = imgMaker("Transparent", temp[1][(j * 8) + k]);
 									nodevar.setAttribute("class", "node_history");
 									nodevar.removeAttribute("title");
 									quantvar.textContent = "";
@@ -1723,13 +1751,13 @@ function historyInit() {
 							// Note for later. Figure out why insert isnt displaying properly...
 						
 							if (temp[1][(j * 8) + k] === undefined) {
-								imgvar = imgMaker("Transparent");
+								imgvar = imgMaker("Transparent", temp[1][(j * 8) + k]);
 								nodevar.setAttribute("class", "node_history");
 								nodevar.removeAttribute("title");
 								quantvar.textContent = "";
 							}
 							else {
-								imgvar = imgMaker(temp[0][(j * 8) + k]);
+								imgvar = imgMaker(temp[0][(j * 8) + k], temp[1][(j * 8) + k]);
 								nodevar = nodeMaker(parseInt(temp[1][(j * 8) + k]), temp[0][(j * 8) + k], "history");
 								quantvar = quantMaker(temp[1][(j * 8) + k]);
 							}
@@ -2000,7 +2028,7 @@ export async function fetchFromGE() {
 	}
 }
 
-export function verifyInsert(event: Event) {
+export async function verifyInsert(event: Event) {
 	if (seeConsoleLogs) console.log("Collecting info from insert...");
 	let itemsList = [];
 	let quants = [];
@@ -2043,6 +2071,16 @@ export function verifyInsert(event: Event) {
 	container.setAttribute("class", 'historyDisplayContainer');
 	container.setAttribute('id','container' + curr);
 
+	let dateBox = document.createElement("div") as HTMLDivElement;
+	let dateImg = document.createElement("div") as HTMLDivElement;
+	
+	dateBox.setAttribute('class', 'dateBox')
+	dateImg.setAttribute('class', 'dateImage')
+	dateImg.setAttribute('title', 'Date Captured: ' + (await dateGetter()))
+
+	dateBox.append(dateImg)
+	container.append(dateBox)
+
 	let customSpan = document.createElement("span") as HTMLSpanElement;
 	customSpan.setAttribute("class", "customSpan");
 	customSpan.setAttribute("title", "Custom clue manually inserted.");
@@ -2052,12 +2090,14 @@ export function verifyInsert(event: Event) {
 	let count = document.createElement("div") as HTMLDivElement;
 	count.innerHTML = countText;
 	count.setAttribute('class','historyCount');
+	count.setAttribute('title', 'Date Captured: ' + await dateGetter())
 	count.append(customSpan);
 	container.append(count);
 
 	let value = document.createElement("div") as HTMLDivElement;
 	value.textContent = "Reward Value: " + totalPrice.toLocaleString("en-US");
 	value.setAttribute('class','historyValue');
+	value.setAttribute('title', 'Date Captured: ' + await dateGetter())
 	container.append(value);
 
 	let TPcheck = false
@@ -2072,7 +2112,7 @@ export function verifyInsert(event: Event) {
 					let imgvar = document.createElement("img") as HTMLImageElement;
 					let quantvar = document.createElement("span") as HTMLSpanElement;
 
-					imgvar = imgMaker("Transparent");
+					imgvar = imgMaker("Transparent", quants[(j * 8) + k]);
 					nodevar.setAttribute("class", "node_history");
 					nodevar.removeAttribute("title");
 					quantvar.textContent = "";
@@ -2092,13 +2132,13 @@ export function verifyInsert(event: Event) {
 			// Note for later. Figure out why insert isnt displaying properly...
 
 			if (quants[(j * 8) + k] === undefined) {
-				imgvar = imgMaker("Transparent");
+				imgvar = imgMaker("Transparent", quants[(j * 8) + k]);
 				nodevar.setAttribute("class", "node_history");
 				nodevar.removeAttribute("title");
 				quantvar.textContent = "";
 			}
 			else {
-				imgvar = imgMaker(itemsList[(j * 8) + k]);
+				imgvar = imgMaker(itemsList[(j * 8) + k], quants[(j * 8) + k]);
 				nodevar = nodeMaker(parseInt(quants[(j * 8) + k]), itemsList[(j * 8) + k], "history");
 				quantvar = quantMaker(quants[(j * 8) + k]);
 			}
@@ -2447,8 +2487,8 @@ export function exporttocsv() {
 	}
 	csvinfo.push([])
 	csvinfo.push([])
-	csvinfo.push(["Captured Rewards History", 'Parse tier at " : " and " [C] "','Parse items at " x "'])
-	csvinfo.push(["Rewards Tier & Count", "Reward Value", "Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6", "Item 7", "Item 8", "Item 9", "Item 10", "Item 11", "Item 12"])
+	csvinfo.push(["Captured Rewards History", 'Parse tier at " : " and " [C] "', '"Parse date and time at "", " "', 'Parse items at " x "'])
+	csvinfo.push(["Rewards Tier & Count", "Reward Value", "Date and Time recorded", "Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6", "Item 7", "Item 8", "Item 9", "Item 10", "Item 11", "Item 12"])
 	console.log(lsHistory)
 	if (seeConsoleLogs) console.log("Setting history in csv...")
 
@@ -2486,15 +2526,21 @@ export function exporttocsv() {
 		}
 		csvinfo.push(temp)
 	}
+	localStorage.setItem("CrystalLogger/History", JSON.stringify(lsHistory))
 
 	const d = new Date();
+	let hour = "0" + d.getHours().toString()
+	let minute = "0" + d.getMinutes().toString()
+	let second = "0" + d.getSeconds().toString()
+	let month = "0" + (d.getMonth() + 1).toString()
+	let day = "0" + d.getDate().toString()
 	let csvContent = "";
 	csvinfo.forEach(function (i) {
 		let row = i.join(",");
 		csvContent += row + "\r\n";
 	});
 
-	let filename = "CrystalLogger CSV " + d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate() + "_" + d.getHours() + "-" + d.getMinutes() + "-" +d.getSeconds()+ ".csv";
+	let filename = "CrystalLogger CSV " + (d.getFullYear() + "-" + month.slice(-2) + "-" + day.slice(-2) + "--" + hour.slice(-2) + "-" + minute.slice(-2) + "-" + second.slice(-2)) + ".csv";
 	let encodedUri = "data:text/csv;charset=utf-8,%EF%BB%BF" + encodeURI(csvContent);
 	let link = document.createElement("a") as HTMLAnchorElement;
 	link.setAttribute("href", encodedUri);
@@ -2527,9 +2573,15 @@ function nodeMaker(quant: number, item: string, attribute:string) {
 }
 
 
-function imgMaker(item: string) {
+function imgMaker(item: string, quant:number) {
 	let imgvar = document.createElement("img") as HTMLImageElement;
-	imgvar.src = encodeURI("./images/items/" + item.replace("/","-") + ".png");
+	if(false){
+		//FIXME: Add items into here, namely farming seeds.
+	}
+	else{
+		imgvar.src = encodeURI("./images/items/" + item.replace("/","-") + ".png");
+	}
+
 	imgvar.setAttribute('style', 'margin:auto;');
 	imgvar.ondragstart = function() { return false; };
 	return imgvar
@@ -2551,6 +2603,18 @@ function quantMaker(quant: number) {
 		quantvar.textContent = quant + "";
 	}
 	return quantvar
+}
+
+
+async function dateGetter(){
+	const d = new Date();
+	let hour = "0" + d.getUTCHours().toString()
+	let minute = "0" + d.getUTCMinutes().toString()
+	let second = "0" + d.getUTCSeconds().toString()
+	let month = "0" + (d.getUTCMonth() + 1).toString()
+	let day = "0" + d.getUTCDate().toString()
+	let currentDate = hour.slice(-2) + ":" + minute.slice(-2) + ":" + second.slice(-2) + ", " + d.getUTCFullYear() + "/" + month.slice(-2) + "/" + day.slice(-2) + " UTC"
+	return currentDate
 }
 
 
@@ -2623,23 +2687,27 @@ export function toggleLootDisplay(id: string) {
 		minH = 75;
 	}
 
+	let minHval = (minH + "%").toString()
+
+	// Currently circumventing truecount checker
+	minHval = "80px"
 
 	if (opentabs[0]) {
-		Array.from(document.getElementsByClassName('first') as HTMLCollectionOf<HTMLElement>)[0].style.minHeight = minH + "%";
+		Array.from(document.getElementsByClassName('first') as HTMLCollectionOf<HTMLElement>)[0].style.minHeight = minHval;
 	}
 	else {
 		Array.from(document.getElementsByClassName('first') as HTMLCollectionOf<HTMLElement>)[0].style.minHeight = "8%";
 	}
 
 	if (opentabs[1]) {
-		Array.from(document.getElementsByClassName('second') as HTMLCollectionOf<HTMLElement>)[0].style.minHeight = minH + "%";
+		Array.from(document.getElementsByClassName('second') as HTMLCollectionOf<HTMLElement>)[0].style.minHeight = minHval;
 	}
 	else {
 		Array.from(document.getElementsByClassName('second') as HTMLCollectionOf<HTMLElement>)[0].style.minHeight = "8%";
 	}
 
 	if (opentabs[2]) {
-		Array.from(document.getElementsByClassName('third') as HTMLCollectionOf<HTMLElement>)[0].style.minHeight = minH + "%";
+		Array.from(document.getElementsByClassName('third') as HTMLCollectionOf<HTMLElement>)[0].style.minHeight = minHval;
 	}
 	else {
 		Array.from(document.getElementsByClassName('third') as HTMLCollectionOf<HTMLElement>)[0].style.minHeight = "8%";
