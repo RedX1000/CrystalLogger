@@ -15,7 +15,7 @@
 			<div class="header_box">
 				<div class="button_box">
 					<div class="rewards_buttons" id="top">
-						<h3 class="rewards_button_header">Select Rewards Chest</h3>
+						<h3 class="rewards_button_header"><u>Select Rewards Chest</u></h3>
 						<div class="rewards_button_box">
 							<div class="rewards_label_holder" id="taverley_button">
 								<label class="rewards_level_label" id="label_taverley" onclick="TEST.changeClueTierSpan('taverley', event);">Taverley</label>
@@ -34,24 +34,24 @@
 								<input type="radio" id="alchemist" name="rewards_level" class="rewards_level" value="alchemist" onclick="TEST.changeClueTierSpan('alchemist', event);">
 							</div>
 						</div>
+						<div id="captured_rewards_title">
+							Captured value: <span id="rewards_value">0</span>
+						</div>
 					</div>
 					<div class="main_buttons" id="top">
 						<div id="bottom_buttons">
-							<div id="csv_button" class="nisbutton" onclick="TEST.exporttocsv();">Export to CSV</div>
-							<div id="settings_button" class="nisbutton" title="Settings" data-toggle="modal" data-target="#settings" onclick="TEST.autoDisableCheckAuto()"><img id="settings_cog" draggable="false" src="images/SettingsCog.png"></div>
+							<div id="csv_button" class="nissmallbutton nisbutton" onclick="TEST.exporttocsv();">Export To CSV</div>
+							<div id="settings_button" class="nissmallbutton nisbutton" title="Settings" data-toggle="modal" data-target="#settings" onclick="TEST.autoDisableCheckAuto()"><img id="settings_cog" draggable="false" src="images/SettingsCog.png"></div>
 						</div>
-						<div id="clear_button" class="nisbutton" data-toggle="modal" data-target="#cleardb" onclick="TEST.autoDisableCheckAuto()">Clear Options Menu</div>
-						<div id="docapturebutton" class="nisbutton" onclick="TEST.capture(false)">
+						<div id="clear_button" class="nissmallbutton nisbutton" data-toggle="modal" data-target="#cleardb" onclick="TEST.autoDisableCheckAuto()">Clear Options Menu</div>
+						<div id="docapturebutton" class="nissmallbutton nisbutton" onclick="TEST.capture(false)">
 							<div id="toggleunlocktrack" title="Autocapture toggle&#013;Locked = On; Unlocked = Off&#013;While on, capture button and Alt+1 is enabled&#013;This can be changed in the settings" class onclick="TEST.toggleCapture(event)"></div>
-							<span id="docapturebuttonwords">Capture Rewards</span>
+							&nbsp;&nbsp;&nbsp;<span id="docapturebuttonwords">Capture Rewards</span>
 						</div>
 					</div>
 				</div>
 				<div class="value_box">
 					<div class="captured_rewards" id="top">
-						<div id="captured_rewards_title">
-							Rewards Capture Value: <span id="rewards_value">0</span>
-						</div>
 						<div id="captured_rewards_grid">
 							<div id="first_item" class="rewards"></div>
 							<div id="second_item" class="rewards"></div>
@@ -78,8 +78,8 @@
 							<u>Average value</u>: <span id="average_of_rewards">0</span>
 						</div>
 						<div id="bottom_buttons">
-							<div id="history_button" class="nisbutton" data-toggle="modal" data-target="#history">History</div>
-							<div id="insert_button" class="nisbutton" data-toggle="modal" data-target="#insert" onclick="clearVerify()">&nbsp;Insert&nbsp;</div>
+							<div id="history_button" class="nissmallbutton nisbutton" data-toggle="modal" data-target="#history">History</div>
+							<div id="insert_button" class="nissmallbutton nisbutton" data-toggle="modal" data-target="#insert" onclick="clearVerify()">&nbsp;Insert&nbsp;</div>
 						</div>
 					</div>
 				</div>
@@ -116,7 +116,10 @@
 		        <div class="modal-content">
 		            <div class="modal-header">
 		                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" class="close_x">&times;</span><span class="sr-only">Close</span></button>
-		                <h1 class="modal-title" id="important-msg-label">Settings Menu<span id="hovertip" title="Hover over the options to learn more!&#013;&#013;Explore the Github link in the footer for more details.&#013;&#013;An asterisk next to an option signifies a default option">&hairsp;&hairsp;&nbsp;?&nbsp;&hairsp;&hairsp;</span></h1>
+						<div class="modal-header-title">
+							<h1 class="modal-title" id="important-msg-label">Settings Menu</h1>
+							<div id="hovertip" title="Hover over the options to learn more!&#013;&#013;Explore the Github link in the footer for more details.&#013;&#013;An &ast; next to an option signifies a default option">&hairsp;&hairsp;&nbsp;?&nbsp;&hairsp;&hairsp;</div>
+						</div>
 		            </div>
 		            <div class="modal-body" id="settings-body">
 		                <h2 id="h2settings">Image searching algorithm</h2>
@@ -146,7 +149,7 @@
 		                            <input type="radio" id="lagon" name="lag" class="maintoggles_buttons" value="lagon" title="Determines whether lag is taken into account when capturing. Clue will attempt to recapture&#013;If the last item fails to capture, attempt a rollback and try again.">
 		                        </div>
 		                        <div class="main_divs">
-		                            <label for="lagoff" id="img_label" title="Determine whether lag is taken into account when capturing. Clue will attempt to recapture&#013;If the last item fails to capture, attempt a rollback and try again.">Off</label>
+		                            <label for="lagoff" id="img_label" title="Determine whether lag is taken into account when capturing. Clue will attempt to recapture&#013;If the last item fails to capture, attempt a rollback and try again.">Off&nbsp;</label>
 		                            <input type="radio" id="lagoff" name="lag" class="maintoggles_buttons" value="lagoff" title="Determine whether lag is taken into account when capturing. Clue will attempt to recapture&#013;If the last item fails to capture, attempt a rollback and try again.">
 		                        </div>
 		                    </div>
@@ -157,7 +160,7 @@
 		                            <input type="radio" id="multion" name="multi" class="maintoggles_buttons" value="multion" title="Prevents the user from accidentally capturing a clue while its being logged to prevent double-logging.">
 		                        </div>
 		                        <div class="main_divs">
-		                            <label for="multioff" id="img_label" title="">Off</label>
+		                            <label for="multioff" id="img_label" title="">Off&nbsp;</label>
 		                            <input type="radio" id="multioff" name="multi" class="maintoggles_buttons" value="multioff" title="Prevents the user from accidentally capturing a clue while its being logged to prevent double-logging.">
 		                        </div>
 		                    </div>
@@ -168,7 +171,7 @@
 		                            <input type="radio" id="menuon" name="menu" class="maintoggles_buttons" value="menuon" title="Shows the area to keep any menus away from to prevent a double-capture.">
 		                        </div>
 		                        <div class="main_divs">
-		                            <label for="menuoff" id="img_label" title="Shows the area to keep any menus away from to prevent a double-capture.">Off</label>
+		                            <label for="menuoff" id="img_label" title="Shows the area to keep any menus away from to prevent a double-capture.">Off&nbsp;</label>
 		                            <input type="radio" id="menuoff" name="menu" class="maintoggles_buttons" value="menuoff" title="Shows the area to keep any menus away from to prevent a double-capture.">
 		                        </div>
 		                    </div>
@@ -211,19 +214,23 @@
 			  	<div class="modal-content">
 					<div class="modal-header">
 				  		<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" class="close_x">&times;</span><span class="sr-only">Close</span></button>
-				  		<h1 class="modal-title" id="important-msg-label">Clear Options Menu<span id="hovertip" title="Hover over the options to learn more!&#013;&#013;Explore the Github link in the footer for more details.">&hairsp;&hairsp;&nbsp;?&nbsp;&hairsp;&hairsp;</span></h1>
+				  		<div class="modal-header-title">
+							<h1 class="modal-title" id="important-msg-label">Clear Options Menu</h1>
+							<div id="hovertip" title="Hover over the options to learn more!&#013;&#013;Explore the Github link in the footer for more details.">&hairsp;&hairsp;&nbsp;?&nbsp;&hairsp;&hairsp;</div>
+						</div>
+						<br><div class="modal_title_details">*There are verification screens for each option except "Refresh page". Autocapture is automatically disabled when opening this menu.</div>
 					</div>
 					<div class="modal-body">
 						<div id="clear_db_buttons">
-							<div id="db_confirm_button" class="nisbutton" data-toggle="modal" data-target="#resetOpenVerif" title="Nuclear option, completely resets plugin, but can be used to troubleshoot">Completely reset CrystalLogger</div>
-							<div id="db_confirm_button" class="nisbutton" data-toggle="modal" data-target="#resetAllVerif" title="Clear all of the items in the database only.">Clear all items from database</div>
-							<div id="db_confirm_button" class="nisbutton" data-toggle="modal" data-target="#resetTierVerif" title="Clear the currently selected reward only.">Clear <span class="current_tier_button_caps"></span> rewards</div>
-							<div id="db_confirm_button" class="nisbutton" data-toggle="modal" data-target="#resetSettingsVerif" title="Reset settings back to default.">Reset settings</div>
-							<div id="db_confirm_button" class="nisbutton" onclick="javascript:window.location.reload()" title="Refreshes the page. Does not clear the DB, but may help push an update.">Refresh page</div>
-							<div id="db_confirm_button" class="nisbuttonblue" data-dismiss="modal" onclick="" title="Do nothing. Go. Get out of here. Leave.">Cancel</div>
+							<div class="db_confirm_button nisbutton" onclick="javascript:window.location.reload()" title="Refreshes the page. Does not clear the DB, but may help push an update.">Refresh page</div>
+							<div class="db_confirm_button nisbutton" data-toggle="modal" data-target="#resetSettingsVerif" title="Reset settings back to default.">Reset settings</div>
+							<div class="db_confirm_button nisbutton" data-toggle="modal" data-target="#resetTierVerif" title="Clear the currently selected reward only.">Clear <span class="current_tier_button_caps"></span> rewards</div>
+							<div class="db_confirm_button nisbutton" data-toggle="modal" data-target="#resetAllVerif" title="Clear all of the items in the database only.">Clear all rewards</div>
+							<div class="db_confirm_button nisbutton" data-toggle="modal" data-target="#resetOpenVerif" title="Nuclear option, completely resets plugin, but can be used to troubleshoot">Reset CrystalLogger</div>
+							<div class="db_confirm_button nisbuttonblue" data-dismiss="modal" onclick="" title="Do nothing. Go. Get out of here. Leave.">Cancel</div>
 						</div>
 					</div>
-					<div class="modal-footer"> *There are verification screens for each option except Refresh<br>It is strongly recommended to pause Autocapture before deleting anything</div>
+					<div class="modal-footer"></div>
 			  	</div>
 			</div>
 		</div>
@@ -235,12 +242,15 @@
 			  	<div class="modal-content">
 					<div class="modal-header">
 				  		<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" class="close_x">&times;</span><span class="sr-only">Close</span></button>
-				  		<h1 class="modal-title" id="important-msg-label">Completely Reset CrystalLogger?<span id="hovertip" title="Hover over the options to learn more!&#013;&#013;Explore the Github link in the footer for more details.">&hairsp;&hairsp;&nbsp;?&nbsp;&hairsp;&hairsp;</span></h1>
+				  		<div class="modal-header-title">
+							<h1 class="modal-title" id="important-msg-label">Completely Reset CrystalLogger?</h1>
+							<div id="hovertip" title="Hover over the options to learn more!&#013;&#013;Explore the Github link in the footer for more details.">&hairsp;&hairsp;&nbsp;?&nbsp;&hairsp;&hairsp;</div>
+						</div>
 					</div>
 					<div class="modal-body">
 						<div id="clear_db_buttons">
-							<div id="db_confirm_button" class="nisbutton" data-dismiss="modal" onclick="TEST.cleardb(1)" title="Nuclear option, completely resets plugin, but can be used to troubleshoot">Reset everything</div>
-							<div id="db_confirm_button" class="nisbuttonblue" data-dismiss="modal" data-toggle="modal" data-target="#cleardb" onclick="" title="Do nothing. Go. Get out of here. Leave.">Cancel</div>
+							<div class="db_confirm_button nisbutton" data-dismiss="modal" onclick="TEST.cleardb(1)" title="Nuclear option, completely resets plugin, but can be used to troubleshoot">Reset everything</div>
+							<div class="db_confirm_button nisbuttonblue" data-dismiss="modal" data-toggle="modal" data-target="#cleardb" onclick="" title="Do nothing. Go. Get out of here. Leave.">Cancel</div>
 						</div>
 					</div>
 					<div class="modal-footer"></div>
@@ -255,12 +265,15 @@
 			  	<div class="modal-content">
 					<div class="modal-header">
 				  		<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" class="close_x">&times;</span><span class="sr-only">Close</span></button>
-				  		<h1 class="modal-title" id="important-msg-label">Clear All Items From Database?<span id="hovertip" title="Hover over the options to learn more!&#013;&#013;Explore the Github link in the footer for more details.">&hairsp;&hairsp;&nbsp;?&nbsp;&hairsp;&hairsp;</span></h1>
+				  		<div class="modal-header-title">
+							<h1 class="modal-title" id="important-msg-label">Clear all items from Database?</h1>
+							<div id="hovertip" title="Hover over the options to learn more!&#013;&#013;Explore the Github link in the footer for more details.">&hairsp;&hairsp;&nbsp;?&nbsp;&hairsp;&hairsp;</div>
+						</div>
 					</div>
 					<div class="modal-body">
 						<div id="clear_db_buttons">
-							<div id="db_confirm_button" class="nisbutton" data-dismiss="modal" onclick="TEST.cleardb(2)" title="Nuclear option, completely resets plugin, but can be used to troubleshoot">Clear all items</div>
-							<div id="db_confirm_button" class="nisbuttonblue" data-dismiss="modal" data-toggle="modal" data-target="#cleardb" onclick="" title="Do nothing. Go. Get out of here. Leave.">Cancel</div>
+							<div class="db_confirm_button nisbutton" data-dismiss="modal" onclick="TEST.cleardb(2)" title="Nuclear option, completely resets plugin, but can be used to troubleshoot">Clear all items</div>
+							<div class="db_confirm_button nisbuttonblue" data-dismiss="modal" data-toggle="modal" data-target="#cleardb" onclick="" title="Do nothing. Go. Get out of here. Leave.">Cancel</div>
 						</div>
 					</div>
 					<div class="modal-footer"></div>
@@ -275,12 +288,15 @@
 			  	<div class="modal-content">
 					<div class="modal-header">
 				  		<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" class="close_x">&times;</span><span class="sr-only">Close</span></button>
-				  		<h1 class="modal-title" id="important-msg-label">Reset settings?<span id="hovertip" title="Hover over the options to learn more!&#013;&#013;Explore the Github link in the footer for more details.">&hairsp;&hairsp;&nbsp;?&nbsp;&hairsp;&hairsp;</span></h1>
+				  		<div class="modal-header-title">
+							<h1 class="modal-title" id="important-msg-label">Reset settings?</h1>
+							<div id="hovertip" title="Hover over the options to learn more!&#013;&#013;Explore the Github link in the footer for more details.">&hairsp;&hairsp;&nbsp;?&nbsp;&hairsp;&hairsp;</div>
+						</div>
 					</div>
 					<div class="modal-body">
 						<div id="clear_db_buttons">
-							<div id="db_confirm_button" class="nisbutton" data-dismiss="modal" onclick="TEST.cleardb(3)" title="Reset settings back to default.">Reset settings</div>
-							<div id="db_confirm_button" class="nisbuttonblue" data-dismiss="modal" data-toggle="modal" data-target="#cleardb" onclick="" title="Do nothing. Go. Get out of here. Leave.">Cancel</div>
+							<div class="db_confirm_button nisbutton" data-dismiss="modal" onclick="TEST.cleardb(3)" title="Reset settings back to default.">Reset settings</div>
+							<div class="db_confirm_button nisbuttonblue" data-dismiss="modal" data-toggle="modal" data-target="#cleardb" onclick="" title="Do nothing. Go. Get out of here. Leave.">Cancel</div>
 						</div>
 					</div>
 					<div class="modal-footer"></div>
@@ -295,12 +311,15 @@
 			  	<div class="modal-content">
 					<div class="modal-header">
 				  		<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" class="close_x">&times;</span><span class="sr-only">Close</span></button>
-				  		<h1 class="modal-title" id="important-msg-label">Clear <span class="current_tier_button_caps"></span> rewards?<span id="hovertip" title="Hover over the options to learn more!&#013;&#013;Explore the Github link in the footer for more details.">&hairsp;&hairsp;&nbsp;?&nbsp;&hairsp;&hairsp;</span></h1>
+						<div class="modal-header-title">
+							<h1 class="modal-title" id="important-msg-label">Clear <span class="current_tier_button_caps"></span> rewards?</h1>
+							<div id="hovertip" title="Hover over the options to learn more!&#013;&#013;Explore the Github link in the footer for more details.">&hairsp;&hairsp;&nbsp;?&nbsp;&hairsp;&hairsp;</div>
+						</div>
 					</div>
 					<div class="modal-body">
 						<div id="clear_db_buttons">
-							<div id="db_confirm_button" class="nisbutton" data-dismiss="modal" onclick="TEST.cleardb(4)" title="Completely clear all rewards from currently selected tier">Clear <span class="current_tier_button"></span> tier</div>
-							<div id="db_confirm_button" class="nisbuttonblue" data-dismiss="modal" data-toggle="modal" data-target="#cleardb" onclick="" title="Do nothing. Go. Get out of here. Leave.">Cancel</div>
+							<div class="db_confirm_button nisbutton" data-dismiss="modal" onclick="TEST.cleardb(4)" title="Completely clear all rewards from currently selected tier">Clear <span class="current_tier_button"></span> tier</div>
+							<div class="db_confirm_button nisbuttonblue" data-dismiss="modal" data-toggle="modal" data-target="#cleardb" onclick="" title="Do nothing. Go. Get out of here. Leave.">Cancel</div>
 						</div>
 					</div>
 					<div class="modal-footer"></div>
@@ -315,8 +334,11 @@
 			  	<div class="modal-content">
 					<div class="modal-header">
 				  		<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" class="close_x">&times;</span><span class="sr-only">Close</span></button>
-				  		<h1 class="modal-title" id="important-msg-label">History of <span class="current_tier_button" id="history_tier_caps"></span> Rewards<span id="hovertip" title="Hover over the options to learn more!&#013;&#013;Explore the Github link in the footer for more details.">&hairsp;&hairsp;&nbsp;?&nbsp;&hairsp;&hairsp;</span></h1>
-						<h2 id="history_quantity_title">Displaying the last <span id="history_quantity"></span> captured chests</h2>
+						<div class="modal-header-title">
+				  			<h1 class="history_title modal-title" id="important-msg-label">History of <span class="current_tier_button" id="history_tier_caps"></span> Rewards</h1>
+							<div id="hovertip" title="Hover over the options to learn more!&#013;&#013;Explore the Github link in the footer for more details.">&hairsp;&hairsp;&nbsp;?&nbsp;&hairsp;&hairsp;</div>
+							<div class="modal_title_details">Displaying the last <span id="history_quantity" style="color:#FFC000"></span> captured chests</div>
+						</div>
 					</div>
 					<div class="modal-body" id="history_body">
 					</div>
@@ -333,96 +355,99 @@
 			<div class="modal-dialog">
 			  	<div class="modal-content">
 					<div class="modal-header">
-				  		<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" class="close_x">&times;</span><span class="sr-only">Close</span></button>
-				  		<h1 class="modal-title" id="important-msg-label"><span>Insert custom <span class="current_tier_button" id="insert_tier_title_caps"></span> reward</span><span id="hovertip" title="Hover over the options to learn more!&#013;&#013;Explore the Github link in the footer for more details.">&hairsp;&hairsp;&nbsp;?&nbsp;&hairsp;&hairsp;</span></h1>
-						<h3 id="insert_remove_title">To remove items and value from <span style="font-family: Consolas;">localStorage</span>, make numbers negative. Custom rewards are also logged in History.</h3>
-					</div>
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" class="close_x">&times;</span><span class="sr-only">Close</span></button>
+						<div class="modal-header-title">
+							<h1 class="modal-title" id="important-msg-label"><span>Insert custom <span class="current_tier_button" id="insert_tier_title_caps"></span> reward</span></h1>
+						  	<div id="hovertip" title="Hover over the options to learn more!&#013;&#013;Explore the Github link in the footer for more details.">&hairsp;&hairsp;&nbsp;?&nbsp;&hairsp;&hairsp;</div>
+					  	</div>
+					  	<br><div class="modal_title_details">&ast;To remove items and value from <span style="font-family: Consolas;">localStorage</span>, make numbers negative. Custom clues are also logged in History.</div>
+				  	</div>
 					<div class="modal-body">
 						<div id="insert_value">
-							<label class="insert_title_labels" title="Reward value to be inserted"><span class="current_tier_button" id="insert_tier_caps"></span> Reward Value<br></label>
+							<label class="insert_title_labels" id="insert_reward_value" title="Reward value to be inserted"><span class="current_tier_button" id="insert_tier_caps"></span> Reward Value<br></label>
 							<input type="number" step="1" value="0" id="value_input" name="insert_value" class="insert_text" title="Reward value to be inserted">
 							<div id="fetchge_button" class="nisbutton" onclick="TEST.fetchFromGE()">Fetch GE</div>
 						</div>
 						<div id="insert_items">
 							<div class="insert_items_divs">
-								<label class="insert_items_labels" title="First item to be inserted and quantity">First Item<br></label>
+								<label class="insert_items_labels" title="First item to be inserted and quantity">1st Item<br></label>
 								<select name="item_1" class="items insert_options" id="items_first">
 									<option value="Blank" class="insert_options">~Nothing~</option>
 								</select>
 								<input type="number" step="1" value="0" class= "item_quants insert_text" id="item_input_1" name="item_input_1" title="First item to be inserted and quantity">
 							</div>
 							<div class="insert_items_divs">
-								<label class="insert_items_labels" title="Second item to be inserted and quantity">Second Item<br></label>
+								<label class="insert_items_labels" title="Second item to be inserted and quantity">2nd Item<br></label>
 								<select name="item_2" class="items insert_options" id="items_second">
 									<option value="Blank">~Nothing~</option>
 								</select>
 								<input type="number" step="1" value="0" class= "item_quants insert_text" id="item_input_2" name="item_input_2" title="Second item to be inserted and quantity">
 							</div>
 							<div class="insert_items_divs">
-								<label class="insert_items_labels" title="Third item to be inserted and quantity">Third Item<br></label>
+								<label class="insert_items_labels" title="Third item to be inserted and quantity">3rd Item<br></label>
 								<select name="item_3" class="items insert_options" id="items_third">
 									<option value="Blank">~Nothing~</option>
 								</select>
 								<input type="number" step="1" value="0" class= "item_quants insert_text" id="item_input_3" name="item_input_3" title="Third item to be inserted and quantity">
 							</div>
 							<div class="insert_items_divs">
-								<label class="insert_items_labels" title="Fourth item to be inserted and quantity">Fourth Item<br></label>
+								<label class="insert_items_labels" title="Fourth item to be inserted and quantity">4th Item<br></label>
 								<select name="item_4" class="items insert_options" id="items_fourth">
 									<option value="Blank">~Nothing~</option>
 								</select>
 								<input type="number" step="1" value="0" class= "item_quants insert_text" id="item_input_4" name="item_input_4" title="Fourth item to be inserted and quantity">
 							</div>
 							<div class="insert_items_divs">
-								<label class="insert_items_labels" title="Fifth item to be inserted and quantity">Fifth Item<br></label>
+								<label class="insert_items_labels" title="Fifth item to be inserted and quantity">5th Item<br></label>
 								<select name="item_5" class="items insert_options" id="items_fifth">
 									<option value="Blank">~Nothing~</option>
 								</select>
 								<input type="number" step="1" value="0" class= "item_quants insert_text" id="item_input_5" name="item_input_5" title="Fifth item to be inserted and quantity">
 							</div>
 							<div class="insert_items_divs">
-								<label class="insert_items_labels" title="Sixth item to be inserted and quantity">Sixth Item<br></label>
+								<label class="insert_items_labels" title="Sixth item to be inserted and quantity">6th Item<br></label>
 								<select name="item_6" class="items insert_options" id="items_sixth">
 									<option value="Blank">~Nothing~</option>
 								</select>
 								<input type="number" step="1" value="0" class= "item_quants insert_text" id="item_input_6" name="item_input_6" title="Sixth item to be inserted and quantity">
 							</div>
 							<div class="insert_items_divs">
-								<label class="insert_items_labels" title="Seventh item to be inserted and quantity">Seventh Item<br></label>
+								<label class="insert_items_labels" title="Seventh item to be inserted and quantity">7th Item<br></label>
 								<select name="item_7" class="items insert_options" id="items_seventh">
 									<option value="Blank">~Nothing~</option>
 								</select>
 								<input type="number" step="1" value="0" class= "item_quants insert_text" id="item_input_7" name="item_input_7" title="Seventh item to be inserted and quantity">
 							</div>
 							<div class="insert_items_divs">
-								<label class="insert_items_labels" title="Eigth item to be inserted and quantity">Eigth Item<br></label>
+								<label class="insert_items_labels" title="Eigth item to be inserted and quantity">8th Item<br></label>
 								<select name="item_8" class="items insert_options" id="items_eigth">
 									<option value="Blank">~Nothing~</option>
 								</select>
 								<input type="number" step="1" value="0" class= "item_quants insert_text" id="item_input_8" name="item_input_8" title="Eigth item to be inserted and quantity">
 							</div>
 							<div class="insert_items_divs">
-								<label class="insert_items_labels" title="Ninth item to be inserted and quantity">Ninth Item<br></label>
+								<label class="insert_items_labels" title="Ninth item to be inserted and quantity">9th Item<br></label>
 								<select name="item_9" class="items insert_options" id="items_ninth">
 									<option value="Blank">~Nothing~</option>
 								</select>
 								<input type="number" step="1" value="0" class= "item_quants insert_text" id="item_input_9" name="item_input_9" title="Ninth item to be inserted and quantity">
 							</div>
 							<div class="insert_items_divs">
-								<label class="insert_items_labels" title="Tenth item to be inserted and quantity">Tenth Item<br></label>
+								<label class="insert_items_labels" title="Tenth item to be inserted and quantity">10th Item<br></label>
 								<select name="item_10" class="items insert_options" id="items_tenth">
 									<option value="Blank">~Nothing~</option>
 								</select>
 								<input type="number" step="1" value="0" class= "item_quants insert_text" id="item_input_10" name="item_input_10" title="Tenth item to be inserted and quantity">
 							</div>
 							<div class="insert_items_divs">
-								<label class="insert_items_labels" title="Eleventh item to be inserted and quantity">Eleventh Item<br></label>
+								<label class="insert_items_labels" title="Eleventh item to be inserted and quantity">11th Item<br></label>
 								<select name="item_11" class="items insert_options" id="items_eleventh">
 									<option value="Blank">~Nothing~</option>
 								</select>
 								<input type="number" step="1" value="0" class= "item_quants insert_text" id="item_input_11" name="item_input_11" title="Eleventh item to be inserted and quantity">
 							</div>
 							<div class="insert_items_divs">
-								<label class="insert_items_labels" title="Twelfth item to be inserted and quantity">Twelfth Item<br></label>
+								<label class="insert_items_labels" title="Twelfth item to be inserted and quantity">12th Item<br></label>
 								<select name="item_12" class="items insert_options" id="items_twelfth">
 									<option value="Blank">~Nothing~</option>
 								</select>
@@ -447,7 +472,10 @@
 			  	<div class="modal-content">
 					<div class="modal-header">
 				  		<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" class="close_x">&times;</span><span class="sr-only">Close</span></button>
-				  		<h1 class="modal-title" id="important-msg-label">Enter these custom items into Database?<span id="hovertip" title="Hover over the options to learn more!&#013;&#013;Explore the Github link in the footer for more details.">&hairsp;&hairsp;&nbsp;?&nbsp;&hairsp;&hairsp;</span></h1>
+						<div class="modal-header-title">
+							<h1 class="modal-title" id="important-msg-label">Enter custom reward into Database?</h1>
+							<div id="hovertip" title="Hover over the options to learn more!&#013;&#013;Explore the Github link in the footer for more details.">&hairsp;&hairsp;&nbsp;?&nbsp;&hairsp;&hairsp;</div>
+						</div>
 					</div>
 					<div class="modal-body" id="insertVerif_body">
 					</div>
@@ -468,7 +496,10 @@
 			  	<div class="modal-content">
 					<div class="modal-header">
 				  		<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" class="close_x">&times;</span><span class="sr-only">Close</span></button>
-				  		<h1 class="modal-title" id="important-msg-label">Information and Updates<span id="hovertip" title="Hover over the options to learn more!&#013;&#013;Explore the Github link in the footer for more details.">&hairsp;&hairsp;&nbsp;?&nbsp;&hairsp;&hairsp;</span></h1>
+						<div class="modal-header-title">
+							<h1 class="modal-title" id="important-msg-label">Information and Updates</h1>
+							<div id="hovertip" title="Hover over the options to learn more!&#013;&#013;Explore the Github link in the footer for more details.">&hairsp;&hairsp;&nbsp;?&nbsp;&hairsp;&hairsp;</div>
+						</div>
 					</div>
 					<div class="modal-body" style="user-select: text;">
 						<h2><u>Latest update</u></h2>
